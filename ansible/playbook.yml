@@ -1,0 +1,31 @@
+---
+- name: Setup macOS.
+  hosts: localhost
+  connection: local
+  vars_files:
+    - config.yml
+
+  pre_tasks:
+    - name: Update repository.  # noqa: latest
+      ansible.builtin.git:
+        repo: "https://github.com/daniel-mizsak/macos-setup.git"
+        dest: ${HOME}/macos-setup
+        force: true
+
+  tasks:
+    - name: Import package installation tasks.
+      ansible.builtin.import_tasks:
+        file: tasks/packages.yml
+
+    - name: Import system configuration tasks.
+      ansible.builtin.import_tasks:
+        file: tasks/system.yml
+
+    - name: Import dotfiles tasks.
+      ansible.builtin.import_tasks:
+        file: tasks/dotfiles.yml
+
+    - name: Make sure all brewfile packages are installed.
+      ansible.builtin.command: >
+        brew bundle check --file=${HOME}/macos-setup/dotfiles/Brewfile
+      changed_when: false

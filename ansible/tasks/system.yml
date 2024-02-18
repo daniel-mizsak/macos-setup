@@ -1,0 +1,150 @@
+---
+# Finder
+- name: Finder show all files.
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: AppleShowAllFiles
+    value: true
+    type: bool
+
+- name: Finder show file extension.
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleShowAllExtensions
+    value: true
+    type: bool
+
+- name: Finder show tool bar.
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowToolbar
+    value: true
+    type: bool
+
+- name: Finder show path bar.
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowPathbar
+    value: true
+    type: bool
+
+- name: Finder show status bar.
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowStatusBar
+    value: true
+    type: bool
+
+- name: Finder default location.
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: NewWindowTargetPath
+    value: "file://${HOME}/Documents"
+    type: string
+
+- name: Finder default new windows and tabs.
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: NewWindowTarget
+    value: "PfDo"
+    type: string
+
+- name: Reload finder.
+  ansible.builtin.command: >
+    killall Finder
+  changed_when: false
+
+# Dock
+- name: Remove all dock content.
+  ansible.builtin.command: >
+    dockutil --remove all
+  changed_when: false
+
+- name: Dock set content.
+  ansible.builtin.command: >
+    dockutil --add {{ item }} --no-restart
+  changed_when: false
+  loop:
+    - /Applications/Safari.app
+    - /Applications/Mail.app
+    - /Applications/Visual\ Studio\ Code.app
+    - /Applications/iTerm.app
+    - /Applications/System\ Settings.app
+    - ${HOME}/Downloads
+
+- name: Dock position bottom.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: orientation
+    value: bottom
+    type: string
+
+- name: Dock auto hide.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: autohide
+    value: true
+    type: bool
+
+- name: Dock disable animation.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: autohide-time-modifier
+    value: 0.0
+    type: float
+
+- name: Dock disable delay.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: autohide-delay
+    value: 0.0
+    type: float
+
+- name: Dock disable recent applications.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: show-recents
+    value: false
+    type: bool
+
+
+- name: Dock set size.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: tilesize
+    value: 60
+    type: float
+
+- name: Dock disable magnification.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: magnification
+    value: false
+    type: bool
+
+- name: Dock disable manual size change.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: size-immutable
+    value: true
+    type: bool
+
+- name: Dock disable content modification.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: contents-immutable
+    value: true
+    type: bool
+
+- name: Reload dock.
+  ansible.builtin.command: >
+    killall Dock
+  changed_when: false
+
+# Other
+- name: Do not create .DS_Store files on network volumes.
+  community.general.osx_defaults:
+    domain: com.apple.desktopservices
+    key: DSDontWriteNetworkStores
+    value: 'true'
+    type: string

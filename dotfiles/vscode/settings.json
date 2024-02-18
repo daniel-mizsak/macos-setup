@@ -1,0 +1,195 @@
+{
+    // Base settings
+    // Editor
+    "editor.accessibilitySupport": "off",
+    "editor.dragAndDrop": false,
+    "editor.emptySelectionClipboard": false,
+    "editor.fontSize": 14,
+    "editor.formatOnSave": true,
+    "editor.inlineSuggest.enabled": true,
+    "editor.lineHeight": 1.55,
+    "editor.minimap.enabled": false,
+    "editor.mouseWheelScrollSensitivity": 0.8,
+    // Files
+    "files.associations": {
+        "**/handlers/*.yml": "ansible",
+        "**/tasks/*.yml": "ansible",
+        "**/tests/*.yml": "ansible",
+    },
+    "files.eol": "\n",
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/._*": true,
+        "**/.coverage": true,
+        "**/.idea": true,
+        "**/.mypy_cache": true,
+        "**/.pytest_cache": true,
+        "**/.ruff_cache": true,
+        "**/.tox": true,
+        "**/.venv": true,
+        "**/*.egg-info": true,
+    },
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    // Git
+    "git.allowForcePush": true,
+    "git.confirmForcePush": false,
+    "git.confirmSync": false,
+    "git.suggestSmartCommit": false,
+    // Search
+    "search.exclude": {
+        "**/.venv": true,
+    },
+    // Telemetry
+    "telemetry.telemetryLevel": "off",
+    // Terminal
+    "terminal.integrated.fontSize": 14,
+    // Window
+    "window.zoomLevel": -0.5,
+    // Workbench
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.enableExperiments": false,
+    "workbench.settings.editor": "json",
+    "workbench.settings.openDefaultSettings": true,
+    // Extensions
+    /*
+    .NET Install Tool
+    Ansible
+    autoDocstring - Python Docstring Generator
+    Better Comments
+    C#
+    C# Dev Kit
+    Code Runner
+    Code Spell Checker
+    CodeSnap
+    Dev Containers
+    Docker
+    Even Better TOML
+    Github Actions
+    GitHub Copilot
+    GitHub Copilot Chat
+    GitLens — Git supercharged
+    indent-rainbow
+    IntelliCode for C# Dev Kit
+    Jupyter
+    Jupyter Cell Tags
+    Jupyter Keymap
+    Jupyter Notebook Renderers
+    Jupyter Slide Show
+    Mypy Type Checker
+    psioniq File Header
+    Pylance
+    Python
+    Rainbow CSV
+    Remote - SSH
+    Remote - SSH: Editing Configuration Files
+    Remote Explorer
+    Ruff
+    SQLite
+    vscode-pdf
+    WSL
+    YAML
+    */
+    // .NET Install Tool
+    "dotnetAcquisitionExtension.enableTelemetry": false,
+    // Ansible
+    "[ansible]": {
+        "editor.defaultFormatter": "redhat.ansible",
+    },
+    "redhat.telemetry.enabled": false,
+    // C#
+    "[csharp]": {
+        "editor.defaultFormatter": "ms-dotnettools.csharp",
+    },
+    // Code Runner
+    "code-runner.executorMap": {
+        "csharp": "cd $dir && dotnet run",
+        "python": "$pythonPath $fullFileName",
+    },
+    "code-runner.runInTerminal": true,
+    // Code Spell Checker
+    "cSpell.diagnosticLevel": "Hint",
+    "cSpell.showStatus": false,
+    // CodeSnap
+    "codesnap.showWindowControls": false,
+    // GitHub Copilot
+    "github.copilot.enable": {
+        "markdown": true,
+    },
+    // indent-rainbow
+    "indentRainbow.includedLanguages": [
+        "ansible",
+        "json",
+        "jsonc",
+        "yaml",
+        "yml",
+    ],
+    // Jupyter
+    "jupyter.askForKernelRestart": false,
+    "jupyter.experiments.enabled": false,
+    "notebook.formatOnSave.enabled": true,
+    "notebook.lineNumbers": "on",
+    // Mypy Type Checker
+    "mypy-type-checker.args": [
+        "--ignore-missing-imports",
+        "--pretty",
+        "--show-column-numbers",
+        "--show-error-context",
+        "--strict",
+        "--warn-unreachable",
+        "--warn-unused-ignores",
+    ],
+    "mypy-type-checker.path": [
+        "${workspaceFolder}/.venv/bin/mypy",
+    ],
+    // psioniq File Header
+    "psi-header.config": {
+        "author": "Daniel Mizsak",
+        "authorEmail": "info@pythonvilag.hu",
+        "blankLinesAfter": 1,
+        "forceToTop": true,
+    },
+    "psi-header.lang-config": [
+        {
+            "language": "python",
+            "begin": "\"\"\"",
+            "end": "\"\"\"",
+        }
+    ],
+    "psi-header.templates": [
+        {
+            "language": "python",
+            "template": [
+                "Short description and source of base code.",
+                "",
+                "@author \"<<author>>\" <<<authoremail>>>",
+            ]
+        }
+    ],
+    // Python
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit",
+            "source.sortMembers": "explicit"
+        },
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.defaultFoldingRangeProvider": "charliermarsh.ruff",
+        "editor.rulers": [
+            80,
+            120,
+        ],
+        "editor.tabSize": 4,
+    },
+    "python.analysis.typeCheckingMode": "off",
+    "python.experiments.enabled": false,
+    // Ruff
+    "ruff.fixAll": false,
+    "ruff.lint.args": [
+        "--line-length",
+        "120",
+    ],
+    // YAML
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml",
+    },
+}

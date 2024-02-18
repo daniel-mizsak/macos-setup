@@ -1,0 +1,27 @@
+---
+packages_upgrade_packages: false
+
+dotfiles_dotfile_links:
+  - source: ${HOME}/macos-setup/dotfiles/brew/Brewfile
+    dest: $HOME/Brewfile
+
+  - source: ${HOME}/macos-setup/dotfiles/git/.gitconfig
+    dest: $HOME/.gitconfig
+  - source: ${HOME}/macos-setup/dotfiles/git/.gitignore_global
+    dest: $HOME/.gitignore_global
+  - source: ${HOME}/macos-setup/dotfiles/git/.gitmessage
+    dest: $HOME/.gitmessage
+
+  - source: ${HOME}/macos-setup/dotfiles/shell/.zshenv
+    dest: $HOME/.zshenv
+  - source: ${HOME}/macos-setup/dotfiles/shell/.zshrc
+    dest: $HOME/.zshrc
+
+  - source: ${HOME}/macos-setup/dotfiles/sublime/Preferences.sublime-settings
+    dest: $HOME/Library/Application Support/Sublime Text/Packages/User/Preferences.sublime-settings
+
+  - source: ${HOME}/macos-setup/dotfiles/tmux/.tmux.conf
+    dest: $HOME/.tmux.conf
+
+  - source: ${HOME}/macos-setup/dotfiles/vscode/settings.json
+    dest: $HOME/Library/Application Support/Code/User/settings.json

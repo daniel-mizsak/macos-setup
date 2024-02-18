@@ -1,0 +1,38 @@
+{
+  // Base Appearance
+  "theme": "Default Dark.sublime-theme",
+  "color_scheme": "Mariana.sublime-color-scheme",
+  "font_size": 14,
+  // Extra Appearance
+  "caret_extra_top": 1,
+  "caret_extra_bottom": 1,
+  "caret_style": "blink",
+  "close_windows_when_empty": true,
+  "drag_text": false,
+  "draw_minimap_border": true,
+  "enable_tab_scrolling": false,
+  "ensure_newline_at_eof_on_save": false,
+  "file_exclude_patterns": [
+    "*/._*",
+    "*/__pycache__",
+  ],
+  "highlight_line": true,
+  "highlight_modified_tabs": true,
+  "line_padding_top": 1,
+  "line_padding_bottom": 1,
+  "open_files_in_new_window": false,
+  "rulers": [
+    80,
+    120,
+  ],
+  "scroll_past_end": true,
+  "scroll_speed": 0.3,
+  "spell_check": true,
+  "translate_tabs_to_spaces": true,
+  "trim_trailing_white_space_on_save": true,
+  // Packages
+  "installed_packages": [
+    "BracketHighlighter",
+    "SideBarEnhancements",
+  ],
+}

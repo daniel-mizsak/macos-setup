@@ -1,0 +1,28 @@
+[user]
+  name = Daniel Mizsak
+  email = 62774880+daniel-mizsak@users.noreply.github.com
+
+[init]
+  defaultBranch = main
+
+# [commit]
+  # template = ~/.gitmessage
+
+[core]
+  excludesfile = ~/.gitignore_global
+  editor = /Applications/Sublime\\ Text.app/Contents/SharedSupport/bin/subl -n -w
+  pager = ""
+
+[alias]
+  cm = commit
+  co = checkout
+  st = status --short
+  sw = switch
+  lg = log --graph --decorate --oneline --all
+  diffs = diff --staged
+  oops = commit --amend --no-edit
+  uncommit = reset --soft HEAD~1
+  reignore = "!git rm -r --cached . && git add ."
+
+[status]
+  short = true
