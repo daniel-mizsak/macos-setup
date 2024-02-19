@@ -34,7 +34,5 @@ Run the setup script:
 ./macos-setup.sh
 ```
 
-Install Oh My Zsh:
-```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
+[Install and customize Oh My Zsh](https://gist.github.com/kevin-smets/8568070)
+
