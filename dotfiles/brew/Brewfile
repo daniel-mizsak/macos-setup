@@ -31,10 +31,10 @@ cask "vnc-viewer"
 
 mas "Xcode", id: 497799835
 
-# Utilities
+# Utility
+brew "dockutil"
 brew "htop"
 brew "mas"
-brew "stow"
 brew "tmux"
 brew "tree"
 brew "zbar"

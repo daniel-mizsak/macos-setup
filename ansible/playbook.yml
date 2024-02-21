@@ -2,15 +2,9 @@
 - name: Setup macOS.
   hosts: localhost
   connection: local
+  gather_facts: false
   vars_files:
-    - config.yml
-
-  pre_tasks:
-    - name: Update repository.  # noqa: latest
-      ansible.builtin.git:
-        repo: "https://github.com/daniel-mizsak/macos-setup.git"
-        dest: ${HOME}/macos-setup
-        force: true
+    - vars.yml
 
   tasks:
     - name: Import package installation tasks.

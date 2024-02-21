@@ -6,10 +6,12 @@
     update_homebrew: true
     upgrade_all: "{{ packages_upgrade_packages }}"
   loop:
-    - "dockutil"
+    # Development
     - "doctl"
     - "git"
     - "pyenv"
+    # Utility
+    - "dockutil"
     - "htop"
     - "mas"
     - "tmux"
@@ -23,6 +25,7 @@
     update_homebrew: true
     upgrade_all: "{{ packages_upgrade_packages }}"
   loop:
+    # General
     - "1password"
     - "arc"
     - "mullvadvpn"
@@ -30,12 +33,13 @@
     - "signal"
     - "slack"
     - "spotify"
+    # Development
     # - "db-browser-for-sqlite"
     - "docker"
     - "dotnet-sdk"
     - "github"
     - "iterm2"
-    - "parallels"
+    # - "parallels"  # For this `Privacy and Security` -> `App Management` -> `Terminal` has to be enabled.
     - "postman"
     - "raspberry-pi-imager"
     - "sublime-text"
@@ -44,6 +48,7 @@
     - "visual-studio-code"
     - "vmware-fusion"
     - "vnc-viewer"
+    # Utility
     - "aldente"
     - "appcleaner"
     - "hiddenbar"
@@ -53,6 +58,7 @@
     - "scroll-reverser"
     - "synology-drive"
     - "vlc"
+    # Createive
     - "affinity-designer"
     - "affinity-photo"
     - "affinity-publisher"
@@ -63,16 +69,45 @@
     id: "{{ item | int }}"
     state: present
   loop:
+    # Development
     - 497799835  # Xcode
+    # Utility
     - 441258766  # Magnet
     - 1295203466  # Microsoft Remote Desktop
+    # Creative
     - 424390742  # Compressor
     - 424389933  # Final Cut Pro
     - 409183694  # Keynote
     - 434290957  # Motion
     - 409203825  # Numbers
     - 409201541  # Pages
+    # Safari Extensions
     - 1569813296  # 1Password for Safari
     - 1440147259  # AdGuard for Safari
     - 1573461917  # SponsorBlock for YouTube
     - 1521133201  # Speed Player for Safari
+
+- name: Download ohmyzsh installer.
+  ansible.builtin.get_url:
+    url: "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
+    dest: "/tmp/ohmyzsh_install.sh"
+    mode: "755"
+
+- name: Run ohmyzsh installer.  # TODO: For some reason this was not idempotent last time.
+  ansible.builtin.command: >
+    /tmp/ohmyzsh_install.sh
+  args:
+    creates: "${HOME}/.oh-my-zsh"
+  environment:
+    RUNZSH: "no"
+    CHSH: "no"
+
+- name: Install zsh-autosuggestions.  # noqa: latest
+  ansible.builtin.git:
+    repo: "https://github.com/zsh-users/zsh-autosuggestions"
+    dest: "${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+
+- name: Install zsh-syntax-highlighting.  # noqa: latest
+  ansible.builtin.git:
+    repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    dest: "${HOME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"

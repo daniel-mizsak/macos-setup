@@ -1,5 +1,27 @@
 ---
+# System
+- name: Set system appearance to dark.
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleInterfaceStyle
+    value: Dark
+    type: string
+
 # Finder
+- name: Finder show hard disks on desktop.
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowHardDrivesOnDesktop
+    value: true
+    type: bool
+
+- name: Finder show external disks on desktop.
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowExternalHardDrivesOnDesktop
+    value: true
+    type: bool
+
 - name: Finder show all files.
   community.general.osx_defaults:
     domain: com.apple.finder
@@ -39,7 +61,7 @@
   community.general.osx_defaults:
     domain: com.apple.finder
     key: NewWindowTargetPath
-    value: "file://${HOME}/Documents"
+    value: "file://${HOME}/Documents/"
     type: string
 
 - name: Finder default new windows and tabs.
@@ -60,7 +82,7 @@
     dockutil --remove all
   changed_when: false
 
-- name: Dock set content.
+- name: Dock set content.  # TODO: This does not work if the apps are installed in the same run.
   ansible.builtin.command: >
     dockutil --add {{ item }} --no-restart
   changed_when: false
@@ -107,7 +129,6 @@
     value: false
     type: bool
 
-
 - name: Dock set size.
   community.general.osx_defaults:
     domain: com.apple.dock
@@ -141,6 +162,14 @@
     killall Dock
   changed_when: false
 
+# Start up
+# TODO: Configure startup applications.
+- name: Configure startup applications.
+  community.general.launchd:
+    name: com.spotify.webhelper
+    state: started
+  when: false
+
 # Other
 - name: Do not create .DS_Store files on network volumes.
   community.general.osx_defaults:
@@ -148,3 +177,14 @@
     key: DSDontWriteNetworkStores
     value: 'true'
     type: string
+
+- name: Set sublime text as default editor.  # TODO: Fix default editor.
+  community.general.osx_defaults:
+    domain: com.apple.LaunchServices/com.apple.launchservices.secure
+    key: LSHandlers
+    value:
+      - "LSHandlerContentType=public.plain-text"
+      - "LSHandlerRoleAll=com.sublimetext.4"
+    array_add: true
+    type: array
+  when: false

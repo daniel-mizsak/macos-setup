@@ -1,0 +1,21 @@
+---
+- name: Configure playbook dependencies.
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Download homebrew installer.
+      ansible.builtin.get_url:
+        url: "https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
+        dest: "/tmp/homebrew_install.sh"
+        mode: "755"
+
+    - name: Run homebrew installer.
+      ansible.builtin.command: >
+        /tmp/homebrew_install.sh
+      args:
+        creates: "/opt/homebrew"
+      environment:
+        NO_INTERACTION: "1"
+      become: false

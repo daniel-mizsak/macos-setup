@@ -8,31 +8,15 @@
 Setting up and making sure that macOS is configured properly and is ready for development.
 
 ## Getting started
-To use ansible on the target host, the following steps are required to be executed manually:
+First make sure that you are logged into the **App Store**.
 
-Install xcode command line tools:
+
+The setup should execute automatically after running the following command in the terminal:
+
 ```bash
-xcode-select --install
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/daniel-mizsak/macos-setup/HEAD/macos-setup.sh)"
 ```
 
-Install homebrew:
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zshenv
-```
-Brew needs to be added to `~/.zshenv` as [that is the file getting sourced](https://stackoverflow.com/questions/32306653/zshrc-is-not-loaded-in-ansible) for non-interactive shells as well (e.g. ansible).
+The shell will ask for the password (possibly multiple times during the installation process).
 
-
-Clone the repository:
-```bash
-git clone https://github.com/daniel-mizsak/macos-setup.git
-cd macos-setup
-```
-
-Run the setup script:
-```bash
-./macos-setup.sh
-```
-
-[Install and customize Oh My Zsh](https://gist.github.com/kevin-smets/8568070)
-
+After the first run, it is recommended to **restart** the computer and **run the script again** to make sure that everything is installed properly.
