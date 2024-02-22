@@ -1,0 +1,5 @@
+---
+- name: Make sure all brewfile packages are installed.
+  ansible.builtin.command: >
+    brew bundle check --file=${HOME}/macos-setup/dotfiles/Brewfile
+  changed_when: false

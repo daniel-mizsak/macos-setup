@@ -1,0 +1,17 @@
+---
+- name: Remove all dock content.
+  ansible.builtin.command: >
+    dockutil --remove all
+  changed_when: false
+
+- name: Dock set content.  # TODO: This does not work if the apps are installed in the same run.
+  ansible.builtin.command: >
+    dockutil --add {{ item }} --no-restart
+  changed_when: false
+  loop:
+    - /Applications/Safari.app
+    - /Applications/Mail.app
+    - /Applications/Visual\ Studio\ Code.app
+    - /Applications/iTerm.app
+    - /Applications/System\ Settings.app
+    - ${HOME}/Downloads

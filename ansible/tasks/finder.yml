@@ -1,0 +1,68 @@
+---
+- name: Finder show hard disks on desktop.
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowHardDrivesOnDesktop
+    value: true
+    type: bool
+
+- name: Finder show external disks on desktop.
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowExternalHardDrivesOnDesktop
+    value: true
+    type: bool
+
+- name: Finder show all files.
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: AppleShowAllFiles
+    value: true
+    type: bool
+
+- name: Finder show file extension.
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleShowAllExtensions
+    value: true
+    type: bool
+
+- name: Finder show tool bar.
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowToolbar
+    value: true
+    type: bool
+
+- name: Finder show path bar.
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowPathbar
+    value: true
+    type: bool
+
+- name: Finder show status bar.
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowStatusBar
+    value: true
+    type: bool
+
+- name: Finder default location.
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: NewWindowTargetPath
+    value: "file://${HOME}/Documents/"
+    type: string
+
+- name: Finder default new windows and tabs.
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: NewWindowTarget
+    value: "PfDo"
+    type: string
+
+- name: Reload finder.
+  ansible.builtin.command: >
+    killall Finder
+  changed_when: false

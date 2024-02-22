@@ -7,19 +7,6 @@
     - vars.yml
 
   tasks:
-    - name: Import package installation tasks.
+    - name: Import tasks.
       ansible.builtin.import_tasks:
-        file: tasks/packages.yml
-
-    - name: Import system configuration tasks.
-      ansible.builtin.import_tasks:
-        file: tasks/system.yml
-
-    - name: Import dotfiles tasks.
-      ansible.builtin.import_tasks:
-        file: tasks/dotfiles.yml
-
-    - name: Make sure all brewfile packages are installed.
-      ansible.builtin.command: >
-        brew bundle check --file=${HOME}/macos-setup/dotfiles/Brewfile
-      changed_when: false
+        file: tasks/{{ task_name }}.yml

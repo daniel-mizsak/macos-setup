@@ -28,11 +28,23 @@ fi
 source ${HOME}/macos-setup/.venv/bin/activate
 pip3 install -r ${HOME}/macos-setup/ansible/requirements.txt -qqq
 
-# Installing homebrew
-echo "Installing homebrew"
-ansible-playbook ${HOME}/macos-setup/ansible/homebrew.yml
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# Running setup scripts
+tasks_to_run=("homebrew" "package" "startup" "system" "finder" "dock" "dockutil" "dotfile")
 
-# Run macos-setup
-echo "Running the main playbook"
-ansible-playbook ${HOME}/macos-setup/ansible/playbook.yml
+for task in "${tasks_to_run[@]}"
+do
+    echo "Running ${task} setup"
+
+    ansible-playbook \
+    ${HOME}/macos-setup/ansible/playbook.yml \
+    --extra-vars "task_name=${task}"
+
+    if [ "$task" == "homebrew" ]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+    fi
+done
+
+# Restart finder and dock
+echo "Restarting Finder and Dock"
+killall Finder
+killall Dock

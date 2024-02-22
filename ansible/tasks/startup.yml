@@ -1,0 +1,7 @@
+---
+# TODO: Configure startup applications.
+- name: Configure startup applications.
+  community.general.launchd:
+    name: com.spotify.webhelper
+    state: started
+  when: false

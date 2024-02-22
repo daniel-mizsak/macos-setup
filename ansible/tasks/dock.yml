@@ -1,0 +1,63 @@
+---
+- name: Dock position bottom.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: orientation
+    value: bottom
+    type: string
+
+- name: Dock auto hide.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: autohide
+    value: true
+    type: bool
+
+- name: Dock disable animation.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: autohide-time-modifier
+    value: 0.0
+    type: float
+
+- name: Dock disable delay.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: autohide-delay
+    value: 0.0
+    type: float
+
+- name: Dock disable recent applications.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: show-recents
+    value: false
+    type: bool
+
+- name: Dock set size.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: tilesize
+    value: 60
+    type: float
+
+- name: Dock disable magnification.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: magnification
+    value: false
+    type: bool
+
+- name: Dock disable manual size change.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: size-immutable
+    value: true
+    type: bool
+
+- name: Dock disable content modification.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: contents-immutable
+    value: true
+    type: bool
