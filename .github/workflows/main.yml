@@ -1,0 +1,34 @@
+name: macos-setup ci
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-macos-setup:
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: ./ansible
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v4
+
+      - name: Set up python.
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Upgrade pip.
+        run: >
+          python -m pip install --upgrade pip
+
+      - name: Install dependencies.
+        run: >
+          pip install -r requirements.txt
+
+      - name: Run the playbook.
+        run: |
+          ansible-playbook playbook.yml --extra-vars "task_name=system"
+          ansible-playbook playbook.yml --extra-vars "task_name=finder"
