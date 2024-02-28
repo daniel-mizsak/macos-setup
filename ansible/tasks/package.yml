@@ -34,6 +34,7 @@
     # - "slack"
     # - "spotify"
     # # Development
+    # - "devtoys"
     # # - "db-browser-for-sqlite"
     # - "docker"
     # - "dotnet-sdk"
