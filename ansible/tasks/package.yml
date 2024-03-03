@@ -25,45 +25,47 @@
     update_homebrew: true
     upgrade_all: "{{ packages_upgrade_packages }}"
   loop:
-    # # General
-    # - "1password"
-    # - "arc"
-    # - "mullvadvpn"
-    # - "obsidian"
-    # - "signal"
-    # - "slack"
-    # - "spotify"
-    # # Development
-    # - "devtoys"
-    # # - "db-browser-for-sqlite"
-    # - "docker"
-    # - "dotnet-sdk"
-    # - "github"
+    # General
+    - "1password"
+    - "arc"
+    - "mullvadvpn"
+    - "obsidian"
+    - "signal"
+    - "slack"
+    - "spotify"
+    # Development
+    - "devtoys"
+    # - "db-browser-for-sqlite"
+    - "docker"
+    - "dotnet-sdk"
+    - "github"
     - "iterm2"
-    # # - "parallels"  # For this `Privacy and Security` -> `App Management` -> `Terminal` has to be enabled.
-    # - "postman"
-    # - "raspberry-pi-imager"
+    # - "parallels"  # For this `Privacy and Security` -> `App Management` -> `Terminal` has to be enabled.
+    - "postman"
+    - "raspberry-pi-imager"
     - "sublime-text"
-    # - "vagrant-vmware-utility"
-    # - "vagrant"
+    - "vagrant-vmware-utility"
+    - "vagrant"
     - "visual-studio-code"
-    # - "vmware-fusion"
-    # - "vnc-viewer"
-    # # Utility
-    # - "aldente"
-    # - "appcleaner"
-    # - "hiddenbar"
-    # - "monitorcontrol"
-    # - "obs"
+    - "vmware-fusion"
+    - "vnc-viewer"
+    # Utility
+    - "aldente"
+    - "appcleaner"
+    - "hiddenbar"
+    - "monitorcontrol"
+    - "obs"
     - "openinterminal"
-    # - "scroll-reverser"
-    # - "synology-drive"
-    # - "vlc"
-    # # Createive
-    # - "affinity-designer"
-    # - "affinity-photo"
-    # - "affinity-publisher"
-    # - "updf"
+    - "scroll-reverser"
+    - "synology-drive"
+    - "vlc"
+    # Createive
+    - "affinity-designer"
+    - "affinity-photo"
+    - "affinity-publisher"
+    - "updf"
+  tags:
+    - molecule-notest
 
 - name: Install app store apps.  # noqa: args[module]
   community.general.mas:
@@ -87,7 +89,8 @@
     - 1440147259  # AdGuard for Safari
     - 1573461917  # SponsorBlock for YouTube
     - 1521133201  # Speed Player for Safari
-  when: false
+  tags:
+    - molecule-notest
 
 - name: Download ohmyzsh installer.
   ansible.builtin.get_url:

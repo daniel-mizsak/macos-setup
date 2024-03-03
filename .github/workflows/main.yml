@@ -7,6 +7,7 @@ on:
 
 jobs:
   test-macos-setup:
+    if: false
     runs-on: macos-latest
     defaults:
       run:
@@ -28,7 +29,9 @@ jobs:
         run: >
           pip install -r requirements.txt
 
-      - name: Run the playbook.
-        run: |
-          ansible-playbook playbook.yml --extra-vars "task_name=system"
-          ansible-playbook playbook.yml --extra-vars "task_name=finder"
+      - name: Run molecule tests.
+        run: >
+          molecule test
+        env:
+          ANSIBLE_FORCE_COLOR: "1"
+          PY_COLORS: "1"

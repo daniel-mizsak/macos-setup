@@ -4,7 +4,7 @@
     dockutil --remove all
   changed_when: false
 
-- name: Dock set content.  # TODO: This does not work if the apps are installed in the same run.
+- name: Dock set content.
   ansible.builtin.command: >
     dockutil --add {{ item }} --no-restart
   changed_when: false
