@@ -5,3 +5,18 @@
     name: com.spotify.webhelper
     state: started
   when: false
+
+
+# TODO: Enable on login
+# !- 1Password
+# !- Aldente
+# - AppCleaner
+# - Docker
+# - Hidden Bar
+# - Magnet
+# - MonitorControl
+# !- Mullvad VPN
+# - OpenInTerminal
+# - Raycast
+# - Scroll Reverser
+# - Synology Drive
