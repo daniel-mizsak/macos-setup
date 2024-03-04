@@ -1,4 +1,18 @@
 ---
+- name: Dock set size.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: tilesize
+    value: 60
+    type: float
+
+- name: Dock disable magnification.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: magnification
+    value: false
+    type: bool
+
 - name: Dock position bottom.
   community.general.osx_defaults:
     domain: com.apple.dock
@@ -6,11 +20,53 @@
     value: bottom
     type: string
 
+- name: Dock minimize effect genie.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: mineffect
+    value: genie
+    type: string
+
+- name: Dock double click title bar zoom.
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleActionOnDoubleClick
+    value: Maximize
+    type: string
+
+- name: Dock do not minimize windows into application icon.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: minimize-to-application
+    value: false
+    type: bool
+
 - name: Dock auto hide.
   community.general.osx_defaults:
     domain: com.apple.dock
     key: autohide
     value: true
+    type: bool
+
+- name: Dock animate application opening.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: launchanim
+    value: true
+    type: bool
+
+- name: Dock show indicator for open applications.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: show-process-indicators
+    value: true
+    type: bool
+
+- name: Dock disable recent applications.
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: show-recents
+    value: false
     type: bool
 
 - name: Dock disable animation.
@@ -26,27 +82,6 @@
     key: autohide-delay
     value: 0.0
     type: float
-
-- name: Dock disable recent applications.
-  community.general.osx_defaults:
-    domain: com.apple.dock
-    key: show-recents
-    value: false
-    type: bool
-
-- name: Dock set size.
-  community.general.osx_defaults:
-    domain: com.apple.dock
-    key: tilesize
-    value: 60
-    type: float
-
-- name: Dock disable magnification.
-  community.general.osx_defaults:
-    domain: com.apple.dock
-    key: magnification
-    value: false
-    type: bool
 
 - name: Dock disable manual size change.
   community.general.osx_defaults:
