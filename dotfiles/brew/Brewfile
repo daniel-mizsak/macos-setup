@@ -7,7 +7,6 @@ cask "obsidian"
 cask "signal"
 cask "slack"
 cask "spotify"
-# web: todoist
 
 # Development
 brew "doctl"
@@ -20,7 +19,7 @@ cask "docker"
 cask "dotnet-sdk"
 cask "github"
 cask "iterm2"
-cask "parallels"
+# cask "parallels"
 cask "postman"
 cask "raspberry-pi-imager"
 cask "sublime-text"
@@ -46,9 +45,9 @@ cask "hiddenbar"
 cask "monitorcontrol"
 cask "obs"
 cask "openinterminal"
+cask "raycast"
 cask "scroll-reverser"
 cask "synology-drive"
-# web: tinkertool
 cask "vlc"
 
 mas "Magnet", id: 441258766
