@@ -46,7 +46,7 @@ warn_unused_ignores = true
 
 # Pytest
 [tool.pytest.ini_options]
-addopts = "--cov=package_name"
+addopts = "--cov=src"
 testpaths = ["tests"]
 
 # Ruff
