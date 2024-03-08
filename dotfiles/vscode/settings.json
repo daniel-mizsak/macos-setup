@@ -116,6 +116,10 @@
   "cSpell.showStatus": false,
   // CodeSnap
   "codesnap.showWindowControls": false,
+  // GitHub Actions
+  "[github-actions-workflow]": {
+    "editor.tabSize": 2,
+  },
   // GitHub Copilot
   "github.copilot.enable": {
     "markdown": true,
