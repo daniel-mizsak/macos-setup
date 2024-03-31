@@ -1,0 +1,16 @@
+name: CI
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  molecule:
+    if: false
+    uses: daniel-mizsak/workflows/.github/workflows/molecule.yml@main
+    with:
+      os: macos-latest
+      python-version: "3.10"
