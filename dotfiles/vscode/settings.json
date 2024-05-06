@@ -30,6 +30,8 @@
     "**/.tox": true,
     "**/.venv": true,
     "**/*.egg-info": true,
+    "**/coverage.xml": true,
+    "**/htmlcov": true,
   },
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
@@ -84,6 +86,7 @@
     psioniq File Header
     Pylance
     Python
+    Python Debugger
     Rainbow CSV
     Remote - SSH
     Remote - SSH: Editing Configuration Files
