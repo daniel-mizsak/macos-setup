@@ -5,12 +5,8 @@
   gather_facts: true
   vars_files:
     - vars.yml
+
   tasks:
     - name: Import tasks.
       ansible.builtin.import_tasks:
         file: tasks/{{ task_name }}.yml
-
-    # TODO: Check if the tasks are executed on a VM:
-    # - name: Ansible virtualization.
-    #   ansible.builtin.debug:
-    #     msg: "ansible_virtualization_role: {{ansible_virtualization_role}}"

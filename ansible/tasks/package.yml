@@ -69,7 +69,7 @@
     - "affinity-publisher"
     - "updf"
   tags:
-    - molecule-notest
+    - ignore-vm
 
 # App Store
 - name: Install app store apps.  # noqa: args[module]
@@ -95,7 +95,7 @@
     - 1573461917  # SponsorBlock for YouTube
     - 1521133201  # Speed Player for Safari
   tags:
-    - molecule-notest
+    - ingore-vm
 
 # Oh My Zsh
 - name: Download ohmyzsh installer.
@@ -122,3 +122,12 @@
   ansible.builtin.git:
     repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
     dest: "${HOME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+
+# Compare installed packages with Brewfile
+- name: Make sure all brewfile packages are installed.  # noqa: ignore-errors
+  ansible.builtin.command: >
+    brew bundle check --file=${HOME}/macos-setup/dotfiles/Brewfile
+  changed_when: false
+  ignore_errors: true
+  tags:
+    - ignore-vm
