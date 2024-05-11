@@ -37,7 +37,6 @@ else
     echo "Script is not running on a virtual machine."
 fi
 
-
 # Running setup scripts
 tasks_to_run=("homebrew" "package" "startup" "system" "finder" "dock" "dockutil" "dotfile")
 
@@ -47,6 +46,7 @@ do
 
     ansible-playbook \
     ${HOME}/macos-setup/ansible/playbook.yml \
+    --inventory ${HOME}/macos-setup/ansible/inventory.ini \
     --extra-vars "task_name=${task}" \
     ${SKIP_TAGS} \
 

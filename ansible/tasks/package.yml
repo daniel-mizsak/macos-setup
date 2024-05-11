@@ -95,7 +95,7 @@
     - 1573461917  # SponsorBlock for YouTube
     - 1521133201  # Speed Player for Safari
   tags:
-    - ingore-vm
+    - ignore-vm
 
 # Oh My Zsh
 - name: Download ohmyzsh installer.
