@@ -6,33 +6,14 @@ on:
   push:
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./ansible
-
-    steps:
-      - name: Check out the codebase.
-        uses: actions/checkout@v4
-
-      - name: Set up python.
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.12
-
-      - name: Upgrade pip.
-        run: >
-          python -m pip install --upgrade pip
-
-      - name: Install dependencies.
-        run: >
-          pip install ansible ansible-lint
-
-      - name: Run yamllint.
-        run: >
-          yamllint -c .yamllint.yml .
-
-      - name: Run ansible-lint.
-        run: >
-          ansible-lint -c .ansible-lint.yml
+  molecule:
+    uses: daniel-mizsak/workflows/.github/workflows/molecule.yml@main
+    with:
+      os: ubuntu-latest
+      working-directory: ./ansible
+      python-version: 3.12
+      molecule: false
+      yamllint: true
+      yamllint-config: .yamllint.yml
+      ansible-lint: true
+      ansible-lint-config: .ansible-lint.yml

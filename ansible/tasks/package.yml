@@ -104,7 +104,7 @@
     dest: "/tmp/ohmyzsh_install.sh"
     mode: "755"
 
-- name: Run ohmyzsh installer.  # TODO: For some reason this was not idempotent last time.
+- name: Run ohmyzsh installer.
   ansible.builtin.command: >
     /tmp/ohmyzsh_install.sh
   args:
