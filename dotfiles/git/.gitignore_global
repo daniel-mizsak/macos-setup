@@ -3,3 +3,4 @@
 
 # Environments
 .env
+.venv

@@ -6,12 +6,33 @@ on:
   push:
 
 jobs:
-  molecule:
-    if: false
-    uses: daniel-mizsak/workflows/.github/workflows/molecule.yml@main
-    with:
-      os: macos-latest
-      python-version: "3.10"
-      yamllint: true
-      yamllint-config: molecule/default/.yamllint
-      ansible-lint: true
+  lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./ansible
+
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v4
+
+      - name: Set up python.
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+
+      - name: Upgrade pip.
+        run: >
+          python -m pip install --upgrade pip
+
+      - name: Install dependencies.
+        run: >
+          pip install ansible ansible-lint
+
+      - name: Run yamllint.
+        run: >
+          yamllint -c .yamllint.yml .
+
+      - name: Run ansible-lint.
+        run: >
+          ansible-lint -c .ansible-lint.yml
