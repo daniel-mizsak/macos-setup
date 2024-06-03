@@ -1,5 +1,3 @@
-# https://chocolatey.org/install
-
 $apps = @(
     "7zip"
     "git"
