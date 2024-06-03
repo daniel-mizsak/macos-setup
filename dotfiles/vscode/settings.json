@@ -39,6 +39,7 @@
   "git.allowForcePush": true,
   "git.confirmForcePush": false,
   "git.confirmSync": false,
+  "git.replaceTagsWhenPull": true,
   "git.suggestSmartCommit": false,
   // Search
   "search.exclude": {
@@ -115,16 +116,19 @@
     "python": "$pythonPath $fullFileName",
   },
   "code-runner.runInTerminal": true,
+  "code-runner.ignoreSelection": true,
   // Code Spell Checker
   "cSpell.diagnosticLevel": "Hint",
   "cSpell.showStatus": false,
   // CodeSnap
+  "codesnap.containerPadding": "1em",
   "codesnap.showWindowControls": false,
   // GitHub Actions
   "[github-actions-workflow]": {
     "editor.tabSize": 2,
   },
   // GitHub Copilot
+  "github.copilot.editor.enableAutoCompletions": true,
   "github.copilot.enable": {
     "markdown": true,
   },
