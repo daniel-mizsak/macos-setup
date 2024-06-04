@@ -126,7 +126,7 @@
 # Compare installed packages with Brewfile
 - name: Make sure all brewfile packages are installed.  # noqa: ignore-errors
   ansible.builtin.command: >
-    brew bundle check --file=${HOME}/macos-setup/dotfiles/Brewfile
+    brew bundle check --file=${HOME}/macos-setup/brew/Brewfile
   changed_when: false
   ignore_errors: true
   tags:

@@ -1,4 +1,4 @@
-Install chocolatey from: https://chocolatey.org/install
+Chocolatey is a package manager for Windows. Install chocolatey from: https://chocolatey.org/install
 
 
 Use the following PowerShell command to install the software listed in the `choco.ps1` file.
