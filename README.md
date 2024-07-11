@@ -14,7 +14,8 @@ First make sure that you are logged in with your Apple ID, so applications can b
 The setup should execute automatically after running the following command in the terminal and entering the password:
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/daniel-mizsak/macos-setup/HEAD/macos-setup.sh)"
+/bin/bash -c "$(curl -fsSL \
+https://raw.githubusercontent.com/daniel-mizsak/macos-setup/HEAD/macos-setup.sh)"
 ```
 
 
@@ -45,6 +46,7 @@ iTerm2:
 Chocolatey is a package manager for Windows. Install chocolatey from [chocolatey.org](https://chocolatey.org/install).\
 Use the following PowerShell command to install the software listed in the `choco.ps1` file.
 
-```bash
-Invoke-Expression (Invoke-WebRequest -Uri https://raw.githubusercontent.com/daniel-mizsak/macos-setup/main/dotfiles/choco/choco.ps1 -UseBasicParsing).Content
+```powershell
+Invoke-Expression (Invoke-WebRequest -Uri `
+https://raw.githubusercontent.com/daniel-mizsak/macos-setup/main/dotfiles/choco/choco.ps1 -UseBasicParsing).Content
 ```
