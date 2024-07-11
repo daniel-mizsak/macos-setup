@@ -9,6 +9,7 @@
   "editor.formatOnSave": true,
   "editor.inlineSuggest.enabled": true,
   "editor.lineHeight": 1.55,
+  "editor.lineNumbers": "relative",
   "editor.linkedEditing": true,
   "editor.minimap.enabled": false,
   "editor.mouseWheelScrollSensitivity": 0.8,
@@ -50,7 +51,7 @@
   // Terminal
   "terminal.integrated.fontSize": 14,
   // Window
-  "window.zoomLevel": -0.5,
+  "window.zoomLevel": -0.35,
   // Workbench
   "workbench.colorTheme": "Default Dark+",
   "workbench.enableExperiments": false,
@@ -94,6 +95,7 @@
     Remote Explorer
     Ruff
     SQLite
+    Vim
     vscode-pdf
     WSL
     YAML
@@ -215,5 +217,8 @@
   "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml",
     "editor.tabSize": 2,
+  },
+  "remote.SSH.remotePlatform": {
+    "*": "linux",
   },
 }
