@@ -21,6 +21,11 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# Oh-My-Posh
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  eval "$(oh-my-posh init zsh --config $HOME/.omp.toml)"
+fi
+
 # User configuration
 # Brew
 export PATH="/opt/homebrew/bin:$PATH"

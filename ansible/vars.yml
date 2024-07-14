@@ -19,6 +19,8 @@ dotfiles_dotfile_links:
     dest: $HOME/.zshenv
   - source: ${HOME}/macos-setup/dotfiles/shell/.zshrc
     dest: $HOME/.zshrc
+  - source: ${HOME}/macos-setup/dotfiles/shell/.omp.toml
+    dest: $HOME/.omp.toml
 
   # sublime
   - source: ${HOME}/macos-setup/dotfiles/sublime/Preferences.sublime-settings

@@ -7,14 +7,17 @@
     update_homebrew: true
     upgrade_all: "{{ packages_upgrade_packages }}"
   loop:
-    # Development
-    - "doctl"
-    - "git"
-    - "pyenv"
-    # Utility
+    - "bat"
     - "dockutil"
+    - "doctl"
+    - "eza"
+    - "font-hack-nerd-font"
+    - "git"
     - "htop"
+    - "jandedobbeleer/oh-my-posh/oh-my-posh"
+    - "jesseduffield/lazygit/lazygit"
     - "mas"
+    - "pyenv"
     - "tmux"
     - "tree"
     - "zbar"
