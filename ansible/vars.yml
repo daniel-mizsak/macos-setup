@@ -2,9 +2,11 @@
 packages_upgrade_packages: false
 
 dotfiles_dotfile_links:
-  # brew
-  - source: ${HOME}/macos-setup/dotfiles/brew/Brewfile
-    dest: $HOME/Brewfile
+  # config
+  - source: ${HOME}/macos-setup/dotfiles/config/alacritty/alacritty.yml
+    dest: $HOME/.config/alacritty/alacritty.yml
+  - source: ${HOME}/macos-setup/dotfiles/config/oh-my-posh/oh-my-posh.toml
+    dest: $HOME/.config/oh-my-posh/oh-my-posh.toml
 
   # git
   - source: ${HOME}/macos-setup/dotfiles/git/.gitconfig
@@ -19,8 +21,6 @@ dotfiles_dotfile_links:
     dest: $HOME/.zshenv
   - source: ${HOME}/macos-setup/dotfiles/shell/.zshrc
     dest: $HOME/.zshrc
-  - source: ${HOME}/macos-setup/dotfiles/shell/.omp.toml
-    dest: $HOME/.omp.toml
 
   # sublime
   - source: ${HOME}/macos-setup/dotfiles/sublime/Preferences.sublime-settings

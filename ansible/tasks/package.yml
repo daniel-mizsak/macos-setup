@@ -12,6 +12,8 @@
     - "doctl"
     - "eza"
     - "font-hack-nerd-font"
+    - "font-meslo-lg-nerd-font"
+    - "fzf"
     - "git"
     - "htop"
     - "jandedobbeleer/oh-my-posh/oh-my-posh"
@@ -39,6 +41,7 @@
     - "slack"
     - "spotify"
     # Development
+    - "alacritty"
     # - "db-browser-for-sqlite"
     - "devtoys"
     - "docker"
