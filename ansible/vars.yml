@@ -4,32 +4,30 @@ packages_upgrade_packages: false
 dotfiles_dotfile_links:
   # config
   - source: ${HOME}/macos-setup/dotfiles/config/alacritty/alacritty.yml
-    dest: $HOME/.config/alacritty/alacritty.yml
+    dest: ${HOME}/.config/alacritty/alacritty.yml
   - source: ${HOME}/macos-setup/dotfiles/config/oh-my-posh/oh-my-posh.toml
-    dest: $HOME/.config/oh-my-posh/oh-my-posh.toml
+    dest: ${HOME}/.config/oh-my-posh/oh-my-posh.toml
+  - source: ${HOME}/macos-setup/dotfiles/config/tmux/.tmux.conf
+    dest: ${HOME}/.config/tmux/.tmux.conf
 
   # git
   - source: ${HOME}/macos-setup/dotfiles/git/.gitconfig
-    dest: $HOME/.gitconfig
+    dest: ${HOME}/.gitconfig
   - source: ${HOME}/macos-setup/dotfiles/git/.gitignore_global
-    dest: $HOME/.gitignore_global
+    dest: ${HOME}/.gitignore_global
   - source: ${HOME}/macos-setup/dotfiles/git/.gitmessage
-    dest: $HOME/.gitmessage
+    dest: ${HOME}/.gitmessage
 
   # shell
   - source: ${HOME}/macos-setup/dotfiles/shell/.zshenv
-    dest: $HOME/.zshenv
+    dest: ${HOME}/.zshenv
   - source: ${HOME}/macos-setup/dotfiles/shell/.zshrc
-    dest: $HOME/.zshrc
+    dest: ${HOME}/.zshrc
 
   # sublime
   - source: ${HOME}/macos-setup/dotfiles/sublime/Preferences.sublime-settings
-    dest: $HOME/Library/Application Support/Sublime Text/Packages/User/Preferences.sublime-settings
-
-  # tmux
-  - source: ${HOME}/macos-setup/dotfiles/tmux/.tmux.conf
-    dest: $HOME/.tmux.conf
+    dest: ${HOME}/Library/Application Support/Sublime Text/Packages/User/Preferences.sublime-settings
 
   # vscode
   - source: ${HOME}/macos-setup/dotfiles/vscode/settings.json
-    dest: $HOME/Library/Application Support/Code/User/settings.json
+    dest: ${HOME}/Library/Application Support/Code/User/settings.json

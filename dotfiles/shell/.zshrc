@@ -1,3 +1,9 @@
+### Tmux
+# https://unix.stackexchange.com/questions/43601/how-can-i-set-my-default-shell-to-start-up-tmux#306165
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
+
 ### Oh-My-Zsh
 # https://github.com/ohmyzsh/ohmyzsh
 # Path to your oh-my-zsh installation.
@@ -47,6 +53,7 @@ eval "$(pyenv init -)"
 
 ### Alias
 # System
+alias cat="bat"
 alias ls="eza --color=always --all --icons=always"
 alias ll="eza --color=always --all --long --icons=always"
 # Python
