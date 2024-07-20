@@ -16,6 +16,7 @@
   // Files
   "files.associations": {
     "**/handlers/*.yml": "ansible",
+    "**/host_vars/*.yml": "ansible",
     "**/tasks/*.yml": "ansible",
     "**/tests/*.yml": "ansible",
   },

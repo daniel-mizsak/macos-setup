@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Install xcode command line tools
+# Install xcode command line tool
 # Source: https://github.com/samdoran/ansible-collection-macos/blob/main/scripts/bootstrap.sh
 echo "Installing xcode command line tools."
 set -euo pipefail
@@ -48,12 +48,12 @@ do
     ${HOME}/macos-setup/ansible/playbook.yml \
     --inventory ${HOME}/macos-setup/ansible/inventory.ini \
     --extra-vars "task_name=${task}" \
-    ${SKIP_TAGS} \
+     ${SKIP_TAGS} \
 
-    if [ "$task" == "homebrew" ]; then
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-    fi
-done
+     if [ "$task" == "homebrew" ]; then
+         eval "$(/opt/homebrew/bin/brew shellenv)"
+     fi
+ done
 
 # Restart finder and dock
 echo "Restarting Finder and Dock."

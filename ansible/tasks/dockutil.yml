@@ -11,7 +11,7 @@
   loop:
     - /Applications/Safari.app
     - /Applications/Mail.app
+    - /Applications/Signal.app
     - /Applications/Visual\ Studio\ Code.app
-    - /Applications/iTerm.app
     - /Applications/System\ Settings.app
     - ${HOME}/Downloads

@@ -1,16 +1,10 @@
-### Tmux
-# https://unix.stackexchange.com/questions/43601/how-can-i-set-my-default-shell-to-start-up-tmux#306165
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
-fi
-
 ### Oh-My-Zsh
 # https://github.com/ohmyzsh/ohmyzsh
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="${HOME}/.oh-my-zsh"
 
 # Change location of dump files
-export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
+export ZSH_COMPDUMP=${ZSH}/cache/.zcompdump-${HOST}
 
 zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 7
@@ -29,21 +23,25 @@ plugins=(
     zsh-syntax-highlighting
 )
 
-source $ZSH/oh-my-zsh.sh
+source ${ZSH}/oh-my-zsh.sh
 
 ### Oh-My-Posh
 # https://ohmyposh.dev/docs/installation/prompt
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/oh-my-posh.toml)"
+  eval "$(oh-my-posh init zsh --config ${HOME}/.config/oh-my-posh/oh-my-posh.toml)"
 fi
 
 ### Brew
 # https://brew.sh
-export PATH="/opt/homebrew/bin:$PATH"
+export PATH=/opt/homebrew/bin:${PATH}
+
+### Tmux
+tmux source-file ~/.config/tmux/.tmux.conf
 
 ### Fzf
 # https://github.com/junegunn/fzf
 source <(fzf --zsh)
+setopt globdots
 
 ### Pyenv
 # https://github.com/pyenv/pyenv?tab=readme-ov-file#set-up-your-shell-environment-for-pyenv
