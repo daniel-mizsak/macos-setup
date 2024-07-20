@@ -9,18 +9,18 @@
   loop:
     - "bat"
     - "dockutil"
-    - "doctl"
+    # - "doctl"
     - "eza"
     - "fzf"
     - "git"
     - "htop"
     - "jandedobbeleer/oh-my-posh/oh-my-posh"
-    - "jesseduffield/lazygit/lazygit"
-    - "mas"
+    # - "jesseduffield/lazygit/lazygit"
+    # - "mas"
     - "pyenv"
     - "tmux"
-    - "tree"
-    - "zbar"
+    # - "tree"
+    # - "zbar"
 
 # Homebrew casks
 - name: Install homebrew casks.
