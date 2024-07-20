@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e # Exit immediately if a command exits with a non-zero status.
+
 # Clone the repository
 echo "Cloning macos-setup repository."
 if [[ -d ${HOME}/macos-setup ]]; then
