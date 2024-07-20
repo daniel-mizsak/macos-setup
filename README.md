@@ -14,6 +14,8 @@ First make sure that you are logged in with your Apple ID, so applications can b
 The setup should execute automatically after running the following command in the terminal and entering the password:
 
 ```bash
+xcode-select --install
+
 /bin/bash -c "$(curl -fsSL \
 https://raw.githubusercontent.com/daniel-mizsak/macos-setup/HEAD/macos-setup.sh)"
 ```

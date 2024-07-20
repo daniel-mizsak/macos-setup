@@ -1,20 +1,4 @@
 #!/bin/bash
-
-# Install xcode command line tools
-# Source: https://github.com/samdoran/ansible-collection-macos/blob/main/scripts/bootstrap.sh
-echo "Installing xcode command line tools."
-
-if ! xcode-select --print-path &> /dev/null; then
-    echo "Installing xcode command line tools."
-    xcode-select --install &> /dev/null
-    until xcode-select --print-path &> /dev/null; do
-        sleep 5
-    done
-    echo "Xcode command line tools installed."
-else
-    echo "Xcode command line tools already installed."
-fi
-
 # Clone the repository
 echo "Cloning macos-setup repository."
 if [[ -d ${HOME}/macos-setup ]]; then
