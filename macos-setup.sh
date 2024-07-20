@@ -1,16 +1,18 @@
 #!/bin/bash
 
-# Install xcode command line tool
+# Install xcode command line tools
 # Source: https://github.com/samdoran/ansible-collection-macos/blob/main/scripts/bootstrap.sh
 echo "Installing xcode command line tools."
-set -euo pipefail
 
-if [[ ! -d /Library/Developer/CommandLineTools ]]; then
-    TMP_FILE=/private/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
-    touch "$TMP_FILE"
-    PACKAGE_NAME=$(sudo softwareupdate -l | grep -o 'Command Line Tools for Xcode-.*' | tail -n 1 | tr -d '\n')
-    sudo softwareupdate --install "$PACKAGE_NAME"
-    rm -fv "$TMP_FILE"
+if ! xcode-select --print-path &> /dev/null; then
+    echo "Installing xcode command line tools."
+    xcode-select --install &> /dev/null
+    until xcode-select --print-path &> /dev/null; do
+        sleep 5
+    done
+    echo "Xcode command line tools installed."
+else
+    echo "Xcode command line tools already installed."
 fi
 
 # Clone the repository
