@@ -15,7 +15,16 @@ The setup should execute automatically after running the following command in th
 
 ```bash
 xcode-select --install
+```
 
+```bash
+/bin/bash -c "$(curl -fsSL \
+https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+```
+
+```bash
 /bin/bash -c "$(curl -fsSL \
 https://raw.githubusercontent.com/daniel-mizsak/macos-setup/HEAD/macos-setup.sh)"
 ```

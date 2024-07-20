@@ -27,7 +27,7 @@ else
 fi
 
 # Running setup scripts
-tasks_to_run=("homebrew" "package" "startup" "system" "finder" "dock" "dockutil" "dotfile")
+tasks_to_run=("package" "startup" "system" "finder" "dock" "dockutil" "dotfile")
 
 for task in "${tasks_to_run[@]}"
 do
@@ -37,12 +37,7 @@ do
     ${HOME}/macos-setup/ansible/playbook.yml \
     --inventory ${HOME}/macos-setup/ansible/inventory.ini \
     --extra-vars "task_name=${task}" \
-    $( [ "$task" == "homebrew" ] && echo "--ask-become-pass" )
-    ${SKIP_TAGS} \
-
-    if [ "$task" == "homebrew" ]; then
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-    fi
+    ${SKIP_TAGS}
  done
 
 # Restart finder and dock
