@@ -37,6 +37,7 @@ do
     ${HOME}/macos-setup/ansible/playbook.yml \
     --inventory ${HOME}/macos-setup/ansible/inventory.ini \
     --extra-vars "task_name=${task}" \
+    $( [ "$task" == "homebrew" ] && echo "--ask-become-pass" )
     ${SKIP_TAGS} \
 
     if [ "$task" == "homebrew" ]; then
