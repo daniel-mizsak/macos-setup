@@ -1,5 +1,5 @@
 ---
-# Homebrew
+# Homebrew packages
 - name: Install homebrew packages.
   community.general.homebrew:
     name: "{{ item }}"
@@ -11,8 +11,6 @@
     - "dockutil"
     - "doctl"
     - "eza"
-    - "font-hack-nerd-font"
-    - "font-meslo-lg-nerd-font"
     - "fzf"
     - "git"
     - "htop"
@@ -24,7 +22,7 @@
     - "tree"
     - "zbar"
 
-# Homebrew Casks
+# Homebrew casks
 - name: Install homebrew casks.
   community.general.homebrew_cask:
     name: "{{ item }}"
@@ -32,6 +30,9 @@
     update_homebrew: true
     upgrade_all: "{{ packages_upgrade_packages }}"
   loop:
+    # Fonts
+    - "font-hack-nerd-font"
+    - "font-meslo-lg-nerd-font"
     # General
     - "1password"
     - "arc"

@@ -15,6 +15,7 @@ if [[ ! -d ${HOME}/macos-setup/.venv ]]; then
 fi
 source ${HOME}/macos-setup/.venv/bin/activate
 pip3 install -r ${HOME}/macos-setup/ansible/requirements.txt -qqq
+export ANSIBLE_PYTHON_INTERPRETER=${HOME}/macos-setup/.venv/bin/python
 
 # Check if script is running on a virtual machine
 if system_profiler SPHardwareDataType | grep -q 'Model Identifier: .*Virtual';then
@@ -36,11 +37,11 @@ do
     ${HOME}/macos-setup/ansible/playbook.yml \
     --inventory ${HOME}/macos-setup/ansible/inventory.ini \
     --extra-vars "task_name=${task}" \
-     ${SKIP_TAGS} \
+    ${SKIP_TAGS} \
 
-     if [ "$task" == "homebrew" ]; then
-         eval "$(/opt/homebrew/bin/brew shellenv)"
-     fi
+    if [ "$task" == "homebrew" ]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+    fi
  done
 
 # Restart finder and dock
