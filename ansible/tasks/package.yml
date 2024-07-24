@@ -9,18 +9,20 @@
   loop:
     - "bat"
     - "dockutil"
-    # - "doctl"
+    - "doctl"
     - "eza"
     - "fzf"
     - "git"
     - "htop"
-    - "jandedobbeleer/oh-my-posh/oh-my-posh"
-    # - "jesseduffield/lazygit/lazygit"
-    # - "mas"
+    - "jesseduffield/lazygit/lazygit"
+    - "mas"
+    - "oh-my-posh"
     - "pyenv"
+    - "tmp"
     - "tmux"
-    # - "tree"
-    # - "zbar"
+    - "tree"
+    - "zbar"
+  when: false
 
 # Homebrew casks
 - name: Install homebrew casks.
@@ -36,45 +38,45 @@
     # General
     - "1password"
     - "arc"
-    - "mullvadvpn"
-    - "obsidian"
-    - "signal"
-    - "slack"
-    - "spotify"
+    # - "mullvadvpn"
+    # - "obsidian"
+    # - "signal"
+    # - "slack"
+    # - "spotify"
     # Development
-    - "alacritty"
+    # - "alacritty"
     # - "db-browser-for-sqlite"
-    - "devtoys"
-    - "docker"
-    - "dotnet-sdk"
-    - "github"
-    - "iterm2"
+    # - "devtoys"
+    # - "docker"
+    # - "dotnet-sdk"
+    # - "github"
+    # - "iterm2"
     # - "parallels"  # For this `Privacy and Security` -> `App Management` -> `Terminal` has to be enabled.
-    - "postman"
-    - "raspberry-pi-imager"
-    - "sublime-text"
-    - "vagrant-vmware-utility"
-    - "vagrant"
-    - "visual-studio-code"
-    - "vmware-fusion"
-    - "vnc-viewer"
+    # - "postman"
+    # - "raspberry-pi-imager"
+    # - "sublime-text"
+    # - "vagrant-vmware-utility"
+    # - "vagrant"
+    # - "visual-studio-code"
+    # - "vmware-fusion"
+    # - "vnc-viewer"
     # Utility
-    - "aldente"
-    - "appcleaner"
-    - "betterdisplay"
-    - "hiddenbar"
-    - "keyboardcleantool"
-    - "obs"
-    - "openinterminal"
-    - "raycast"
-    - "scroll-reverser"
-    - "synology-drive"
-    - "vlc"
+    # - "aldente"
+    # - "appcleaner"
+    # - "betterdisplay"
+    # - "hiddenbar"
+    # - "keyboardcleantool"
+    # - "obs"
+    # - "openinterminal"
+    # - "raycast"
+    # - "scroll-reverser"
+    # - "synology-drive"
+    # - "vlc"
     # Creative
-    - "affinity-designer"
-    - "affinity-photo"
-    - "affinity-publisher"
-    - "updf"
+    # - "affinity-designer"
+    # - "affinity-photo"
+    # - "affinity-publisher"
+    # - "updf"
   tags:
     - ignore-vm
 
@@ -110,31 +112,3 @@
     url: "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
     dest: "/tmp/ohmyzsh_install.sh"
     mode: "755"
-
-- name: Run ohmyzsh installer.
-  ansible.builtin.command: >
-    /tmp/ohmyzsh_install.sh
-  args:
-    creates: "${HOME}/.oh-my-zsh"
-  environment:
-    RUNZSH: "no"
-    CHSH: "no"
-
-- name: Install zsh-autosuggestions.  # noqa: latest
-  ansible.builtin.git:
-    repo: "https://github.com/zsh-users/zsh-autosuggestions"
-    dest: "${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
-
-- name: Install zsh-syntax-highlighting.  # noqa: latest
-  ansible.builtin.git:
-    repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
-    dest: "${HOME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
-
-# Compare installed packages with Brewfile
-- name: Make sure all brewfile packages are installed.  # noqa: ignore-errors
-  ansible.builtin.command: >
-    brew bundle check --file=${HOME}/macos-setup/brew/Brewfile
-  changed_when: false
-  ignore_errors: true
-  tags:
-    - ignore-vm

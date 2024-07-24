@@ -1,0 +1,37 @@
+---
+# Oh My Zsh
+- name: Download ohmyzsh installer.
+  ansible.builtin.get_url:
+    url: "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
+    dest: "/tmp/ohmyzsh_install.sh"
+    mode: "755"
+
+- name: Run ohmyzsh installer.
+  ansible.builtin.command: >
+    /tmp/ohmyzsh_install.sh
+  args:
+    creates: "${HOME}/.oh-my-zsh"
+  environment:
+    RUNZSH: "no"
+    CHSH: "no"
+
+- name: Install fzf-tab.  # noqa: latest
+  ansible.builtin.git:
+    repo: "https://github.com/Aloxaf/fzf-tab"
+    dest: "${HOME}/.oh-my-zsh/custom/plugins/fzf-tab"
+
+- name: Install zsh-autosuggestions.  # noqa: latest
+  ansible.builtin.git:
+    repo: "https://github.com/zsh-users/zsh-autosuggestions"
+    dest: "${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+
+- name: Install zsh-syntax-highlighting.  # noqa: latest
+  ansible.builtin.git:
+    repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    dest: "${HOME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+
+# TPM
+- name: Install tmux plugin manager. # noqa: latest
+  ansible.builtin.git:
+    repo: "https://github.com/tmux-plugins/tpm"
+    dest: "${HOME}/.tmux/plugins/tpm"
