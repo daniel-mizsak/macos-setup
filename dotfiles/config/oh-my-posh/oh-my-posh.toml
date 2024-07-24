@@ -32,6 +32,17 @@ commit_icon = '@'
 fetch_status = true
 
 [[blocks]]
+type = 'prompt'
+alignment = 'right'
+
+[[blocks.segments]]
+type = "python"
+style = "plain"
+foreground = "p:pyblue"
+background = "transparent"
+template = "  {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ end }} "
+
+[[blocks]]
 type = 'rprompt'
 overflow = 'hidden'
 
@@ -43,7 +54,7 @@ background = 'transparent'
 template = '{{ .FormattedMs }}'
 
 [blocks.segments.properties]
-threshold = 5000
+threshold = 1000
 
 [[blocks]]
 type = 'prompt'
@@ -75,3 +86,4 @@ template = '❯❯ '
 
 [palette]
 grey = '#6c6c6c'
+pyblue = '#4B8BBE'
