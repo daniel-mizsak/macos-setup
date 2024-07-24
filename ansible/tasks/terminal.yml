@@ -31,7 +31,7 @@
     dest: "${HOME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
 
 # TPM
-- name: Install tmux plugin manager. # noqa: latest
+- name: Install tmux plugin manager.  # noqa: latest
   ansible.builtin.git:
     repo: "https://github.com/tmux-plugins/tpm"
     dest: "${HOME}/.tmux/plugins/tpm"
