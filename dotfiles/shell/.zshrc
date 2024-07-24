@@ -35,9 +35,6 @@ fi
 # https://brew.sh
 export PATH=/opt/homebrew/bin:${PATH}
 
-### Tmux
-tmux source-file ~/.config/tmux/.tmux.conf
-
 ### Fzf
 # https://github.com/junegunn/fzf
 source <(fzf --zsh)
