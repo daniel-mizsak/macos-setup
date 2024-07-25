@@ -5,22 +5,12 @@
     name: "{{ item }}"
     state: present
     update_homebrew: true
-    upgrade_all: "{{ packages_upgrade_packages }}"
+    upgrade_all: "{{ package_install_latest }}"
   loop:
-    - "bat"
     - "dockutil"
     - "doctl"
-    - "eza"
-    - "fzf"
-    - "git"
-    - "htop"
-    - "jesseduffield/lazygit/lazygit"
     - "mas"
-    - "oh-my-posh"
     - "pyenv"
-    - "tmp"
-    - "tmux"
-    - "tree"
     - "zbar"
   when: false
 
@@ -30,7 +20,7 @@
     name: "{{ item }}"
     state: present
     update_homebrew: true
-    upgrade_all: "{{ packages_upgrade_packages }}"
+    upgrade_all: "{{ package_install_latest }}"
   loop:
     # Fonts
     - "font-hack-nerd-font"
@@ -106,9 +96,18 @@
   tags:
     - ignore-vm
 
-# Oh My Zsh
-- name: Download ohmyzsh installer.
-  ansible.builtin.get_url:
-    url: "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
-    dest: "/tmp/ohmyzsh_install.sh"
-    mode: "755"
+# Create package symlinks.
+- name: Ensure symlink directories exist.
+  ansible.builtin.file:
+    path: "{{ item.dest | dirname }}"
+    state: directory
+    mode: "0775"
+  loop: "{{ package_symlinks }}"
+
+- name: Create dotfile symlinks.
+  ansible.builtin.file:
+    src: "{{ item.source }}"
+    dest: "{{ item.dest }}"
+    state: link
+    force: true
+  loop: "{{ package_symlinks }}"

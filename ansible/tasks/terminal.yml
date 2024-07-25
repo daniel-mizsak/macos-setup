@@ -1,10 +1,37 @@
 ---
+- name: Install terminal packages.
+  community.general.homebrew:
+    name: "{{ item }}"
+    state: "{{ 'latest' if package_install_latest else 'present' }}"
+    update_homebrew: true
+  loop:
+    - "bat"
+    - "eza"
+    - "fzf"
+    - "git"
+    - "htop"
+    - "jesseduffield/lazygit/lazygit"
+    - "oh-my-posh"
+    - "tmux"
+    - "tree"
+    - "zsh"
+
+- name: Get zsh path.
+  ansible.builtin.command: >
+    brew --prefix zsh
+  register: zsh_path
+
+- name: Set zsh as default shell.
+  ansible.builtin.user:
+    name: "{{ ansible_user }}"
+    shell: "{{ zsh_path.stdout }}"
+
 # Oh My Zsh
 - name: Download ohmyzsh installer.
   ansible.builtin.get_url:
     url: "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
     dest: "/tmp/ohmyzsh_install.sh"
-    mode: "755"
+    mode: "0755"
 
 - name: Run ohmyzsh installer.
   ansible.builtin.command: >
@@ -30,8 +57,23 @@
     repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
     dest: "${HOME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
 
-# TPM
 - name: Install tmux plugin manager.  # noqa: latest
   ansible.builtin.git:
     repo: "https://github.com/tmux-plugins/tpm"
     dest: "${HOME}/.tmux/plugins/tpm"
+
+# Create terminal symlinks.
+- name: Ensure symlink directories exist.
+  ansible.builtin.file:
+    path: "{{ item.dest | dirname }}"
+    state: directory
+    mode: "0775"
+  loop: "{{ terminal_symlinks }}"
+
+- name: Create dotfile symlinks.
+  ansible.builtin.file:
+    src: "{{ item.source }}"
+    dest: "{{ item.dest }}"
+    state: link
+    force: true
+  loop: "{{ terminal_symlinks }}"
