@@ -10,28 +10,24 @@
 Setting up and making sure that macOS is configured properly and is ready for development.
 
 ## Getting started
-First make sure that you are logged in with your Apple ID, so applications can be downloaded from the **App Store**.\
-The setup should execute automatically after running the following command in the terminal and entering the password:
+First let's install `xcode-select` and `Homebrew`.
 
+Install `xcode-select`:
 ```bash
 xcode-select --install
 ```
 
+Install `Homebrew`:
 ```bash
 /bin/bash -c "$(curl -fsSL \
 https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
+
 
 ```bash
 /bin/bash -c "$(curl -fsSL \
 https://raw.githubusercontent.com/daniel-mizsak/macos-setup/HEAD/macos-setup.sh)"
 ```
-
-
-After the first run, it is recommended to **restart** the computer and **run the script again** to make sure that everything is installed properly.
-If everything were setup properly no changes should be present.
 
 
 ## Manual settings:

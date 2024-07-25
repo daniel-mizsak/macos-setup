@@ -19,6 +19,7 @@
 - name: Get zsh path.
   ansible.builtin.command: >
     brew --prefix zsh
+  changed_when: false
   register: zsh_path
 
 - name: Set zsh as default shell.

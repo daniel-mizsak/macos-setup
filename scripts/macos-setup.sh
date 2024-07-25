@@ -1,21 +1,9 @@
 #!/bin/bash
-set -e # Exit immediately if a command exits with a non-zero status.
 
-# Clone the repository
-echo "Cloning macos-setup repository."
-if [[ -d ${HOME}/macos-setup ]]; then
-    rm -rf ${HOME}/macos-setup
-fi
-git clone https://github.com/daniel-mizsak/macos-setup.git ${HOME}/macos-setup --quiet
+set -e # exit if a command fails
 
-# Create python virtual environment and install ansible
-echo "Creating python virtual environment and installing ansible."
-if [[ ! -d ${HOME}/macos-setup/.venv ]]; then
-    python3 -m venv --upgrade-deps ${HOME}/macos-setup/.venv > /dev/null
-fi
-source ${HOME}/macos-setup/.venv/bin/activate
-pip3 install -r ${HOME}/macos-setup/ansible/requirements.txt -qqq
-export ANSIBLE_PYTHON_INTERPRETER=${HOME}/macos-setup/.venv/bin/python
+# Call the prepare-environment.sh script
+source ./prepare-environment.sh
 
 # Check if script is running on a virtual machine
 if system_profiler SPHardwareDataType | grep -q 'Model Identifier: .*Virtual';then
@@ -38,7 +26,7 @@ do
     --inventory ${HOME}/macos-setup/ansible/inventory.ini \
     --extra-vars "task_name=${task}" \
     ${SKIP_TAGS}
- done
+done
 
 # Restart finder and dock
 echo "Restarting Finder and Dock."
