@@ -10,6 +10,7 @@
     - "dockutil"
     - "doctl"
     - "mas"
+    - "neovim"
     - "pyenv"
     - "zbar"
   when: false
@@ -34,7 +35,6 @@
     # - "slack"
     # - "spotify"
     # Development
-    # - "alacritty"
     # - "db-browser-for-sqlite"
     # - "devtoys"
     # - "docker"
@@ -50,6 +50,7 @@
     # - "visual-studio-code"
     # - "vmware-fusion"
     # - "vnc-viewer"
+    # - "wezterm"
     # Utility
     # - "aldente"
     # - "appcleaner"

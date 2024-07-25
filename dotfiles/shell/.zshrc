@@ -38,7 +38,6 @@ export PATH=/opt/homebrew/bin:${PATH}
 ### Fzf
 # https://github.com/junegunn/fzf
 source <(fzf --zsh)
-setopt globdots
 
 ### Pyenv
 # https://github.com/pyenv/pyenv?tab=readme-ov-file#set-up-your-shell-environment-for-pyenv
