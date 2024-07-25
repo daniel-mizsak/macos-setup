@@ -13,4 +13,3 @@
     state: link
     force: true
   loop: "{{ dotfile_symlinks }}"
-
