@@ -16,16 +16,24 @@
     - "tree"
     - "zsh"
 
-- name: Get zsh path.
-  ansible.builtin.command: >
-    brew --prefix zsh
-  changed_when: false
-  register: zsh_path
+# - name: Get username.
+#   ansible.builtin.command: >
+#     whoami
+#   become: false
+#   changed_when: false
+#   register: username
 
-- name: Set zsh as default shell.
-  ansible.builtin.user:
-    name: "{{ ansible_user }}"
-    shell: "{{ zsh_path.stdout }}"
+# - name: Get zsh path.
+#   ansible.builtin.command: >
+#     brew --prefix zsh
+#   changed_when: false
+#   register: zsh_path
+
+# - name: Set zsh as default shell.
+#   ansible.builtin.user:
+#     name: "{{ username.stdout }}"
+#     shell: "{{ zsh_path.stdout }}"
+#   become: true
 
 # Oh My Zsh
 - name: Download ohmyzsh installer.
