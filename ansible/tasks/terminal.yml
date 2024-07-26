@@ -1,4 +1,11 @@
 ---
+- name: Install zsh on Linux.
+  community.general.homebrew:
+    name: "zsh"
+    state: present
+    update_homebrew: true
+  when: ansible_os_family != "Darwin"
+
 - name: Install terminal packages.
   community.general.homebrew:
     name: "{{ item }}"
@@ -14,26 +21,20 @@
     - "oh-my-posh"
     - "tmux"
     - "tree"
-    - "zsh"
 
-# - name: Get username.
-#   ansible.builtin.command: >
-#     whoami
-#   become: false
-#   changed_when: false
-#   register: username
+- name: Install nerd font macOS.
+  community.general.homebrew_cask:
+    name: "font-meslo-lg-nerd-font"
+    state: "{{ 'latest' if package_install_latest else 'present' }}"
+    update_homebrew: true
+  when: ansible_os_family == "Darwin"
 
-# - name: Get zsh path.
-#   ansible.builtin.command: >
-#     brew --prefix zsh
-#   changed_when: false
-#   register: zsh_path
-
-# - name: Set zsh as default shell.
-#   ansible.builtin.user:
-#     name: "{{ username.stdout }}"
-#     shell: "{{ zsh_path.stdout }}"
-#   become: true
+- name: Install nerd font Linux.
+  ansible.builtin.get_url:
+    url: "https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/Meslo/S/Regular/MesloLGSNerdFont-Regular.ttf"
+    dest: "~/.local/share/fonts/MesloLGSNerdFont-Regular.ttf"
+    mode: "0644"
+  when: ansible_os_family != "Darwin"
 
 # Oh My Zsh
 - name: Download ohmyzsh installer.

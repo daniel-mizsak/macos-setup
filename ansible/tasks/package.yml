@@ -24,10 +24,10 @@
     upgrade_all: "{{ package_install_latest }}"
   loop:
     # Fonts
-    - "font-hack-nerd-font"
     - "font-meslo-lg-nerd-font"
     # General
     - "1password"
+    - "alacritty"
     - "arc"
     # - "mullvadvpn"
     # - "obsidian"
