@@ -31,6 +31,12 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config ${HOME}/.config/oh-my-posh/oh-my-posh.toml)"
 fi
 
+function clear_screen {
+  printf '\033[H\033[2J'
+}
+alias clear="clear_screen"
+bindkey '^L'
+
 ### Brew
 # https://brew.sh
 export PATH=/opt/homebrew/bin:${PATH}

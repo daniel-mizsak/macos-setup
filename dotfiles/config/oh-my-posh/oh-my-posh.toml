@@ -3,6 +3,7 @@
 version = 2
 final_space = true
 console_title_template = '{{ .Shell }} in {{ .Folder }}'
+enable_cursor_positioning = true
 
 [[blocks]]
 type = 'prompt'
