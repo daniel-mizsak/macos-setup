@@ -31,12 +31,6 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config ${HOME}/.config/oh-my-posh/oh-my-posh.toml)"
 fi
 
-function clear_screen {
-  printf '\033[H\033[2J'
-}
-alias clear="clear_screen"
-bindkey '^L'
-
 ### Brew
 # https://brew.sh
 export PATH=/opt/homebrew/bin:${PATH}
@@ -56,6 +50,8 @@ eval "$(pyenv init -)"
 alias cat="bat"
 alias ls="eza --color=always --all --icons=always"
 alias ll="eza --color=always --all --long --icons=always"
+alias clear-screen="printf '\033[H\033[2J'"
+bindkey -s '^L' 'clear-screen\n'
 # Python
 alias create_venv="python -m venv --upgrade-deps .venv"
 alias activate_venv="source .venv/bin/activate"

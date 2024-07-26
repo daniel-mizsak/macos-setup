@@ -127,6 +127,13 @@
   // CodeSnap
   "codesnap.containerPadding": "1em",
   "codesnap.showWindowControls": false,
+  // Even Better TOML
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml",
+  },
+  "evenBetterToml.formatter.indentEntries": true,
+  "evenBetterToml.formatter.indentString": "  ",
+  "evenBetterToml.formatter.indentTables": true,
   // GitHub Actions
   "[github-actions-workflow]": {
     "editor.tabSize": 2,
