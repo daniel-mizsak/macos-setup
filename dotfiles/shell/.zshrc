@@ -45,6 +45,12 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+### Fastfetch
+# https://github.com/fastfetch-cli/fastfetch
+if [ -z "$TMUX" ]; then
+  fastfetch
+fi
+
 ### Alias
 # System
 alias cat="bat"

@@ -9,6 +9,7 @@
   loop:
     - "dockutil"
     - "doctl"
+    - "fastfetch"
     - "mas"
     - "neovim"
     - "pyenv"
