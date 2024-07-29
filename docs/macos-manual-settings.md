@@ -15,4 +15,3 @@ Raycast:
 
 iTerm2:
 - Enable world jumping in `iTerm2`: `iTerm2` -> `Preferences` -> `Profiles` -> `Keys` -> `Key Mappings` -> `Presets...` -> `Natural Text Editing`
-
