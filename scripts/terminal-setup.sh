@@ -2,7 +2,7 @@
 
 set -e # exit if a command fails
 
-source ./prepare-environment.sh
+source <(curl -s https://raw.githubusercontent.com/daniel-mizsak/macos-setup/main/scripts/prepare-environment.sh)
 
 tasks="terminal"
-source ./run-tasks.sh $tasks
+source ${HOME}/macos-setup/scripts/run-tasks.sh $tasks

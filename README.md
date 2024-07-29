@@ -30,30 +30,3 @@ https://raw.githubusercontent.com/daniel-mizsak/macos-setup/HEAD/macos-setup.sh)
 ```
 
 
-## Manual settings:
-Finder:
-- Disable `Tags` in Finder
-- Remove `Recents` from Finder
-- Set `Finder` Favourites order to: `AirDrop`, `Applications`, `Downloads`, `Documents`, `SynologyDrive`, `Home`
-
-Apps:
-- `Parallels Desktop`
-- `Boosteroid`
-
-Raycast:
-- Unbind CMD + Space from `Spotlight`
-- Bind CMD + Space to `Raycast`
-- Install extensions
-
-iTerm2:
-- Enable world jumping in `iTerm2`: `iTerm2` -> `Preferences` -> `Profiles` -> `Keys` -> `Key Mappings` -> `Presets...` -> `Natural Text Editing`
-
-
-## Chocolatey
-Chocolatey is a package manager for Windows. Install chocolatey from [chocolatey.org](https://chocolatey.org/install).\
-Use the following PowerShell command to install the software listed in the `choco.ps1` file.
-
-```powershell
-Invoke-Expression (Invoke-WebRequest -Uri `
-https://raw.githubusercontent.com/daniel-mizsak/macos-setup/main/dotfiles/choco/choco.ps1 -UseBasicParsing).Content
-```

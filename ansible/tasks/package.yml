@@ -3,24 +3,29 @@
 - name: Install homebrew packages.
   community.general.homebrew:
     name: "{{ item }}"
-    state: present
+    state: "{{ 'latest' if package_install_latest else 'present' }}"
     update_homebrew: true
     upgrade_all: "{{ package_install_latest }}"
   loop:
     - "dockutil"
     - "doctl"
-    - "fastfetch"
     - "mas"
     - "neovim"
-    - "pyenv"
     - "zbar"
   when: false
+
+# Homebrew font
+- name: Install nerd font macOS.
+  community.general.homebrew_cask:
+    name: "font-meslo-lg-nerd-font"
+    state: "{{ 'latest' if package_install_latest else 'present' }}"
+    update_homebrew: true
 
 # Homebrew casks
 - name: Install homebrew casks.
   community.general.homebrew_cask:
     name: "{{ item }}"
-    state: present
+    state: "{{ 'latest' if package_install_latest else 'present' }}"
     update_homebrew: true
     upgrade_all: "{{ package_install_latest }}"
   loop:
@@ -76,7 +81,7 @@
 - name: Install app store apps.  # noqa: args[module]
   community.general.mas:
     id: "{{ item | int }}"
-    state: present
+    state: "{{ 'latest' if package_install_latest else 'present' }}"
   loop:
     # Development
     - 497799835  # Xcode

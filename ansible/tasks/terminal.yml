@@ -14,27 +14,15 @@
   loop:
     - "bat"
     - "eza"
+    - "fastfetch"
     - "fzf"
     - "git"
     - "htop"
-    - "jesseduffield/lazygit/lazygit"
+    - "lazygit"
     - "oh-my-posh"
+    - "pyenv"
     - "tmux"
     - "tree"
-
-- name: Install nerd font macOS.
-  community.general.homebrew_cask:
-    name: "font-meslo-lg-nerd-font"
-    state: "{{ 'latest' if package_install_latest else 'present' }}"
-    update_homebrew: true
-  when: ansible_os_family == "Darwin"
-
-- name: Install nerd font Linux.
-  ansible.builtin.get_url:
-    url: "https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/Meslo/S/Regular/MesloLGSNerdFont-Regular.ttf"
-    dest: "~/.local/share/fonts/MesloLGSNerdFont-Regular.ttf"
-    mode: "0644"
-  when: ansible_os_family != "Darwin"
 
 # Oh My Zsh
 - name: Download ohmyzsh installer.

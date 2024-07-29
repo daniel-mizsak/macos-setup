@@ -19,8 +19,8 @@ terminal_symlinks:
     dest: ${HOME}/.config/tmux/tmux.conf
 
   # zsh
-  - source: ${HOME}/macos-setup/dotfiles/shell/.zshenv
-    dest: ${HOME}/.zshenv
+  # - source: ${HOME}/macos-setup/dotfiles/shell/.zshenv
+  #   dest: ${HOME}/.zshenv
   - source: ${HOME}/macos-setup/dotfiles/shell/.zshrc
     dest: ${HOME}/.zshrc
 
