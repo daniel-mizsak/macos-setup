@@ -1,7 +1,6 @@
 ## Configure Ubuntu terminal (also works on WSL2)
 
 In a **Ubuntu** environment first install `python3-venv`:
-
 ```bash
 sudo apt update && sudo apt install python3-venv -y
 ```
@@ -23,7 +22,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 Run the **terminal setup** script:
 ```bash
 /bin/bash -c "$(curl -fsSL \
-https://raw.githubusercontent.com/daniel-mizsak/macos-setup/HEAD/scripts/terminal-setup.sh)"
+https://raw.githubusercontent.com/daniel-mizsak/macos-setup/main/scripts/terminal-setup.sh)"
 ```
 
 Change the **default shell** to `zsh`:
@@ -35,7 +34,6 @@ sudo chsh -s "$(command -v zsh)" "${USER}"
 ```
 
 Install **TMUX** plugins:
-
 ```bash
 tmux
 prefix -> I

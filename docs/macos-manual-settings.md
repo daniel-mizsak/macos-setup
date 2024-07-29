@@ -1,4 +1,7 @@
 ## Manual settings:
+
+Set these settings manually to reproduce the environment as closely as possible.
+
 Finder:
 - Disable `Tags` in Finder
 - Remove `Recents` from Finder

@@ -10,10 +10,9 @@
 Setting up and making sure that the terminal and macOS are configured properly.
 
 ## Getting started
+The following setup options are available:
 
-
-
-```bash
-/bin/bash -c "$(curl -fsSL \
-https://raw.githubusercontent.com/daniel-mizsak/macos-setup/HEAD/macos-setup.sh)"
-```
+- [Full macOS setup](docs/macos-setup.md)
+- [Terminal setup for macOS](docs/macos-terminal-setup.md)
+- [Terminal setup for Ubuntu](docs/ubuntu-terminal-setup.md)
+- [Chocolatey setup for Windows](docs/windows-choco.md)

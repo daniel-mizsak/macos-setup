@@ -2,7 +2,7 @@
 - name: Install zsh on Linux.
   community.general.homebrew:
     name: "zsh"
-    state: present
+    state: "{{ 'latest' if package_install_latest else 'present' }}"
     update_homebrew: true
   when: ansible_os_family != "Darwin"
 
@@ -28,12 +28,12 @@
 - name: Download ohmyzsh installer.
   ansible.builtin.get_url:
     url: "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
-    dest: "/tmp/ohmyzsh_install.sh"
+    dest: "/tmp/ohmyzsh-install.sh"
     mode: "0755"
 
 - name: Run ohmyzsh installer.
   ansible.builtin.command: >
-    /tmp/ohmyzsh_install.sh
+    /tmp/ohmyzsh-install.sh
   args:
     creates: "${HOME}/.oh-my-zsh"
   environment:
