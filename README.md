@@ -7,21 +7,10 @@
 </div>
 
 ## Overview
-Setting up and making sure that macOS is configured properly and is ready for development.
+Setting up and making sure that the terminal and macOS are configured properly.
 
 ## Getting started
-First let's install `xcode-select` and `Homebrew`.
 
-Install `xcode-select`:
-```bash
-xcode-select --install
-```
-
-Install `Homebrew`:
-```bash
-/bin/bash -c "$(curl -fsSL \
-https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
 
 
 ```bash
