@@ -1,3 +1,6 @@
+# Project
+dotfiles/config/nvim/lazyvim.json
+
 # System
 .DS_Store
 
