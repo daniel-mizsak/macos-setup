@@ -10,6 +10,10 @@ terminal_symlinks:
   - source: ${HOME}/macos-setup/dotfiles/git/.gitmessage
     dest: ${HOME}/.gitmessage
 
+  # neovim
+  - source: ${HOME}/macos-setup/dotfiles/config/nvim
+    dest: ${HOME}/.config/nvim
+
   # oh-my-posh
   - source: ${HOME}/macos-setup/dotfiles/config/oh-my-posh/oh-my-posh.toml
     dest: ${HOME}/.config/oh-my-posh/oh-my-posh.toml

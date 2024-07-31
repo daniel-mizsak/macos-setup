@@ -19,6 +19,7 @@
     - "git"
     - "htop"
     - "lazygit"
+    - "neovim"
     - "oh-my-posh"
     - "pyenv"
     - "tmux"
