@@ -1,20 +1,23 @@
+# https://github.com/catppuccin/alacritty
+import = ["~/.config/alacritty/catppuccin-mocha.toml"]
+
 [env]
-TERM = "xterm-256color"
+  TERM = "xterm-256color"
 
 [window]
-decorations = "full"
-# startup_mode = "Maximized"
-padding.x = 10
-padding.y = 10
+  decorations = "full"
+  # startup_mode = "Maximized"
+  padding.x = 10
+  padding.y = 10
 
 [font]
-size = 14
-normal.family = "MesloLGS Nerd Font Mono"
+  size = 14
+  normal.family = "MesloLGS Nerd Font Mono"
 
 [keyboard]
-bindings = [
+  bindings = [
     { key = "n", mods = "Command", action = "CreateNewWindow" },
     # Navigation
     { key = "Left", mods = "Alt", chars = "\u001BB" },
     { key = "Right", mods = "Alt", chars = "\u001BF" },
-]
+  ]

@@ -27,6 +27,10 @@ terminal_symlinks:
     dest: ${HOME}/.zshrc
 
 package_symlinks:
+  # alacritty
+  - source: ${HOME}/macos-setup/dotfiles/config/alacritty/alacritty.toml
+    dest: ${HOME}/.config/alacritty/alacritty.toml
+
   # sublime
   - source: ${HOME}/macos-setup/dotfiles/sublime/Preferences.sublime-settings
     dest: ${HOME}/Library/Application Support/Sublime Text/Packages/User/Preferences.sublime-settings
