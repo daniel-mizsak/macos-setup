@@ -1,4 +1,5 @@
 # Project
+dotfiles/config/nvim/lazy-lock.json
 dotfiles/config/nvim/lazyvim.json
 
 # System

@@ -163,6 +163,10 @@
   "jupyter.experiments.enabled": false,
   "notebook.formatOnSave.enabled": true,
   "notebook.lineNumbers": "on",
+  // Lua
+  "[lua]": {
+    "editor.tabSize": 2,
+  },
   // Mypy Type Checker
   "mypy-type-checker.args": [
     "--ignore-missing-imports",
