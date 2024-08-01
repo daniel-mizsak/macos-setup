@@ -1,8 +1,8 @@
 ## Configure Ubuntu terminal (also works on WSL2)
 
-In a **Ubuntu** environment first install `python3-venv`:
+In a **Ubuntu** environment first install `build-essential` and `python3-venv`:
 ```bash
-sudo apt update && sudo apt install python3-venv -y
+sudo apt update && sudo apt install build-essential python3-venv -y
 ```
 
 Install **Homebrew**:
@@ -26,9 +26,6 @@ https://raw.githubusercontent.com/daniel-mizsak/macos-setup/main/scripts/termina
 ```
 
 Change the **default shell** to `zsh`:
-```bash
-command -v zsh | sudo tee -a /etc/shells
-```
 ```bash
 sudo chsh -s "$(command -v zsh)" "${USER}"
 ```
