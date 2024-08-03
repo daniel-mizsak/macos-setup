@@ -2,6 +2,7 @@
 # https://github.com/ohmyzsh/ohmyzsh
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
+export EDITOR=nvim
 
 # Change location of dump files
 export ZSH_COMPDUMP=${ZSH}/cache/.zcompdump-${HOST}
@@ -31,6 +32,9 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config ${HOME}/.config/oh-my-posh/oh-my-posh.toml)"
 fi
 
+### Bat
+export BAT_THEME="Catppuccin Mocha"
+
 ### Brew
 # https://brew.sh
 export PATH=/opt/homebrew/bin:${PATH}
@@ -38,6 +42,12 @@ export PATH=/opt/homebrew/bin:${PATH}
 ### Fzf
 # https://github.com/junegunn/fzf
 source <(fzf --zsh)
+setopt globdots
+zstyle ':completion:*' special-dirs false
+
+zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
+zstyle ':fzf-tab:*' fzf-flags '--height=50%'
+export LESSOPEN='|~/.lessfilter %s'
 
 ### Pyenv
 # https://github.com/pyenv/pyenv?tab=readme-ov-file#set-up-your-shell-environment-for-pyenv
@@ -47,7 +57,7 @@ eval "$(pyenv init -)"
 
 ### Fastfetch
 # https://github.com/fastfetch-cli/fastfetch
-if [ -z "$TMUX" ]; then
+if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; then
   fastfetch
 fi
 
