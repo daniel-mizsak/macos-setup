@@ -58,7 +58,7 @@ zstyle ':fzf-tab:*' fzf-flags '--height=50%'
 zstyle ':fzf-tab:complete:(cd|cat|bat):*' fzf-preview '
     preview_file_or_directory() {
         if [ -d "$1" ]; then
-            eza --color=always --long --icons=always "$1" | head -n 20
+            eza --color=always --oneline --icons=always "$1" | head -n 20
         elif file --mime-type -b "$1" | grep -q "text"; then
             bat --style=numbers --color=always "$1"
         fi
