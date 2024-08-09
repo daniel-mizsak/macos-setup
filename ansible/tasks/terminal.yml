@@ -61,11 +61,11 @@
     repo: "https://github.com/tmux-plugins/tpm"
     dest: "${HOME}/.tmux/plugins/tpm"
 
-# TODO: Add Catppuccin theme for `bat`: https://github.com/catppuccin/bat
 - name: Install catppuccin theme for bat.  # noqa: latest
-  ansible.builtin.git:
-    repo: "https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme"
+  ansible.builtin.get_url
+    url: "https://raw.githubusercontent.com/catppuccin/bat/main/themes/Catppuccin%20Mocha.tmTheme"
     dest: "${HOME}/.config/bat/themes/Catppuccin Mocha.tmTheme"
+    mode: "0755"
 
 - name: Rebuild bat's cache.
   ansible.builtin.command: >
