@@ -2,6 +2,10 @@
 package_install_latest: true
 
 terminal_symlinks:
+  # fastfetch
+  - source: ${HOME}/macos-setup/dotfiles/config/fastfetch/config.jsonc
+    dest: ${HOME}/.config/fastfetch/config.jsonc
+
   # git
   - source: ${HOME}/macos-setup/dotfiles/git/.gitconfig
     dest: ${HOME}/.gitconfig
