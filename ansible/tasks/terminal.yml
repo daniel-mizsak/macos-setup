@@ -62,7 +62,7 @@
     dest: "${HOME}/.tmux/plugins/tpm"
 
 - name: Install catppuccin theme for bat.  # noqa: latest
-  ansible.builtin.get_url
+  ansible.builtin.get_url:
     url: "https://raw.githubusercontent.com/catppuccin/bat/main/themes/Catppuccin%20Mocha.tmTheme"
     dest: "${HOME}/.config/bat/themes/Catppuccin Mocha.tmTheme"
     mode: "0755"
