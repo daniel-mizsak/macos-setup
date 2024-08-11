@@ -24,6 +24,7 @@
     - "pyenv"
     - "tmux"
     - "tree"
+    - "zoxide"
 
 # Oh My Zsh
 - name: Download ohmyzsh installer.

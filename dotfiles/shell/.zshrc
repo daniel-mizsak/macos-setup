@@ -27,15 +27,6 @@ plugins=(
 
 source ${ZSH}/oh-my-zsh.sh
 
-### Oh-My-Posh
-# https://ohmyposh.dev/docs/installation/prompt
-if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config ${HOME}/.config/oh-my-posh/oh-my-posh.toml)"
-fi
-
-### Bat
-export BAT_THEME="Catppuccin Mocha"
-
 ### Brew
 # https://brew.sh
 export PATH=/opt/homebrew/bin:${PATH}
@@ -46,6 +37,18 @@ then
   autoload -Uz compinit
   compinit
 fi
+
+### Oh-My-Posh
+# https://ohmyposh.dev/docs/installation/prompt
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  eval "$(oh-my-posh init zsh --config ${HOME}/.config/oh-my-posh/oh-my-posh.toml)"
+fi
+
+### Bat
+export BAT_THEME="Catppuccin Mocha"
+
+### Zoxide
+eval "$(zoxide init --cmd cd zsh)"
 
 ### Fzf
 # https://github.com/junegunn/fzf
