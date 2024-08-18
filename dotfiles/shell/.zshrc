@@ -1,14 +1,5 @@
-### Oh-My-Zsh
-# https://github.com/ohmyzsh/ohmyzsh
-# Path to your oh-my-zsh installation.
-export ZSH="${HOME}/.oh-my-zsh"
+### General
 export EDITOR=nvim
-
-# Change location of dump files
-export ZSH_COMPDUMP=${ZSH}/cache/.zcompdump-${HOST}
-
-zstyle ':omz:update' mode auto
-zstyle ':omz:update' frequency 7
 
 CASE_SENSITIVE="false"
 ZSH_THEME="kphoen"
@@ -18,13 +9,23 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_find_no_dups
 
+### Oh-My-Zsh
+# https://github.com/ohmyzsh/ohmyzsh
+# Path to your oh-my-zsh installation.
+export ZSH="${HOME}/.oh-my-zsh"
+
+# Change location of dump files
+export ZSH_COMPDUMP=${ZSH}/cache/.zcompdump-${HOST}
+
+zstyle ':omz:update' mode auto
+zstyle ':omz:update' frequency 7
+
 plugins=(
     docker
     fzf-tab
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
-
 source ${ZSH}/oh-my-zsh.sh
 
 ### Brew
@@ -55,19 +56,6 @@ eval "$(zoxide init --cmd cd zsh)"
 source <(fzf --zsh)
 setopt globdots
 zstyle ':completion:*' special-dirs false
-zstyle ':fzf-tab:*' fzf-flags '--height=50%'
-
-# https://github.com/Aloxaf/fzf-tab/wiki/Preview#show-file-contents
-zstyle ':fzf-tab:complete:(cd|cat|bat):*' fzf-preview '
-    preview_file_or_directory() {
-        if [ -d "$1" ]; then
-            eza --color=always --oneline --icons=always "$1" | head -n 20
-        elif file --mime-type -b "$1" | grep -q "text"; then
-            bat --style=numbers --color=always "$1"
-        fi
-    }
-    preview_file_or_directory ${(Q)realpath}'
-zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' fzf-preview 'echo ${(P)word}'
 
 ### Pyenv
 # https://github.com/pyenv/pyenv?tab=readme-ov-file#set-up-your-shell-environment-for-pyenv
@@ -81,11 +69,22 @@ if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; then
   fastfetch
 fi
 
+### Yazy
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 ### Alias
 # System
 alias cat="bat"
 alias ls="eza --color=always --all --icons=always"
 alias ll="eza --color=always --all --long --icons=always"
+alias lzd="lazydocker"
 # Python
 alias create_venv="python -m venv --upgrade-deps .venv"
 alias activate_venv="source .venv/bin/activate"

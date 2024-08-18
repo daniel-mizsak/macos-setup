@@ -1,0 +1,4 @@
+# https://github.com/yazi-rs/flavors
+
+[flavor]
+  use = "catppuccin-mocha"

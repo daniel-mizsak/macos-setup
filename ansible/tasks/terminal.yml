@@ -18,6 +18,7 @@
     - "fzf"
     - "git"
     - "htop"
+    - "lazydocker"
     - "lazygit"
     - "neovim"
     - "oh-my-posh"
