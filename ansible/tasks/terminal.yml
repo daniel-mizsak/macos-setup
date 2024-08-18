@@ -25,6 +25,18 @@
     - "pyenv"
     - "tmux"
     - "tree"
+
+    # https://yazi-rs.github.io/docs/installation
+    - "yazi"
+    - "ffmpegthumbnailer"
+    - "sevenzip"
+    - "jq"
+    - "poppler"
+    - "fd"
+    - "ripgrep"
+    - "imagemagick"
+    - "font-symbols-only-nerd-font"
+
     - "zoxide"
 
 # Oh My Zsh

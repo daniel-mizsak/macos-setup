@@ -26,6 +26,10 @@ terminal_symlinks:
   - source: ${HOME}/macos-setup/dotfiles/config/tmux/.tmux.conf
     dest: ${HOME}/.config/tmux/tmux.conf
 
+  # yazi
+  - source: ${HOME}/macos-setup/dotfiles/config/yazi/theme.toml
+    dest: ${HOME}/.config/yazi/theme.toml
+
   # zsh
   - source: ${HOME}/macos-setup/dotfiles/shell/.zshrc
     dest: ${HOME}/.zshrc
