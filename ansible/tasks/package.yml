@@ -14,13 +14,6 @@
     - "zbar"
   when: false
 
-# Homebrew font
-- name: Install nerd font macOS.
-  community.general.homebrew_cask:
-    name: "font-meslo-lg-nerd-font"
-    state: "{{ 'latest' if package_install_latest else 'present' }}"
-    update_homebrew: true
-
 # Homebrew casks
 - name: Install homebrew casks.
   community.general.homebrew_cask:

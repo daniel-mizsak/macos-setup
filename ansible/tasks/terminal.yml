@@ -28,16 +28,25 @@
 
     # https://yazi-rs.github.io/docs/installation
     - "yazi"
+    - "fd"
     - "ffmpegthumbnailer"
-    - "sevenzip"
+    - "imagemagick"
     - "jq"
     - "poppler"
-    - "fd"
     - "ripgrep"
-    - "imagemagick"
-    - "font-symbols-only-nerd-font"
+    - "sevenzip"
 
     - "zoxide"
+
+# Fonts
+- name: Install nerd font macOS.
+  community.general.homebrew_cask:
+    name: "{{ item }}"
+    state: "{{ 'latest' if package_install_latest else 'present' }}"
+    update_homebrew: true
+  loop:
+    - "font-meslo-lg-nerd-font"
+    - "font-symbols-only-nerd-font"
 
 # Oh My Zsh
 - name: Download ohmyzsh installer.
