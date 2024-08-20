@@ -102,6 +102,12 @@
   args:
     creates: "${HOME}/.cache/bat"
 
+- name: Install catppuccin-mocha theme for yazi.
+  ansible.builtin.command: >
+    ya pack -a yazi-rs/flavors:catppuccin-mocha
+  args:
+    creates: "${HOME}/.config/yazi/flavors/catppuccin-mocha.yazi/flavor.toml"
+
 # Create terminal symlinks.
 - name: Ensure symlink directories exist.
   ansible.builtin.file:
