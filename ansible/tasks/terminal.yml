@@ -84,6 +84,12 @@
     repo: "https://github.com/tmux-plugins/tpm"
     dest: "${HOME}/.tmux/plugins/tpm"
 
+- name: Create config directory for bat.
+  ansible.builtin.file:
+    path: "${HOME}/.config/bat/themes"
+    state: directory
+    mode: "0755"
+
 - name: Install catppuccin theme for bat.  # noqa: latest
   ansible.builtin.get_url:
     url: "https://raw.githubusercontent.com/catppuccin/bat/main/themes/Catppuccin%20Mocha.tmTheme"
