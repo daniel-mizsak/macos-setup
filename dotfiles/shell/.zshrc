@@ -46,9 +46,11 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
 fi
 
 ### Bat
+# https://github.com/sharkdp/bat
 export BAT_THEME="Catppuccin Mocha"
 
 ### Zoxide
+# https://github.com/ajeetdsouza/zoxide
 eval "$(zoxide init --cmd cd zsh)"
 
 ### Fzf
@@ -70,6 +72,7 @@ if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; then
 fi
 
 ### Yazy
+# https://yazi-rs.github.io/docs/quick-start
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	yazi "$@" --cwd-file="$tmp"
