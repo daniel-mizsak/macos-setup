@@ -2,20 +2,22 @@
 - name: Install zsh on Linux.
   community.general.homebrew:
     name: "zsh"
-    state: "{{ 'latest' if package_install_latest else 'present' }}"
+    state: present
     update_homebrew: true
   when: ansible_os_family != "Darwin"
+
+- name: Update homebrew index.
+  community.general.homebrew:
+    update_homebrew: true
 
 - name: Install terminal packages.
   community.general.homebrew:
     name: "{{ item }}"
-    state: "{{ 'latest' if package_install_latest else 'present' }}"
-    update_homebrew: true
+    state: present
   loop:
     - "bat"
     - "eza"
     - "fastfetch"
-    - "fzf"
     - "git"
     - "htop"
     - "lazydocker"
@@ -28,25 +30,29 @@
 
     # https://yazi-rs.github.io/docs/installation
     - "yazi"
-    - "fd"
     - "ffmpegthumbnailer"
-    - "imagemagick"
+    - "sevenzip"
     - "jq"
     - "poppler"
+    - "fd"
     - "ripgrep"
-    - "sevenzip"
-
+    - "fzf"
     - "zoxide"
+    - "imagemagick"
 
-# Fonts
 - name: Install nerd font macOS.
   community.general.homebrew_cask:
     name: "{{ item }}"
-    state: "{{ 'latest' if package_install_latest else 'present' }}"
-    update_homebrew: true
+    state: present
   loop:
     - "font-meslo-lg-nerd-font"
     - "font-symbols-only-nerd-font"
+  when: ansible_os_family == "Darwin"
+
+- name: Upgrade homebrew packages.
+  community.general.homebrew:
+    upgrade_all: true
+  when: package_install_latest
 
 # Oh My Zsh
 - name: Download ohmyzsh installer.
@@ -101,6 +107,12 @@
     bat cache --build
   args:
     creates: "${HOME}/.cache/bat"
+
+- name: Create config directory for yazi.
+  ansible.builtin.file:
+    path: "${HOME}/.config/yazi/flavors"
+    state: directory
+    mode: "0755"
 
 - name: Install catppuccin-mocha theme for yazi.
   ansible.builtin.command: >

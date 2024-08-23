@@ -1,11 +1,13 @@
 ---
 # Homebrew packages
+- name: Update homebrew index.
+  community.general.homebrew:
+    update_homebrew: true
+
 - name: Install homebrew packages.
   community.general.homebrew:
     name: "{{ item }}"
-    state: "{{ 'latest' if package_install_latest else 'present' }}"
-    update_homebrew: true
-    upgrade_all: "{{ package_install_latest }}"
+    state: present
   loop:
     - "dockutil"
     - "doctl"
@@ -18,63 +20,65 @@
 - name: Install homebrew casks.
   community.general.homebrew_cask:
     name: "{{ item }}"
-    state: "{{ 'latest' if package_install_latest else 'present' }}"
-    update_homebrew: true
-    upgrade_all: "{{ package_install_latest }}"
+    state: present
   loop:
-    # Fonts
-    - "font-meslo-lg-nerd-font"
     # General
     - "1password"
     - "alacritty"
     - "arc"
-    # - "mullvadvpn"
-    # - "obsidian"
-    # - "signal"
-    # - "slack"
-    # - "spotify"
+    - "mullvadvpn"
+    - "obsidian"
+    - "signal"
+    - "slack"
+    - "spotify"
     # Development
-    # - "db-browser-for-sqlite"
-    # - "devtoys"
-    # - "docker"
-    # - "dotnet-sdk"
-    # - "github"
-    # - "iterm2"
-    # - "parallels"  # For this `Privacy and Security` -> `App Management` -> `Terminal` has to be enabled.
-    # - "postman"
-    # - "raspberry-pi-imager"
-    # - "sublime-text"
-    # - "vagrant-vmware-utility"
-    # - "vagrant"
-    # - "visual-studio-code"
-    # - "vmware-fusion"
-    # - "vnc-viewer"
-    # - "wezterm"
+    - "db-browser-for-sqlite"
+    - "devtoys"
+    - "docker"
+    - "dotnet-sdk"
+    - "github"
+    - "iterm2"
+    - "parallels"  # For this `Privacy and Security` -> `App Management` -> `Terminal` has to be enabled.
+    - "postman"
+    - "raspberry-pi-imager"
+    - "sublime-text"
+    - "vagrant-vmware-utility"
+    - "vagrant"
+    - "visual-studio-code"
+    - "vmware-fusion"
+    - "vnc-viewer"
+    - "wezterm"
     # Utility
-    # - "aldente"
-    # - "appcleaner"
-    # - "betterdisplay"
-    # - "hiddenbar"
-    # - "keyboardcleantool"
-    # - "obs"
-    # - "openinterminal"
-    # - "raycast"
-    # - "scroll-reverser"
-    # - "synology-drive"
-    # - "vlc"
+    - "aldente"
+    - "appcleaner"
+    - "betterdisplay"
+    - "hiddenbar"
+    - "keyboardcleantool"
+    - "obs"
+    - "openinterminal"
+    - "raycast"
+    - "scroll-reverser"
+    - "synology-drive"
+    - "vlc"
     # Creative
-    # - "affinity-designer"
-    # - "affinity-photo"
-    # - "affinity-publisher"
-    # - "updf"
+    - "affinity-designer"
+    - "affinity-photo"
+    - "affinity-publisher"
+    - "updf"
   tags:
     - ignore-vm
+  when: false
+
+- name: Upgrade homebrew packages.
+  community.general.homebrew:
+    upgrade_all: true
+  when: package_install_latest
 
 # App Store
 - name: Install app store apps.  # noqa: args[module]
   community.general.mas:
     id: "{{ item | int }}"
-    state: "{{ 'latest' if package_install_latest else 'present' }}"
+    state: present
   loop:
     # Development
     - 497799835  # Xcode
@@ -95,6 +99,12 @@
     - 1521133201  # Speed Player for Safari
   tags:
     - ignore-vm
+  when: false
+
+- name: Upgrade app store apps.
+  community.general.mas:
+    upgrade_all: true
+  when: package_install_latest
 
 # Create package symlinks.
 - name: Ensure symlink directories exist.
