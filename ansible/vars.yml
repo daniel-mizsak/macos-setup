@@ -61,5 +61,5 @@ windows_terminal:
     dest: "{{ ansible_env.USERPROFILE }}\\.gitmessage"
 
   # wezterm
-  - source: ${HOME}/macos-setup/dotfiles/config/wezterm/wezterm.lua
+  - source: ${HOME}/macos-setup/dotfiles/config/wezterm/windows_wezterm.lua
     dest: "{{ ansible_env.USERPROFILE }}\\.wezterm.lua"
