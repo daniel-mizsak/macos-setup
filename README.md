@@ -15,4 +15,4 @@ The following setup options are available:
 - [Full macOS setup](docs/macos-setup.md)
 - [Terminal setup for macOS](docs/macos-terminal-setup.md)
 - [Terminal setup for Ubuntu](docs/ubuntu-terminal-setup.md)
-- [Chocolatey setup for Windows](docs/windows-choco.md)
+- [Chocolatey setup for Windows](docs/windows-chocolatey.md)
