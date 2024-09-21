@@ -57,6 +57,7 @@
   "window.zoomLevel": -0.35,
   // Workbench
   "workbench.colorTheme": "Default Dark+",
+  "workbench.editor.wrapTabs": true,
   "workbench.enableExperiments": false,
   "workbench.settings.editor": "json",
   "workbench.settings.openDefaultSettings": true,
@@ -75,6 +76,7 @@
     Dev Containers
     Docker
     Even Better TOML
+    GistPad
     Github Actions
     GitHub Copilot
     GitHub Copilot Chat
@@ -89,6 +91,7 @@
     Live Share
     Mypy Type Checker
     Nix IDE
+    PowerShell
     psioniq File Header
     Pylance
     Python
@@ -99,7 +102,8 @@
     Remote Explorer
     Ruff
     SQLite
-    Vim
+    ? Vim
+    ? VSCode Neovim
     vscode-pdf
     WSL
     YAML
