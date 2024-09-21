@@ -30,7 +30,6 @@
 
     # https://yazi-rs.github.io/docs/installation
     - "yazi"
-    - "ffmpegthumbnailer"
     - "sevenzip"
     - "jq"
     - "poppler"
@@ -39,6 +38,7 @@
     - "fzf"
     - "zoxide"
     - "imagemagick"
+    - "ffmpegthumbnailer"
 
 - name: Install nerd font macOS.
   community.general.homebrew_cask:
