@@ -1,26 +1,26 @@
 ---
-- name: Set system appearance to dark.
+- name: Set system appearance to dark
   community.general.osx_defaults:
     domain: NSGlobalDomain
     key: AppleInterfaceStyle
     value: Dark
     type: string
 
-- name: Disable desktop reveal by clicking wallpaper.
+- name: Disable desktop reveal by clicking wallpaper
   community.general.osx_defaults:
     domain: com.apple.WindowManager
     key: EnableStandardClickToShowDesktop
     value: 0
     type: int
 
-- name: Do not create .DS_Store files on network volumes.
+- name: Do not create .DS_Store files on network volumes
   community.general.osx_defaults:
     domain: com.apple.desktopservices
     key: DSDontWriteNetworkStores
     value: 'true'
     type: string
 
-- name: Set sublime text as default editor.
+- name: Set sublime text as default editor
   community.general.osx_defaults:
     domain: com.apple.LaunchServices/com.apple.launchservices.secure
     key: LSHandlers

@@ -1,12 +1,12 @@
 ---
-- name: Ensure symlink directories exist.
+- name: Ensure symlink directories exist
   ansible.builtin.file:
     path: "{{ item.dest | dirname }}"
     state: directory
     mode: "0775"
   loop: "{{ dotfile_symlinks }}"
 
-- name: Create dotfile symlinks.
+- name: Create dotfile symlinks
   ansible.builtin.file:
     src: "{{ item.source }}"
     dest: "{{ item.dest }}"

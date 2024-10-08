@@ -88,6 +88,8 @@ alias cat="bat"
 alias ls="eza --color=always --all --icons=always"
 alias ll="eza --color=always --all --long --icons=always"
 alias lzd="lazydocker"
+# Kubernetes
+alias k="kubectl"
 # Python
 alias create_venv="python -m venv --upgrade-deps .venv"
 alias activate_venv="source .venv/bin/activate"

@@ -1,16 +1,16 @@
 ---
-- name: Install zsh on Linux.
+- name: Install zsh on Linux
   community.general.homebrew:
     name: "zsh"
     state: present
     update_homebrew: true
   when: ansible_os_family != "Darwin"
 
-- name: Update homebrew index.
+- name: Update homebrew index
   community.general.homebrew:
     update_homebrew: true
 
-- name: Install terminal packages.
+- name: Install terminal packages
   community.general.homebrew:
     name: "{{ item }}"
     state: present
@@ -40,7 +40,7 @@
     - "imagemagick"
     - "ffmpegthumbnailer"
 
-- name: Install nerd font macOS.
+- name: Install nerd font macOS
   community.general.homebrew_cask:
     name: "{{ item }}"
     state: present
@@ -49,19 +49,19 @@
     - "font-symbols-only-nerd-font"
   when: ansible_os_family == "Darwin"
 
-- name: Upgrade homebrew packages.
+- name: Upgrade homebrew packages
   community.general.homebrew:
     upgrade_all: true
   when: package_install_latest
 
 # Oh My Zsh
-- name: Download ohmyzsh installer.
+- name: Download ohmyzsh installer
   ansible.builtin.get_url:
     url: "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
     dest: "/tmp/ohmyzsh-install.sh"
     mode: "0755"
 
-- name: Run ohmyzsh installer.
+- name: Run ohmyzsh installer
   ansible.builtin.command: >
     /tmp/ohmyzsh-install.sh
   args:
@@ -90,7 +90,7 @@
     repo: "https://github.com/tmux-plugins/tpm"
     dest: "${HOME}/.tmux/plugins/tpm"
 
-- name: Create config directory for bat.
+- name: Create config directory for bat
   ansible.builtin.file:
     path: "${HOME}/.config/bat/themes"
     state: directory
@@ -102,33 +102,33 @@
     dest: "${HOME}/.config/bat/themes/Catppuccin Mocha.tmTheme"
     mode: "0755"
 
-- name: Rebuild bat's cache.
+- name: Rebuild bat's cache
   ansible.builtin.command: >
     bat cache --build
   args:
     creates: "${HOME}/.cache/bat"
 
-- name: Create config directory for yazi.
+- name: Create config directory for yazi
   ansible.builtin.file:
     path: "${HOME}/.config/yazi/flavors"
     state: directory
     mode: "0755"
 
-- name: Install catppuccin-mocha theme for yazi.
+- name: Install catppuccin-mocha theme for yazi
   ansible.builtin.command: >
     ya pack -a yazi-rs/flavors:catppuccin-mocha
   args:
     creates: "${HOME}/.config/yazi/flavors/catppuccin-mocha.yazi/flavor.toml"
 
 # Create terminal symlinks.
-- name: Ensure symlink directories exist.
+- name: Ensure symlink directories exist
   ansible.builtin.file:
     path: "{{ item.dest | dirname }}"
     state: directory
     mode: "0775"
   loop: "{{ terminal_symlinks }}"
 
-- name: Create dotfile symlinks.
+- name: Create dotfile symlinks
   ansible.builtin.file:
     src: "{{ item.source }}"
     dest: "{{ item.dest }}"

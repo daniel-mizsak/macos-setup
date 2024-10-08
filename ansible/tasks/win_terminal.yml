@@ -6,7 +6,7 @@
   loop:
     - "wezterm"
 
-- name: Copy dotfiles.
+- name: Copy dotfiles
   ansible.windows.win_copy:
     src: "{{ item.source }}"
     dest: "{{ item.destination }}"
