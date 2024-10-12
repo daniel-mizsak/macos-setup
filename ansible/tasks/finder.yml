@@ -1,4 +1,6 @@
 ---
+# https://macos-defaults.com/
+
 - name: Finder show all files
   community.general.osx_defaults:
     domain: com.apple.finder
@@ -32,7 +34,7 @@
   community.general.osx_defaults:
     domain: com.apple.finder
     key: NewWindowTarget
-    value: "PfDo"
+    value: PfDo
     type: string
 
 # Finder advanced settings
@@ -87,6 +89,13 @@
     type: bool
 
 # Finder view settings
+- name: Finder show items in column view
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: FXPreferredViewStyle
+    value: clmv
+    type: string
+
 - name: Finder show tool bar
   community.general.osx_defaults:
     domain: com.apple.finder
