@@ -1,5 +1,6 @@
 ### General
 export EDITOR=nvim
+export SUDO_EDITOR=nvim
 
 CASE_SENSITIVE="false"
 ZSH_THEME="kphoen"
@@ -18,7 +19,7 @@ export ZSH="${HOME}/.oh-my-zsh"
 export ZSH_COMPDUMP=${ZSH}/cache/.zcompdump-${HOST}
 
 zstyle ':omz:update' mode auto
-zstyle ':omz:update' frequency 7
+zstyle ':omz:update' frequency 14
 
 plugins=(
     docker
@@ -58,6 +59,10 @@ eval "$(zoxide init --cmd cd zsh)"
 source <(fzf --zsh)
 setopt globdots
 zstyle ':completion:*' special-dirs false
+
+### Atuin
+# https://github.com/atuinsh/atuin
+eval "$(atuin init zsh)"
 
 ### Pyenv
 # https://github.com/pyenv/pyenv?tab=readme-ov-file#set-up-your-shell-environment-for-pyenv
