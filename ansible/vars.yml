@@ -3,8 +3,8 @@ package_install_latest: true
 
 terminal_symlinks:
   # atuin
-  - source: ${HOME}/macos-setup/dotfiles/config/atuin/atuin.toml
-    dest: ${HOME}/.config/atuin/atuin.toml
+  - source: ${HOME}/macos-setup/dotfiles/config/atuin/config.toml
+    dest: ${HOME}/.config/atuin/config.toml
 
   # fastfetch
   - source: ${HOME}/macos-setup/dotfiles/config/fastfetch/config.jsonc
