@@ -76,6 +76,12 @@ if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; then
   fastfetch
 fi
 
+### Nix
+# https://github.com/NixOS/nix/issues/3616
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+
 ### Yazy
 # https://yazi-rs.github.io/docs/quick-start
 function yy() {

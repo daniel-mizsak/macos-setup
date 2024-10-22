@@ -65,6 +65,7 @@
   // Extensions
   /*
     .NET Install Tool
+    ? .NET MAUI
     Ansible
     autoDocstring - Python Docstring Generator
     Better Comments
@@ -121,6 +122,7 @@
   "[csharp]": {
     "editor.defaultFormatter": "ms-dotnettools.csharp",
   },
+  "csharp.experimental.debug.hotReload": true,
   // Code Runner
   "code-runner.executorMap": {
     "csharp": "cd $dir && dotnet run",
