@@ -5,8 +5,6 @@
 
   services.nix-daemon.enable = true;
   nix.settings.experimental-features = "nix-command flakes";
-  nixpkgs.hostPlatform = "aarch64-darwin";
-  nixpkgs.config.allowUnfree = true;
   programs.zsh.enable = true;
 
   users.users.${vars.user}.homd = "/Users/${vars.user}";

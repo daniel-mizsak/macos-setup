@@ -8,12 +8,16 @@
   home.HomeDirectory = "/Users/${vars.user}";
   home.stateVersion = "24.05";
 
-  program.zsh = {
-    enable = true;
-    zshrcExtra = ''
-      . $HOME/macos-setup/dotfiles/shell/.zshrc
-    ''
+  home.packages = with pkgs; [ ];
+
+  home.file = {
+    ".zshrc".source = ~/macos-setup/dotfiles/shell/.zshrc;
+    ".config/wezterm".source = ~/macos-setup/dotfiles/config/wezterm;
+    ".config/oh-my-posh".source = ~/macos-setup/dotfiles/config/oh-my-posh;
+    ".gitconfig".source = ~/macos-setup/dotfiles/git/.gitconfig;
   };
 
-  home.packages = with pkgs; [ ];
+  programs.home-manager.enable = true;
+  program.zsh.enable = true;
+
 }

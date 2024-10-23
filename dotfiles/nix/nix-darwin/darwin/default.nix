@@ -1,5 +1,4 @@
 {
-  inputs,
   nixpkgs,
   home-manager,
   darwin,
@@ -9,7 +8,16 @@
 
 {
   Mizsak-D-MBM = darwin.lib.darwinSystem {
-    system = "aarch64-darwin";
+    system = vars.system;
+    pkgs = nixpkgs {
+      hostPlatform = vars.system;
+      config.allowUnfree = true;
+    };
+
+    specialArgs = {
+      inherit vars;
+    };
+
     modules = [
       nix-homebrew.darwinModules.nix-homebrew
       {
@@ -17,10 +25,10 @@
           enable = true;
           enableRosetta = true;
           user = vars.user;
+          mutableTaps = false;
         };
       }
 
-      # TODO: Add variable inheritance
       ./darwin-configuration.nix
 
       home-manager.darwinModules.home-manager
@@ -28,9 +36,7 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          users.${vars.user} = {
-            imports = [ ./home.nix ];
-          };
+          users.${vars.user} = import ./home.nix;
         };
       }
     ];

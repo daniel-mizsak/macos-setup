@@ -20,12 +20,12 @@
           "/Applications/Signal.app"
           "${pkgs.vscode}/Applications/Visual\ Studio\ Code.app"
           "/Applications/System\ Settings.app"
-          "${HOME}/Downloads"
+          "$~/Downloads"
         ];
       };
       security = {
         pam.enableSudoTouchID = true;
-      }
+      };
     };
     stateVersion = 4;
   };
