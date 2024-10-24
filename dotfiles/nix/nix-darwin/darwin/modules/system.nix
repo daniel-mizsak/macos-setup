@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, vars, ... }:
 
 {
   system = {
@@ -12,21 +12,20 @@
         magnification = false;
         orientation = "bottom";
         autohide = true;
-        autohide-time-modifier = 0;
-        autohide-delay = 0;
+        autohide-time-modifier = 0.0;
+        autohide-delay = 0.0;
         persistent-apps = [
           "/Applications/Safari.app"
-          "/Applications/Mail.app"
-          "/Applications/Signal.app"
+          "/System/Applications/Mail.app"
+          "${pkgs.signal-desktop}/Applications/Signal.app"
           "${pkgs.vscode}/Applications/Visual\ Studio\ Code.app"
-          "/Applications/System\ Settings.app"
-          "$~/Downloads"
+          "/System/Applications/System Settings.app"
         ];
-      };
-      security = {
-        pam.enableSudoTouchID = true;
+        show-recents = false;
+        persistent-others = [ "/Users/${vars.user}/Downloads/" ];
       };
     };
     stateVersion = 4;
   };
+  security.pam.enableSudoTouchIdAuth = true;
 }

@@ -1,4 +1,4 @@
-{ }:
+{ ... }:
 
 {
   homebrew = {
@@ -7,7 +7,16 @@
       upgrade = false;
       cleanup = "zap";
     };
-    casks = [ "1password" ];
+    casks = [
+      "1password"
+      "keyboardcleantool"
+      "openinterminal"
+      "parallels@19"
+      "raspberry-pi-imager"
+      "scroll-reverser"
+      # "sublime-text"
+      "wezterm"
+    ];
     masApps = {
       # General
       "Compressor" = 424390742;

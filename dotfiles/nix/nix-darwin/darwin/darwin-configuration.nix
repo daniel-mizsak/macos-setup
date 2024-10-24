@@ -7,7 +7,7 @@
   nix.settings.experimental-features = "nix-command flakes";
   programs.zsh.enable = true;
 
-  users.users.${vars.user}.homd = "/Users/${vars.user}";
+  users.users.${vars.user}.home = "/Users/${vars.user}";
 
   environment = {
     variables = {
@@ -20,6 +20,7 @@
       bat
       eza
       fastfetch
+      fzf
       git
       htop
       lazydocker
@@ -30,6 +31,7 @@
       tmux
       tree
       wget
+      zoxide
       # General
       aldente
       arc-browser

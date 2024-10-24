@@ -5,17 +5,18 @@
   nix-homebrew,
   vars,
 }:
-
+let
+  pkgs = import nixpkgs {
+    system = vars.system;
+    config.allowUnfree = true;
+  };
+in
 {
   Mizsak-D-MBM = darwin.lib.darwinSystem {
     system = vars.system;
-    pkgs = nixpkgs {
-      hostPlatform = vars.system;
-      config.allowUnfree = true;
-    };
 
     specialArgs = {
-      inherit vars;
+      inherit pkgs vars;
     };
 
     modules = [
@@ -25,7 +26,6 @@
           enable = true;
           enableRosetta = true;
           user = vars.user;
-          mutableTaps = false;
         };
       }
 
@@ -36,7 +36,7 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          users.${vars.user} = import ./home.nix;
+          users.${vars.user} = import ./home.nix { inherit pkgs vars; };
         };
       }
     ];
