@@ -9,13 +9,25 @@
     };
     casks = [
       "1password"
+      "affinity-designer"
+      "affinity-photo"
+      "affinity-publisher"
+      "betterdisplay"
+      "db-browser-for-sqlite"
+      "devtoys"
+      "github"
+      "hiddenbar"
       "keyboardcleantool"
+      "mullvadvpn"
+      "obs"
       "openinterminal"
       "parallels@19"
       "raspberry-pi-imager"
       "scroll-reverser"
-      # "sublime-text"
-      "wezterm"
+      "sublime-text"
+      "updf"
+      "vlc"
+      "vnc-viewer"
     ];
     masApps = {
       # General

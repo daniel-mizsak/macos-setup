@@ -26,6 +26,7 @@ in
           enable = true;
           enableRosetta = true;
           user = vars.user;
+          mutableTaps = false;
         };
       }
 
