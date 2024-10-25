@@ -39,6 +39,7 @@
         system = vars.system;
         pkgs = import nixpkgs {
           system = vars.system;
+          hostPlatform = vars.system;
           config.allowUnfree = true;
         };
 

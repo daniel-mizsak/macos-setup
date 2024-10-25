@@ -8,6 +8,7 @@
   environment = {
     variables = {
       EDITOR = "nvim";
+      SUDO_EDITOR = "nvim";
       VISUAL = "nvim";
       TERMINAL = "wezterm";
     };

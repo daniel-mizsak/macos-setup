@@ -13,7 +13,7 @@
       programs.zsh.enable = true;
 
       home = {
-        stateVersion = "24.05";
+        stateVersion = "24.11";
         username = vars.user;
         file = {
           ### Terminal
