@@ -33,36 +33,43 @@
         system = "aarch64-darwin";
         user = "damz";
       };
+      pkgs = import nixpkgs {
+        system = vars.system;
+        hostPlatform = vars.system;
+        config.allowUnfree = true;
+      };
     in
     {
       darwinConfigurations.Mizsak-D-MBM = darwin.lib.darwinSystem {
         system = vars.system;
-        pkgs = import nixpkgs {
-          system = vars.system;
-          hostPlatform = vars.system;
-          config.allowUnfree = true;
-        };
 
         specialArgs = {
-          inherit
-            nixpkgs
-            home-manager
-            darwin
-            nix-homebrew
-            vars
-            ;
+          inherit vars pkgs;
         };
 
         modules = [
           ./modules/darwin-system.nix
-          ./modules/programs.nix
+          # ./modules/programs.nix
 
           nix-homebrew.darwinModules.nix-homebrew
-          ./modules/nix-homebrew.nix
+          {
+            nix-homebrew = {
+              enable = true;
+              enableRosetta = true;
+              user = vars.user;
+            };
+          }
 
           home-manager.darwinModules.home-manager
-          ./modules/home.nix
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.${vars.user} = import ./modules/home.nix { inherit vars pkgs; };
+            };
+          }
         ];
       };
+      darwinPackages = self.darwinConfigurations.Mizsak-D-MBM.pkgs;
     };
 }

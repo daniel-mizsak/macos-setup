@@ -2,7 +2,9 @@
 { pkgs, vars, ... }:
 
 {
+  nix.configureBuildUsers = true;
   nix.settings.experimental-features = "nix-command flakes";
+  nix.useDaemon = true;
   services.nix-daemon.enable = true;
   users.users.${vars.user}.home = "/Users/${vars.user}";
 
@@ -43,8 +45,12 @@
         ShowPathbar = true;
         ShowStatusBar = true;
       };
-      WindowManager.EnableStandardClickToShowDesktop = false;
+      trackpad = {
+        Clicking = true;
+        Dragging = true;
+      };
       CustomUserPreferences = {
+        "com.apple.controlcenter.plist".BatteryShowPercentage = true;
         "com.apple.dock" = {
           contents-immutable = true;
           size-immutable = true;
@@ -58,8 +64,13 @@
           ShowToolbar = true;
           WarnOnEmptyTrash = false;
         };
-        "com.apple.controlcenter.plist".BatteryShowPercentage = true;
+        "com.apple.menuextra.clock" = {
+          DateFormat = "HH:mm";
+          FlashDateSeparators = false;
+          Show24Hour = true;
+        };
       };
+      WindowManager.EnableStandardClickToShowDesktop = false;
     };
   };
   security.pam.enableSudoTouchIdAuth = true;

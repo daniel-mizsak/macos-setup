@@ -1,61 +1,60 @@
 # https://mynixos.com/home-manager/option/home.stateVersion
 # https://wiki.nixos.org/wiki/Home_Manager
 
-{ vars, ... }:
+{ vars, pkgs, ... }:
 
 {
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
+  programs.home-manager.enable = true;
+  programs.zsh.enable = true;
 
-    users.${vars.user} = {
-      programs.home-manager.enable = true;
-      programs.zsh.enable = true;
+  home = {
+    stateVersion = "24.11";
+    username = vars.user;
 
-      home = {
-        stateVersion = "24.11";
-        username = vars.user;
-        file = {
-          ### Terminal
-          # atuin
-          ".config/atuin/config.toml".source = ~/macos-setup/dotfiles/config/atuin/config.toml;
+    packages = with pkgs; [
+      bat
+      eza
+    ];
 
-          # fastfetch
-          ".config/fastfetch/config.jsonc".source = ~/macos-setup/dotfiles/config/fastfetch/config.jsonc;
+    file = {
+      ### Terminal
+      # atuin
+      ".config/atuin/config.toml".source = ~/macos-setup/dotfiles/config/atuin/config.toml;
 
-          # git
-          ".gitconfig".source = ~/macos-setup/dotfiles/git/.gitconfig;
-          ".gitignore_global".source = ~/macos-setup/dotfiles/git/.gitignore_global;
-          ".gitmessage".source = ~/macos-setup/dotfiles/git/.gitmessage;
+      # fastfetch
+      ".config/fastfetch/config.jsonc".source = ~/macos-setup/dotfiles/config/fastfetch/config.jsonc;
 
-          # neovim
-          ".config/nvim".source = ~/macos-setup/dotfiles/config/nvim;
+      # git
+      ".gitconfig".source = ~/macos-setup/dotfiles/git/.gitconfig;
+      ".gitignore_global".source = ~/macos-setup/dotfiles/git/.gitignore_global;
+      ".gitmessage".source = ~/macos-setup/dotfiles/git/.gitmessage;
 
-          # oh-my-post
-          ".config/oh-my-posh".source = ~/macos-setup/dotfiles/config/oh-my-posh;
+      # neovim
+      ".config/nvim".source = ~/macos-setup/dotfiles/config/nvim;
 
-          # tmux
-          ".config/tmux/tmux.conf".source = ~/macos-setup/dotfiles/config/tmux/.tmux.conf;
+      # oh-my-post
+      ".config/oh-my-posh/oh-my-posh.toml".source = ~/macos-setup/dotfiles/config/oh-my-posh/oh-my-posh.toml;
 
-          # yazi
-          ".config/yazi/theme.toml".source = ~/macos-setup/dotfiles/config/yazi/theme.toml;
+      # tmux
+      ".config/tmux/tmux.conf".source = ~/macos-setup/dotfiles/config/tmux/.tmux.conf;
 
-          ".zshrc".source = ~/macos-setup/dotfiles/shell/.zshrc;
+      # yazi
+      ".config/yazi/theme.toml".source = ~/macos-setup/dotfiles/config/yazi/theme.toml;
 
-          ### Package
-          # alacritty
-          ".config/alacritty/alacritty.toml".source = ~/macos-setup/dotfiles/config/alacritty/alacritty.toml;
+      ".zshrc".source = ~/macos-setup/dotfiles/shell/.zshrc;
 
-          # sublime
-          "/Library/Application Support/Sublime Text/Packages/User/Preferences.sublime-settings".source = ~/macos-setup/dotfiles/sublime/Preferences.sublime-settings;
+      ### Package
+      # alacritty
+      ".config/alacritty/alacritty.toml".source = ~/macos-setup/dotfiles/config/alacritty/alacritty.toml;
 
-          # vscode
-          "/Library/Application Support/Code/User/settings.json".source = ~/macos-setup/dotfiles/vscode/settings.json;
+      # sublime
+      "/Library/Application Support/Sublime Text/Packages/User/Preferences.sublime-settings".source = ~/macos-setup/dotfiles/sublime/Preferences.sublime-settings;
 
-          # wezterm
-          ".config/wezterm/wezterm.lua".source = ~/macos-setup/dotfiles/config/wezterm/wezterm.lua;
-        };
-      };
+      # vscode
+      "/Library/Application Support/Code/User/settings.json".source = ~/macos-setup/dotfiles/vscode/settings.json;
+
+      # wezterm
+      ".config/wezterm/wezterm.lua".source = ~/macos-setup/dotfiles/config/wezterm/wezterm.lua;
     };
   };
 }
