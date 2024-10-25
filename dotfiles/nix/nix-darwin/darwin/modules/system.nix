@@ -6,14 +6,12 @@
     stateVersion = 5;
     defaults = {
       NSGlobalDomain = {
-        AppleActionOnDoubleClick = "Maximize";
         AppleInterfaceStyle = "Dark";
       };
       dock = {
         autohide = true;
         autohide-delay = 0.0;
         autohide-time-modifier = 0.0;
-        contents-immutable = true;
         launchanim = true;
         magnification = false;
         mineffect = "genie";
@@ -21,7 +19,6 @@
         orientation = "bottom";
         show-process-indicators = true;
         show-recents = false;
-        size-immutable = true;
         tilesize = 60;
         persistent-apps = [
           "/Applications/Safari.app"
@@ -42,16 +39,24 @@
         ShowPathbar = true;
         ShowStatusBar = true;
       };
+      WindowManager.EnableStandardClickToShowDesktop = false;
+      CustomUserPreferences = {
+        "com.apple.dock" = {
+          contents-immutable = true;
+          size-immutable = true;
+        };
+        "com.apple.finder" = {
+          NewWindowTarget = "PfDo";
+          NewWindowTargetPath = "file://Users/${vars.user}/Documents/";
+          ShowExternalHardDrivesOnDesktop = true;
+          ShowHardDrivesOnDesktop = true;
+          ShowRecentTags = false;
+          ShowToolbar = true;
+          WarnOnEmptyTrash = false;
+        };
+        "com.apple.controlcenter.plist".BatteryShowPercentage = true;
+      };
     };
   };
-  activationScripts.postActivation.text = ''
-    defaults write com.apple.finder NewWindowTarget -string "PfDo"
-    defaults write com.apple.finder NewWindowTargetPath -string "file://Users/${vars.user}/Documents/"
-    defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
-    defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
-    defaults write com.apple.finder ShowRecentTags -bool false
-    defaults write com.apple.finder ShowToolbar -bool true
-    defaults write com.apple.finder WarnOnEmptyTrash -bool true
-  '';
   security.pam.enableSudoTouchIdAuth = true;
 }

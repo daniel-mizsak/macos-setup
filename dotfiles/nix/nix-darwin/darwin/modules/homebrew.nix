@@ -15,6 +15,7 @@
       "betterdisplay"
       "db-browser-for-sqlite"
       "devtoys"
+      "docker"
       "github"
       "hiddenbar"
       "keyboardcleantool"
@@ -22,12 +23,15 @@
       "obs"
       "openinterminal"
       "parallels@19"
+      "podman-desktop"
       "raspberry-pi-imager"
       "scroll-reverser"
+      "spotify"
       "sublime-text"
       "updf"
       "vlc"
       "vnc-viewer"
+      "wezterm"
     ];
     masApps = {
       # General

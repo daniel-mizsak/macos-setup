@@ -56,19 +56,14 @@
       alacritty
       aldente
       arc-browser
-      docker
       iterm2
       obsidian
-      podman
-      podman-compose
       postman
       raycast
       signal-desktop
       slack
-      spotify
       synology-drive-client
       vscode
-      wezterm
     ];
   };
 
