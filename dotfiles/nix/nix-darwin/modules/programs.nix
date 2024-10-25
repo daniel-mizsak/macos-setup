@@ -1,17 +1,15 @@
-{ pkgs }:
+{ pkgs, ... }:
 
 {
   # Fonts
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "Meslo" ]; })
-  ];
+  fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "Meslo" ]; }) ];
 
   # Nix
   environment = {
     variables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
-      TERMINAL = "wezterm"
+      TERMINAL = "wezterm";
     };
     systemPackages = with pkgs; [
       # Terminal

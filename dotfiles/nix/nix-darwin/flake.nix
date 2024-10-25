@@ -26,6 +26,7 @@
       home-manager,
       darwin,
       nix-homebrew,
+      ...
     }:
     let
       vars = {
@@ -35,22 +36,32 @@
     in
     {
       darwinConfigurations.Mizsak-D-MBM = darwin.lib.darwinSystem {
-          specialArgs = { inherit inputs; };
-
+        system = vars.system;
+        pkgs = import nixpkgs {
           system = vars.system;
-          pkgs = inputs.nixpkgs {
-            system = vars.system;
-            config.allowUnfree = true;
-          };
-          nix.settings.experimental-features = "nix-command flakes";
-          services.nix-daemon.enable = true;
-
-          modules = [
-            ./modules/nix-homebrew.nix
-            ./modules/home.nix
-            ./modules/darwin-system.nix
-            ./modules/programs.nix
-          ];
+          config.allowUnfree = true;
         };
+
+        specialArgs = {
+          inherit
+            nixpkgs
+            home-manager
+            darwin
+            nix-homebrew
+            vars
+            ;
+        };
+
+        modules = [
+          ./modules/darwin-system.nix
+          ./modules/programs.nix
+
+          nix-homebrew.darwinModules.nix-homebrew
+          ./modules/nix-homebrew.nix
+
+          home-manager.darwinModules.home-manager
+          ./modules/home.nix
+        ];
+      };
     };
 }

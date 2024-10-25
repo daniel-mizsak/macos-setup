@@ -2,6 +2,10 @@
 { pkgs, vars, ... }:
 
 {
+  nix.settings.experimental-features = "nix-command flakes";
+  services.nix-daemon.enable = true;
+  users.users.${vars.user}.home = "/Users/${vars.user}";
+
   system = {
     stateVersion = 5;
     defaults = {
