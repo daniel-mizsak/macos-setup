@@ -9,7 +9,6 @@
     variables = {
       EDITOR = "nvim";
       SUDO_EDITOR = "nvim";
-      VISUAL = "nvim";
       TERMINAL = "wezterm";
     };
     systemPackages = with pkgs; [
@@ -28,6 +27,7 @@
       jq
       lazydocker
       lazygit
+      lens
       neovim
       oh-my-posh
       poppler
@@ -73,6 +73,7 @@
       "affinity-photo"
       "affinity-publisher"
       "betterdisplay"
+      "boosteroid"
       "db-browser-for-sqlite"
       "devtoys"
       "docker"
