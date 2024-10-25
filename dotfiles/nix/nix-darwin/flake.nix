@@ -31,21 +31,26 @@
       vars = {
         system = "aarch64-darwin";
         user = "damz";
-        terminal = "wezterm";
-        editor = "nvim";
       };
     in
     {
-      darwinConfigurations = (
-        import ./darwin {
-          inherit
-            nixpkgs
-            home-manager
-            darwin
-            nix-homebrew
-            vars
-            ;
-        }
-      );
+      darwinConfigurations.Mizsak-D-MBM = darwin.lib.darwinSystem {
+          specialArgs = { inherit inputs; };
+
+          system = vars.system;
+          pkgs = inputs.nixpkgs {
+            system = vars.system;
+            config.allowUnfree = true;
+          };
+          nix.settings.experimental-features = "nix-command flakes";
+          services.nix-daemon.enable = true;
+
+          modules = [
+            ./modules/nix-homebrew.nix
+            ./modules/home.nix
+            ./modules/darwin-system.nix
+            ./modules/programs.nix
+          ];
+        };
     };
 }

@@ -1,6 +1,67 @@
-{ ... }:
+{ pkgs }:
 
 {
+  # Fonts
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "Meslo" ]; })
+  ];
+
+  # Nix
+  environment = {
+    variables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+      TERMINAL = "wezterm"
+    };
+    systemPackages = with pkgs; [
+      # Terminal
+      atuin
+      bat
+      dotnet-sdk
+      eza
+      fastfetch
+      fd
+      ffmpegthumbnailer
+      fzf
+      git
+      htop
+      imagemagick
+      jq
+      lazydocker
+      lazygit
+      neovim
+      oh-my-posh
+      poppler
+      pyenv
+      ripgrep
+      tmux
+      tmuxPlugins.catppuccin
+      tmuxPlugins.continuum
+      tmuxPlugins.resurrect
+      tmuxPlugins.vim-tmux-navigator
+      tree
+      wget
+      yazi
+      zoxide
+      zsh-autosuggestions
+      zsh-fzf-tab
+      zsh-syntax-highlighting
+      # General
+      alacritty
+      aldente
+      arc-browser
+      iterm2
+      obsidian
+      postman
+      raycast
+      signal-desktop
+      slack
+      synology-drive-client
+      vscode
+    ];
+  };
+
+  # Homebrew
   homebrew = {
     enable = true;
     onActivation = {
