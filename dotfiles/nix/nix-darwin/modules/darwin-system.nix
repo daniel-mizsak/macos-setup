@@ -17,6 +17,7 @@
     defaults = {
       NSGlobalDomain = {
         AppleInterfaceStyle = "Dark";
+        "com.apple.mouse.tapBehavior" = 1;
       };
       dock = {
         autohide = true;
@@ -63,6 +64,9 @@
           ShowRecentTags = false;
           ShowToolbar = true;
           WarnOnEmptyTrash = false;
+        };
+        "com.apple.mouse" = {
+          scaling = 2;
         };
         "com.apple.menuextra.clock" = {
           DateFormat = "HH:mm";
