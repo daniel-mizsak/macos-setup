@@ -26,7 +26,6 @@
       home-manager,
       darwin,
       nix-homebrew,
-      ...
     }:
     let
       vars = {
@@ -48,9 +47,6 @@
         };
 
         modules = [
-          ./modules/darwin-system.nix
-          # ./modules/programs.nix
-
           nix-homebrew.darwinModules.nix-homebrew
           {
             nix-homebrew = {
@@ -59,6 +55,9 @@
               user = vars.user;
             };
           }
+
+          ./modules/darwin-system.nix
+          ./modules/programs.nix
 
           home-manager.darwinModules.home-manager
           {

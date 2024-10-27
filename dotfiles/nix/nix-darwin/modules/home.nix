@@ -1,7 +1,7 @@
 # https://mynixos.com/home-manager/option/home.stateVersion
 # https://wiki.nixos.org/wiki/Home_Manager
 
-{ vars, pkgs, ... }:
+{ vars, ... }:
 
 {
   programs.home-manager.enable = true;
@@ -10,11 +10,6 @@
   home = {
     stateVersion = "24.11";
     username = vars.user;
-
-    packages = with pkgs; [
-      bat
-      eza
-    ];
 
     file = {
       ### Terminal

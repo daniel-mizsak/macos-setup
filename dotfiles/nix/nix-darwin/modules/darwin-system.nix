@@ -6,10 +6,14 @@
   nix.settings.experimental-features = "nix-command flakes";
   nix.useDaemon = true;
   services.nix-daemon.enable = true;
+
+  programs.zsh.enable = true;
   users.users.${vars.user}.home = "/Users/${vars.user}";
 
   system = {
     stateVersion = 5;
+    # configurationRevision = self.rev or self.dirtyRev or null;
+
     defaults = {
       NSGlobalDomain = {
         AppleInterfaceStyle = "Dark";
@@ -44,10 +48,6 @@
         QuitMenuItem = true;
         ShowPathbar = true;
         ShowStatusBar = true;
-      };
-      trackpad = {
-        Clicking = true;
-        Dragging = true;
       };
       CustomUserPreferences = {
         "com.apple.controlcenter.plist".BatteryShowPercentage = true;
