@@ -3,6 +3,8 @@ export EDITOR=nvim
 export SUDO_EDITOR=nvim
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+autoload -Uz compinit
+compinit
 
 ### Zsh Autosuggestions
 # https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
@@ -32,6 +34,10 @@ eval "$(zoxide init --cmd cd zsh)"
 source <(fzf --zsh)
 setopt globdots
 zstyle ':completion:*' special-dirs false
+
+### Fzf-Tab
+# https://github.com/Aloxaf/fzf-tab?tab=readme-ov-file#install
+source ${HOME}/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
 
 ### Atuin
 # https://github.com/atuinsh/atuin
