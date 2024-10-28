@@ -34,10 +34,6 @@
       pyenv
       ripgrep
       tmux
-      tmuxPlugins.catppuccin
-      tmuxPlugins.continuum
-      tmuxPlugins.resurrect
-      tmuxPlugins.vim-tmux-navigator
       tree
       wget
       yazi

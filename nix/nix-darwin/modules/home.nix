@@ -1,11 +1,51 @@
 # https://mynixos.com/home-manager/option/home.stateVersion
 # https://wiki.nixos.org/wiki/Home_Manager
 
-{ vars, ... }:
+{ vars, pkgs, ... }:
 
 {
   programs.home-manager.enable = true;
-  programs.zsh.enable = true;
+
+  home.packages = with pkgs; [
+    tmuxPlugins.catppuccin
+    tmuxPlugins.continuum
+    tmuxPlugins.resurrect
+    tmuxPlugins.vim-tmux-navigator
+  ];
+
+  programs.zsh = {
+    enable = true;
+
+    plugins = [
+      {
+        name = "fzf-tab";
+        src = pkgs.fetchFromGitHub {
+          owner = "Aloxaf";
+          repo = "fzf-tab";
+          rev = "1.1.2";
+          hash = "sha256-Qv8zAiMtrr67CbLRrFjGaPzFZcOiMVEFLg1Z+N6VMhg=";
+        };
+      }
+      {
+        name = "zsh-autosuggestions";
+        src = pkgs.fetchFromGitHub {
+          owner = "zsh-users";
+          repo = "zsh-autosuggestions";
+          rev = "0.7.0";
+          hash = "sha256-KLUYpUu4DHRumQZ3w59m9aTW6TBKMCXl2UcKi4uMd7w=";
+        };
+      }
+      {
+        name = "zsh-syntax-highlighting";
+        src = pkgs.fetchFromGitHub {
+          owner = "zsh-users";
+          repo = "zsh-syntax-highlighting";
+          rev = "0.8.0";
+          hash = "sha256-iJdWopZwHpSyYl5/FQXEW7gl/SrKaYDEtTH9cGP7iPo=";
+        };
+      }
+    ];
+  };
 
   home = {
     stateVersion = "24.11";
@@ -15,6 +55,12 @@
       ### Terminal
       # atuin
       ".config/atuin/config.toml".source = ~/macos-setup/dotfiles/config/atuin/config.toml;
+
+      # bat
+      ".config/bat/themes/Catppuccin Mocha.tmTheme".source = pkgs.fetchurl {
+        url = "https://raw.githubusercontent.com/catppuccin/bat/refs/heads/main/themes/Catppuccin%20Mocha.tmTheme";
+        sha256 = "sha256-UBuh6EeUhD5V9TjAo7hBRaGCt3KjkkO7QDxuaEBzN0s=";
+      };
 
       # fastfetch
       ".config/fastfetch/config.jsonc".source = ~/macos-setup/dotfiles/config/fastfetch/config.jsonc;
@@ -32,11 +78,18 @@
 
       # tmux
       ".config/tmux/tmux.conf".source = ~/macos-setup/dotfiles/config/tmux/.tmux.conf;
+      ".tmux/plugins/tpm".source = pkgs.fetchFromGitHub {
+        owner = "tmux-plugins";
+        repo = "tpm";
+        rev = "v3.1.0";
+        sha256 = "sha256-CeI9Wq6tHqV68woE11lIY4cLoNY8XWyXyMHTDmFKJKI=";
+      };
 
       # yazi
       ".config/yazi/theme.toml".source = ~/macos-setup/dotfiles/config/yazi/theme.toml;
 
-      ".zshrc".source = ~/macos-setup/dotfiles/shell/.zshrc;
+      # zsh
+      ".zshrc".source = ~/macos-setup/dotfiles/shell/no-omz.zshrc;
 
       ### Package
       # alacritty
