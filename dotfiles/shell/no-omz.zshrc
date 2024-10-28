@@ -2,6 +2,8 @@
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
 
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
 ### Zsh Autosuggestions
 # https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
 source ${HOME}/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -9,17 +11,6 @@ source ${HOME}/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 ### Zsh Syntax Highlighting
 # https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
 source ${HOME}/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-### Brew
-# https://brew.sh
-# export PATH=/opt/homebrew/bin:${PATH}
-# if type brew &>/dev/null
-# then
-#   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
-#   autoload -Uz compinit
-#   compinit
-# fi
 
 ### Oh-My-Posh
 # https://ohmyposh.dev/docs/installation/prompt
@@ -41,10 +32,6 @@ eval "$(zoxide init --cmd cd zsh)"
 source <(fzf --zsh)
 setopt globdots
 zstyle ':completion:*' special-dirs false
-
-### Fzf-Tab
-# https://github.com/Aloxaf/fzf-tab?tab=readme-ov-file#install
-source ${HOME}/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
 
 ### Atuin
 # https://github.com/atuinsh/atuin

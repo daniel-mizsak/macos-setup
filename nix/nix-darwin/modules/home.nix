@@ -18,15 +18,6 @@
 
     plugins = [
       {
-        name = "fzf-tab";
-        src = pkgs.fetchFromGitHub {
-          owner = "Aloxaf";
-          repo = "fzf-tab";
-          rev = "1.1.2";
-          hash = "sha256-Qv8zAiMtrr67CbLRrFjGaPzFZcOiMVEFLg1Z+N6VMhg=";
-        };
-      }
-      {
         name = "zsh-autosuggestions";
         src = pkgs.fetchFromGitHub {
           owner = "zsh-users";
@@ -71,7 +62,9 @@
       ".gitmessage".source = ~/macos-setup/dotfiles/git/.gitmessage;
 
       # neovim
-      ".config/nvim".source = ~/macos-setup/dotfiles/config/nvim;
+      ".config/nvim/init.lua".source = ~/macos-setup/dotfiles/config/nvim/init.lua;
+      ".config/nvim/lua".source = ~/macos-setup/dotfiles/config/nvim/lua;
+      ".config/nvim/stylua.toml".source = ~/macos-setup/dotfiles/config/nvim/stylua.toml;
 
       # oh-my-post
       ".config/oh-my-posh/oh-my-posh.toml".source = ~/macos-setup/dotfiles/config/oh-my-posh/oh-my-posh.toml;
