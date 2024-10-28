@@ -59,15 +59,10 @@
           NewWindowTarget = "PfDo";
           NewWindowTargetPath = "file://Users/${vars.user}/Documents/";
           ShowExternalHardDrivesOnDesktop = true;
-          ShowHardDrivesOnDesktop = true;
+          ShowHardDrivesOnDesktop = false;
           ShowRecentTags = false;
           ShowToolbar = true;
           WarnOnEmptyTrash = false;
-        };
-        "com.apple.menuextra.clock" = {
-          DateFormat = "HH:mm";
-          FlashDateSeparators = false;
-          Show24Hour = true;
         };
       };
       WindowManager.EnableStandardClickToShowDesktop = false;

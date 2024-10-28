@@ -6,13 +6,6 @@
 {
   programs.home-manager.enable = true;
 
-  home.packages = with pkgs; [
-    tmuxPlugins.catppuccin
-    tmuxPlugins.continuum
-    tmuxPlugins.resurrect
-    tmuxPlugins.vim-tmux-navigator
-  ];
-
   programs.zsh = {
     enable = true;
 
