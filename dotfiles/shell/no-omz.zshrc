@@ -3,10 +3,7 @@ export EDITOR=nvim
 export SUDO_EDITOR=nvim
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
 
 ### Zsh Autosuggestions
 # https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
@@ -40,6 +37,11 @@ zstyle ':completion:*' special-dirs false
 ### Fzf-Tab
 # https://github.com/Aloxaf/fzf-tab?tab=readme-ov-file#install
 source ${HOME}/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:*' fzf-flags --color=fg:5
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 ### Atuin
 # https://github.com/atuinsh/atuin
