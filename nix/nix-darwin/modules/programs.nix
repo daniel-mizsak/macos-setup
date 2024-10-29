@@ -48,7 +48,6 @@
       raycast
       signal-desktop
       slack
-      synology-drive-client
       vscode
     ];
   };
@@ -82,6 +81,7 @@
       "scroll-reverser"
       "spotify"
       "sublime-text"
+      "synology-drive"
       "updf"
       "vlc"
       "vnc-viewer"

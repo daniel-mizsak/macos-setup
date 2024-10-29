@@ -48,17 +48,17 @@ Apply manual settings detailed [here](macos-manual-settings.md).
 
 After the first run, switches can be done with:
 ```bash
-darwin-rebuild switch --impure --flake ~/.macos-setup/nix/nix-darwin
+darwin-rebuild switch --impure --flake ~/macos-setup/nix/nix-darwin
 ```
 
 To update the system:
 ```bash
-sudo nix-channel --update darwin
+nix-channel --update darwin
 ```
 
 List Nix generations:
 ```bash
-sudo nix-env --list-generations
+nix-env --list-generations
 ```
 
 Rollback to a specific previous generation:
