@@ -2,43 +2,16 @@
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
 
-CASE_SENSITIVE="false"
-ZSH_THEME="kphoen"
-HIST_STAMPS="yyyy-mm-dd"
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+autoload -Uz compinit && compinit
 
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_find_no_dups
+### Zsh Autosuggestions
+# https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
+source ${HOME}/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-### Oh-My-Zsh
-# https://github.com/ohmyzsh/ohmyzsh
-# Path to your oh-my-zsh installation.
-export ZSH="${HOME}/.oh-my-zsh"
-
-# Change location of dump files
-export ZSH_COMPDUMP=${ZSH}/cache/.zcompdump-${HOST}
-
-zstyle ':omz:update' mode auto
-zstyle ':omz:update' frequency 14
-
-plugins=(
-    docker
-    fzf-tab
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-)
-source ${ZSH}/oh-my-zsh.sh
-
-### Brew
-# https://brew.sh
-export PATH=/opt/homebrew/bin:${PATH}
-if type brew &>/dev/null
-then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
-  autoload -Uz compinit
-  compinit
-fi
+### Zsh Syntax Highlighting
+# https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
+source ${HOME}/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ### Oh-My-Posh
 # https://ohmyposh.dev/docs/installation/prompt
@@ -48,6 +21,7 @@ fi
 
 ### Bat
 # https://github.com/sharkdp/bat
+# https://nix-community.github.io/home-manager/options.xhtml#opt-programs.bat.themes
 export BAT_THEME="Catppuccin Mocha"
 
 ### Zoxide
@@ -59,6 +33,15 @@ eval "$(zoxide init --cmd cd zsh)"
 source <(fzf --zsh)
 setopt globdots
 zstyle ':completion:*' special-dirs false
+
+### Fzf-Tab
+# https://github.com/Aloxaf/fzf-tab?tab=readme-ov-file#install
+source ${HOME}/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:*' fzf-flags --color=fg:5
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 ### Atuin
 # https://github.com/atuinsh/atuin
@@ -74,12 +57,6 @@ eval "$(pyenv init -)"
 # https://github.com/fastfetch-cli/fastfetch
 if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; then
   fastfetch
-fi
-
-### Nix
-# https://github.com/NixOS/nix/issues/3616
-if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-  source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi
 
 ### Yazy
