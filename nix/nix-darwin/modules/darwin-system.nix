@@ -2,14 +2,6 @@
 { pkgs, vars, ... }:
 
 {
-  nix.configureBuildUsers = true;
-  nix.settings.experimental-features = "nix-command flakes";
-  nix.useDaemon = true;
-  services.nix-daemon.enable = true;
-
-  programs.zsh.enable = true;
-  users.users.${vars.user}.home = "/Users/${vars.user}";
-
   system = {
     stateVersion = 5;
     # configurationRevision = self.rev or self.dirtyRev or null;

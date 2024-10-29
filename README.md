@@ -12,7 +12,13 @@ Setting up and making sure that the terminal and macOS are configured properly.
 ## Getting started
 The following setup options are available:
 
-- [Full macOS setup](docs/macos-setup.md)
+- [Full macOS setup using nix-darwin](docs/macos-setup-nix.md)
+- [Full macOS setup using ansible](docs/macos-setup-ansible.md)
+- [Additional manual macOS settings](docs/macos-manual-settings.md)
+<br><br>
+
 - [Terminal setup for macOS](docs/macos-terminal-setup.md)
 - [Terminal setup for Ubuntu](docs/ubuntu-terminal-setup.md)
+<br><br>
+
 - [Chocolatey setup for Windows](docs/windows-chocolatey.md)

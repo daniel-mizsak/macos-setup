@@ -27,7 +27,6 @@
       jq
       lazydocker
       lazygit
-      lens
       neovim
       oh-my-posh
       poppler
@@ -38,14 +37,12 @@
       wget
       yazi
       zoxide
-      zsh-autosuggestions
-      zsh-fzf-tab
-      zsh-syntax-highlighting
       # General
       alacritty
       aldente
       arc-browser
       iterm2
+      lens
       obsidian
       postman
       raycast

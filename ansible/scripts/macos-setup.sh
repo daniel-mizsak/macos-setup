@@ -15,7 +15,7 @@ else
 fi
 
 # Running setup scripts
-tasks_to_run=("package" "startup" "system" "finder" "dock" "dockutil" "dotfile")
+tasks_to_run=("package" "system" "finder" "dock" "dockutil" "dotfile")
 
 for task in "${tasks_to_run[@]}"
 do

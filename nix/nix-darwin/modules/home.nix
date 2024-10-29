@@ -1,7 +1,7 @@
 # https://mynixos.com/home-manager/option/home.stateVersion
 # https://wiki.nixos.org/wiki/Home_Manager
 
-{ vars, pkgs, ... }:
+{ pkgs, vars, ... }:
 
 {
   programs.home-manager.enable = true;
@@ -84,7 +84,7 @@
       ".config/yazi/theme.toml".source = ~/macos-setup/dotfiles/config/yazi/theme.toml;
 
       # zsh
-      ".zshrc".source = ~/macos-setup/dotfiles/shell/no-omz.zshrc;
+      ".zshrc".source = ~/macos-setup/dotfiles/shell/.zshrc;
 
       ### Package
       # alacritty

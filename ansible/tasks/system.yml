@@ -19,18 +19,3 @@
     key: DSDontWriteNetworkStores
     value: 'true'
     type: string
-
-- name: Set sublime text as default editor
-  community.general.osx_defaults:
-    domain: com.apple.LaunchServices/com.apple.launchservices.secure
-    key: LSHandlers
-    value:
-      - '{LSHandlerContentType="public.shell-script";LSHandlerRoleAll="com.sublimetext.4";}'
-      - '{LSHandlerContentType="public.python-script";LSHandlerRoleAll="com.sublimetext.4";}'
-      - '{LSHandlerContentType="public.data";LSHandlerRoleAll="com.sublimetext.4";}'
-      - '{LSHandlerContentType="public.json";LSHandlerRoleAll="com.sublimetext.4";}'
-      - '{LSHandlerContentType="public.plain-text";LSHandlerRoleAll="com.sublimetext.4";}'
-      - '{LSHandlerContentType="public.comma-separated-values-text";LSHandlerRoleAll="com.sublimetext.4";}'
-    array_add: true
-    type: array
-    state: list

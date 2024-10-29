@@ -37,6 +37,21 @@
         hostPlatform = vars.system;
         config.allowUnfree = true;
       };
+
+      configuration =
+        { pkgs, ... }:
+
+        {
+          nix = {
+            configureBuildUsers = true;
+            settings.experimental-features = "nix-command flakes";
+            useDaemon = true;
+          };
+          services.nix-daemon.enable = true;
+
+          programs.zsh.enable = true;
+          users.users.${vars.user}.home = "/Users/${vars.user}";
+        };
     in
     {
       darwinConfigurations.Mizsak-D-MBM = darwin.lib.darwinSystem {
@@ -47,6 +62,8 @@
         };
 
         modules = [
+          configuration
+
           nix-homebrew.darwinModules.nix-homebrew
           {
             nix-homebrew = {

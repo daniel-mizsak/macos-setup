@@ -19,11 +19,12 @@ Add `Homebrew` to your `PATH`:
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
 
-Before running the **macos setup** script, make sure you are logged in to the **App Store**.\
+Sign in to `Apple Account`.
+
 Run the **macos setup** script:
 ```bash
 /bin/bash -c "$(curl -fsSL \
-https://raw.githubusercontent.com/daniel-mizsak/macos-setup/main/scripts/macos-setup.sh)"
+https://raw.githubusercontent.com/daniel-mizsak/macos-setup/main/ansible/scripts/macos-setup-ansible.sh)"
 ```
 
 Install **TMUX** plugins:
