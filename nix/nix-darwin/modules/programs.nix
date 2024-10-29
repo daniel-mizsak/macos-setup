@@ -25,10 +25,13 @@
       htop
       imagemagick
       jq
+      kubectl
       lazydocker
       lazygit
       neovim
       oh-my-posh
+      podman
+      podman-compose
       poppler
       pyenv
       ripgrep
@@ -42,7 +45,7 @@
       aldente
       arc-browser
       iterm2
-      lens
+      # lens
       obsidian
       postman
       raycast
