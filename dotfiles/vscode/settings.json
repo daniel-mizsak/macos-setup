@@ -190,7 +190,7 @@
     "${workspaceFolder}/.venv/bin/mypy",
   ],
   // Nix IDE
-  "nix.formatterPath": "nixfmt",
+  "nix.formatterPath": "nixpkgs-fmt",
   // psioniq File Header
   "psi-header.config": {
     "author": "Daniel Mizsak",

@@ -20,12 +20,12 @@
   };
 
   outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      home-manager,
-      darwin,
-      nix-homebrew,
+    inputs@{ self
+    , nixpkgs
+    , home-manager
+    , darwin
+    , nix-homebrew
+    ,
     }:
     let
       vars = {
@@ -44,6 +44,9 @@
         {
           nix = {
             configureBuildUsers = true;
+            gc.automatic = true;
+            optimise.automatic = true;
+            settings.auto-optimise-store = true;
             settings.experimental-features = "nix-command flakes";
             useDaemon = true;
           };

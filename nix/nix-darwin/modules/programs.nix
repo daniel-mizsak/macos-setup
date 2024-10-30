@@ -29,9 +29,8 @@
       lazydocker
       lazygit
       neovim
+      nixpkgs-fmt
       oh-my-posh
-      podman
-      podman-compose
       poppler
       pyenv
       ripgrep
@@ -45,7 +44,7 @@
       aldente
       arc-browser
       iterm2
-      # lens
+      lens
       obsidian
       postman
       raycast
@@ -59,9 +58,11 @@
   homebrew = {
     enable = true;
     onActivation = {
-      upgrade = false;
+      autoUpdate = true;
       cleanup = "zap";
+      upgrade = true;
     };
+    brews = [ ];
     casks = [
       "1password"
       "affinity-designer"
