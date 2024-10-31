@@ -191,6 +191,19 @@
   ],
   // Nix IDE
   "nix.formatterPath": "nixpkgs-fmt",
+  // PowerShell
+  "[powershell]": {
+    "editor.defaultFormatter": "ms-vscode.powershell",
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "editor.trimAutoWhitespace": true,
+  },
+  "powershell.codeFormatting.autoCorrectAliases": true,
+  "powershell.codeFormatting.avoidSemicolonsAsLineTerminators": true,
+  "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
+  "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
+  "powershell.codeFormatting.useConstantStrings": true,
+  "powershell.codeFormatting.useCorrectCasing": true,
   // psioniq File Header
   "psi-header.config": {
     "author": "Daniel Mizsak",
