@@ -84,7 +84,9 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.${vars.user} = import ./modules/home.nix { inherit vars pkgs; };
+              users.${vars.user}.imports = [
+                ({ config, ... }: import ./modules/home.nix { inherit config pkgs vars; })
+              ];
             };
           }
         ];

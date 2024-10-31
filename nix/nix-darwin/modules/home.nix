@@ -1,7 +1,7 @@
 # https://mynixos.com/home-manager/option/home.stateVersion
 # https://wiki.nixos.org/wiki/Home_Manager
 
-{ pkgs, vars, ... }:
+{ config, pkgs, vars, ... }:
 
 {
   programs.home-manager.enable = true;
@@ -86,7 +86,7 @@
       ".config/yazi/theme.toml".onChange = "ya pack -a yazi-rs/flavors:catppuccin-mocha";
 
       # zsh
-      ".zshrc".source = ~/macos-setup/dotfiles/shell/.zshrc;
+      ".zshrc".source = config.lib.file.mkOutOfStoreSymlink ~/macos-setup/dotfiles/shell/.zshrc;
 
       ### Package
       # alacritty
@@ -96,7 +96,7 @@
       "/Library/Application Support/Sublime Text/Packages/User/Preferences.sublime-settings".source = ~/macos-setup/dotfiles/sublime/Preferences.sublime-settings;
 
       # vscode
-      "/Library/Application Support/Code/User/settings.json".source = ~/macos-setup/dotfiles/vscode/settings.json;
+      "/Library/Application Support/Code/User/settings.json".source = config.lib.file.mkOutOfStoreSymlink ~/macos-setup/dotfiles/vscode/settings.json;
 
       # wezterm
       ".config/wezterm/wezterm.lua".source = ~/macos-setup/dotfiles/config/wezterm/wezterm.lua;
