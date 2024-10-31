@@ -25,8 +25,8 @@
         persistent-apps = [
           "/Applications/Safari.app"
           "/System/Applications/Mail.app"
-          "${pkgs.signal-desktop}/Applications/Signal.app"
-          "${pkgs.vscode}/Applications/Visual\ Studio\ Code.app"
+          "/Applications/Signal.app"
+          "/Applications/Visual\ Studio\ Code.app"
           "/System/Applications/System Settings.app"
         ];
         persistent-others = [ "/Users/${vars.user}/Downloads/" ];

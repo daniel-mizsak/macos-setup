@@ -39,17 +39,6 @@
       wget
       yazi
       zoxide
-      # General
-      alacritty
-      aldente
-      arc-browser
-      iterm2
-      obsidian
-      postman
-      raycast
-      signal-desktop
-      slack
-      vscode
     ];
   };
 
@@ -64,6 +53,16 @@
     brews = [ ];
     casks = [
       "1password"
+      "aldente"
+      "arc"
+      "visual-studio-code"
+      "alacritty"
+      "raycast"
+      "signal"
+      "postman"
+      "slack"
+      "obsidian"
+      "iterm2"
       "affinity-designer"
       "affinity-photo"
       "affinity-publisher"
