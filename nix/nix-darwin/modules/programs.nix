@@ -44,7 +44,6 @@
       aldente
       arc-browser
       iterm2
-      lens
       obsidian
       postman
       raycast
@@ -80,7 +79,6 @@
       "obs"
       "openinterminal"
       "parallels@19"
-      "podman-desktop"
       "raspberry-pi-imager"
       "scroll-reverser"
       "spotify"

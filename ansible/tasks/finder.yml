@@ -1,76 +1,18 @@
 ---
 # https://macos-defaults.com/
 
+- name: Finder show file extension
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: AppleShowAllExtensions
+    value: true
+    type: bool
+
 - name: Finder show all files
   community.general.osx_defaults:
     domain: com.apple.finder
     key: AppleShowAllFiles
     value: true
-    type: bool
-
-# Finder general settings
-- name: Finder show hard disks on desktop
-  community.general.osx_defaults:
-    domain: com.apple.finder
-    key: ShowHardDrivesOnDesktop
-    value: true
-    type: bool
-
-- name: Finder show external disks on desktop
-  community.general.osx_defaults:
-    domain: com.apple.finder
-    key: ShowExternalHardDrivesOnDesktop
-    value: true
-    type: bool
-
-- name: Finder default location
-  community.general.osx_defaults:
-    domain: com.apple.finder
-    key: NewWindowTargetPath
-    value: "file://${HOME}/Documents/"
-    type: string
-
-- name: Finder default new windows and tabs
-  community.general.osx_defaults:
-    domain: com.apple.finder
-    key: NewWindowTarget
-    value: PfDo
-    type: string
-
-# Finder advanced settings
-- name: Finder show file extension
-  community.general.osx_defaults:
-    domain: NSGlobalDomain
-    key: AppleShowAllExtensions
-    value: true
-    type: bool
-
-- name: Finder show warning before changing extension
-  community.general.osx_defaults:
-    domain: com.apple.finder
-    key: FXEnableExtensionChangeWarning
-    value: true
-    type: bool
-
-- name: Finder show warning before removing from iCloud Drive
-  community.general.osx_defaults:
-    domain: com.apple.finder
-    key: FXEnableRemoveFromICloudDriveWarning
-    value: true
-    type: bool
-
-- name: Finder show warning before emptying trash
-  community.general.osx_defaults:
-    domain: com.apple.finder
-    key: WarnOnEmptyTrash
-    value: true
-    type: bool
-
-- name: Finder do not remove items from trash after 30 days
-  community.general.osx_defaults:
-    domain: com.apple.finder
-    key: FXRemoveOldTrashItems
-    value: false
     type: bool
 
 - name: Finder search current folder by default
@@ -80,15 +22,13 @@
     value: SCcf
     type: string
 
-# Finder tags settings
-- name: Remove all tags from sidebar
+- name: Finder warning when changing file extension
   community.general.osx_defaults:
     domain: com.apple.finder
-    key: ShowRecentTags
-    value: false
+    key: FXEnableExtensionChangeWarning
+    value: true
     type: bool
 
-# Finder view settings
 - name: Finder show items in column view
   community.general.osx_defaults:
     domain: com.apple.finder
@@ -96,10 +36,10 @@
     value: clmv
     type: string
 
-- name: Finder show tool bar
+- name: Quit Finder
   community.general.osx_defaults:
     domain: com.apple.finder
-    key: ShowToolbar
+    key: QuitMenuItem
     value: true
     type: bool
 
@@ -117,8 +57,59 @@
     value: true
     type: bool
 
-# Reload finder.
-- name: Reload finder
-  ansible.builtin.command: >
-    killall Finder
-  changed_when: false
+- name: Finder do not remove items from trash after 30 days
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: FXRemoveOldTrashItems
+    value: false
+    type: bool
+
+- name: Finder default new windows and tabs
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: NewWindowTarget
+    value: PfDo
+    type: string
+
+- name: Finder default location
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: NewWindowTargetPath
+    # TODO: Make this correctpond to darwin-system.nix
+    value: "file://Users/{{ lookup('env','USER') }}/Documents/"
+    type: string
+
+- name: Finder show external disks on desktop
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowExternalHardDrivesOnDesktop
+    value: true
+    type: bool
+
+- name: Finder show hard disks on desktop
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowHardDrivesOnDesktop
+    value: false
+    type: bool
+
+- name: Remove all tags from sidebar
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowRecentTags
+    value: false
+    type: bool
+
+- name: Finder show tool bar
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowToolbar
+    value: true
+    type: bool
+
+- name: Finder show warning before emptying trash
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: WarnOnEmptyTrash
+    value: false
+    type: bool

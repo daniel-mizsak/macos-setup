@@ -1,4 +1,8 @@
 ---
+- name: Import terminal setup tasks
+  ansible.builtin.import_tasks:
+    file: tasks/terminal.yml
+
 # Homebrew packages
 - name: Update homebrew index
   community.general.homebrew:

@@ -43,11 +43,13 @@
       };
       CustomUserPreferences = {
         "com.apple.controlcenter.plist".BatteryShowPercentage = true;
+        "com.apple.desktopservices".DSDontWriteNetworkStores = true;
         "com.apple.dock" = {
           contents-immutable = true;
           size-immutable = true;
         };
         "com.apple.finder" = {
+          FXRemoveOldTrashItems = false;
           NewWindowTarget = "PfDo";
           NewWindowTargetPath = "file://Users/${vars.user}/Documents/";
           ShowExternalHardDrivesOnDesktop = true;

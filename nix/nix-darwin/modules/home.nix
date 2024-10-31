@@ -54,6 +54,7 @@
         url = "https://raw.githubusercontent.com/catppuccin/bat/refs/heads/main/themes/Catppuccin%20Mocha.tmTheme";
         sha256 = "sha256-UBuh6EeUhD5V9TjAo7hBRaGCt3KjkkO7QDxuaEBzN0s=";
       };
+      ".config/bat/themes/Catppuccin Mocha.tmTheme".onChange = "bat cache --build";
 
       # fastfetch
       ".config/fastfetch/config.jsonc".source = ~/macos-setup/dotfiles/config/fastfetch/config.jsonc;
@@ -82,6 +83,7 @@
 
       # yazi
       ".config/yazi/theme.toml".source = ~/macos-setup/dotfiles/config/yazi/theme.toml;
+      ".config/yazi/theme.toml".onChange = "ya pack -a yazi-rs/flavors:catppuccin-mocha";
 
       # zsh
       ".zshrc".source = ~/macos-setup/dotfiles/shell/.zshrc;

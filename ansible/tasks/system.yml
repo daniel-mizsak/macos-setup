@@ -6,12 +6,12 @@
     value: Dark
     type: string
 
-- name: Disable desktop reveal by clicking wallpaper
+- name: Enable battery percentage
   community.general.osx_defaults:
-    domain: com.apple.WindowManager
-    key: EnableStandardClickToShowDesktop
-    value: 0
-    type: int
+    domain: com.apple.controlcenter.plist
+    key: BatteryShowPercentage
+    value: true
+    type: bool
 
 - name: Do not create .DS_Store files on network volumes
   community.general.osx_defaults:
@@ -19,3 +19,10 @@
     key: DSDontWriteNetworkStores
     value: 'true'
     type: string
+
+- name: Disable desktop reveal by clicking wallpaper
+  community.general.osx_defaults:
+    domain: com.apple.WindowManager
+    key: EnableStandardClickToShowDesktop
+    value: 0
+    type: int
