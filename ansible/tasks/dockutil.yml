@@ -14,4 +14,4 @@
     - /Applications/Signal.app
     - /Applications/Visual\ Studio\ Code.app
     - /Applications/System\ Settings.app
-    - ${HOME}/Downloads
+    - /Users/{{ lookup('env','USER') }}/Downloads/
