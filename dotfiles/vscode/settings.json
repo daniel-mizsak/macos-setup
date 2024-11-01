@@ -255,6 +255,7 @@
     "editor.defaultFormatter": "redhat.vscode-yaml",
     "editor.tabSize": 2,
   },
+  // Remote - SSH
   "remote.SSH.remotePlatform": {
     "*": "linux",
   },
