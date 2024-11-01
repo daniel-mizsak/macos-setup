@@ -1,10 +1,9 @@
 # https://github.com/dejanr/dotfiles/blob/7feea7ef8ef542df5a47b2efffe4d87c605ea23e/hosts/mbp-work/system.nix
-{ pkgs, vars, ... }:
+{ user, ... }:
 
 {
   system = {
     stateVersion = 5;
-    # configurationRevision = self.rev or self.dirtyRev or null;
 
     defaults = {
       NSGlobalDomain = {
@@ -29,7 +28,7 @@
           "/Applications/Visual\ Studio\ Code.app"
           "/System/Applications/System Settings.app"
         ];
-        persistent-others = [ "/Users/${vars.user}/Downloads/" ];
+        persistent-others = [ "/Users/${user}/Downloads/" ];
       };
       finder = {
         AppleShowAllExtensions = true;
@@ -51,7 +50,7 @@
         "com.apple.finder" = {
           FXRemoveOldTrashItems = false;
           NewWindowTarget = "PfDo";
-          NewWindowTargetPath = "file://Users/${vars.user}/Documents/";
+          NewWindowTargetPath = "file://Users/${user}/Documents/";
           ShowExternalHardDrivesOnDesktop = true;
           ShowHardDrivesOnDesktop = false;
           ShowRecentTags = false;

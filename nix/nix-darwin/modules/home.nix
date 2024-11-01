@@ -1,8 +1,10 @@
 # https://mynixos.com/home-manager/option/home.stateVersion
 # https://wiki.nixos.org/wiki/Home_Manager
 
-{ config, pkgs, vars, ... }:
-
+{ config, pkgs, user, ... }:
+let
+  inherit (config.lib.file) mkOutOfStoreSymlink;
+in
 {
   programs.home-manager.enable = true;
 
@@ -42,7 +44,7 @@
 
   home = {
     stateVersion = "24.11";
-    username = vars.user;
+    username = user;
 
     file = {
       ### Terminal
@@ -65,11 +67,9 @@
       ".gitmessage".source = ~/macos-setup/dotfiles/git/.gitmessage;
 
       # neovim
-      ".config/nvim/init.lua".source = ~/macos-setup/dotfiles/config/nvim/init.lua;
-      ".config/nvim/lua".source = ~/macos-setup/dotfiles/config/nvim/lua;
-      ".config/nvim/stylua.toml".source = ~/macos-setup/dotfiles/config/nvim/stylua.toml;
+      ".config/nvim".source = mkOutOfStoreSymlink ~/macos-setup/dotfiles/config/nvim;
 
-      # oh-my-post
+      # oh-my-posh
       ".config/oh-my-posh/oh-my-posh.toml".source = ~/macos-setup/dotfiles/config/oh-my-posh/oh-my-posh.toml;
 
       # tmux
@@ -86,20 +86,20 @@
       ".config/yazi/theme.toml".onChange = "ya pack -a yazi-rs/flavors:catppuccin-mocha";
 
       # zsh
-      ".zshrc".source = config.lib.file.mkOutOfStoreSymlink ~/macos-setup/dotfiles/shell/.zshrc;
+      ".zshrc".source = mkOutOfStoreSymlink ~/macos-setup/dotfiles/shell/.zshrc;
 
       ### Package
       # alacritty
-      ".config/alacritty/alacritty.toml".source = ~/macos-setup/dotfiles/config/alacritty/alacritty.toml;
+      ".config/alacritty/alacritty.toml".source = mkOutOfStoreSymlink ~/macos-setup/dotfiles/config/alacritty/alacritty.toml;
 
       # sublime
-      "/Library/Application Support/Sublime Text/Packages/User/Preferences.sublime-settings".source = ~/macos-setup/dotfiles/sublime/Preferences.sublime-settings;
+      "/Users/${user}/Library/Application Support/Sublime Text/Packages/User/Preferences.sublime-settings".source = mkOutOfStoreSymlink ~/macos-setup/dotfiles/sublime/Preferences.sublime-settings;
 
       # vscode
-      "/Library/Application Support/Code/User/settings.json".source = config.lib.file.mkOutOfStoreSymlink ~/macos-setup/dotfiles/vscode/settings.json;
+      "/Users/${user}/Library/Application Support/Code/User/settings.json".source = mkOutOfStoreSymlink ~/macos-setup/dotfiles/vscode/settings.json;
 
       # wezterm
-      ".config/wezterm/wezterm.lua".source = ~/macos-setup/dotfiles/config/wezterm/wezterm.lua;
+      ".config/wezterm/wezterm.lua".source = mkOutOfStoreSymlink ~/macos-setup/dotfiles/config/wezterm/wezterm.lua;
     };
   };
 }

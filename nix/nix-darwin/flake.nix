@@ -28,14 +28,10 @@
     ,
     }:
     let
-      vars = {
-        system = "aarch64-darwin";
-        user = "damz";
-      };
       pkgs = import nixpkgs {
-        system = vars.system;
-        hostPlatform = vars.system;
+        system = "aarch64-darwin";
       };
+      user = "damz";
 
       configuration =
         { pkgs, ... }:
@@ -51,16 +47,18 @@
           };
           services.nix-daemon.enable = true;
 
-          programs.zsh.enable = true;
-          users.users.${vars.user}.home = "/Users/${vars.user}";
+          users.users.${user} = {
+            name = user;
+            home = "/Users/${user}";
+          };
         };
     in
     {
       darwinConfigurations.Mizsak-D-MBM = darwin.lib.darwinSystem {
-        system = vars.system;
+        system = "aarch64-darwin";
 
         specialArgs = {
-          inherit vars pkgs;
+          inherit pkgs user;
         };
 
         modules = [
@@ -71,7 +69,7 @@
             nix-homebrew = {
               enable = true;
               enableRosetta = true;
-              user = vars.user;
+              user = user;
             };
           }
 
@@ -83,8 +81,8 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.${vars.user}.imports = [
-                ({ config, ... }: import ./modules/home.nix { inherit config pkgs vars; })
+              users.${user}.imports = [
+                ({ config, ... }: import ./modules/home.nix { inherit config pkgs user; })
               ];
             };
           }
