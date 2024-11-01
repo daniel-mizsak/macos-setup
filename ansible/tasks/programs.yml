@@ -8,67 +8,48 @@
   community.general.homebrew:
     update_homebrew: true
 
-- name: Install homebrew packages
-  community.general.homebrew:
-    name: "{{ item }}"
-    state: present
-  loop:
-    - "dockutil"
-    - "doctl"
-    - "mas"
-    - "wget"
-    - "zbar"
-  when: false
-
 # Homebrew casks
 - name: Install homebrew casks
   community.general.homebrew_cask:
     name: "{{ item }}"
     state: present
   loop:
-    # General
     - "1password"
-    - "alacritty"
-    - "arc"
-    - "mullvadvpn"
-    - "obsidian"
-    - "signal"
-    - "slack"
-    - "spotify"
-    # Development
-    - "db-browser-for-sqlite"
-    - "devtoys"
-    - "docker"
-    - "dotnet-sdk"
-    - "github"
-    - "iterm2"
-    - "parallels"  # For this `Privacy and Security` -> `App Management` -> `Terminal` has to be enabled.
-    - "postman"
-    - "raspberry-pi-imager"
-    - "sublime-text"
-    - "vagrant-vmware-utility"
-    - "vagrant"
-    - "visual-studio-code"
-    - "vmware-fusion"
-    - "vnc-viewer"
-    - "wezterm"
-    # Utility
-    - "aldente"
-    - "appcleaner"
-    - "betterdisplay"
-    - "hiddenbar"
-    - "keyboardcleantool"
-    - "obs"
-    - "openinterminal"
-    - "raycast"
-    - "scroll-reverser"
-    - "synology-drive"
-    - "vlc"
-    # Creative
     - "affinity-designer"
     - "affinity-photo"
     - "affinity-publisher"
+    - "alacritty"
+    - "aldente"
+    - "appcleaner"
+    - "arc"
+    - "boosteroid"
+    - "betterdisplay"
+    - "db-browser-for-sqlite"
+    - "devtoys"
+    - "docker"
+    - "github"
+    - "hiddenbar"
+    - "iterm2"
+    - "keyboardcleantool"
+    - "mullvadvpn"
+    - "obs"
+    - "obsidian"
+    - "openinterminal"
+    - "parallels@19"
+    - "postman"
+    - "raspberry-pi-imager"
+    - "raycast"
+    - "scroll-reverser"
+    - "signal"
+    - "slack"
+    - "spotify"
+    - "sublime-text"
+    - "synology-drive"
     - "updf"
+    - "visual-studio-code"
+    - "vlc"
+    - "vnc-viewer"
+    - "wezterm"
   tags:
     - ignore-vm
   when: false
@@ -84,23 +65,20 @@
     id: "{{ item | int }}"
     state: present
   loop:
-    # Development
-    - 497799835  # Xcode
-    # Utility
-    - 441258766  # Magnet
-    - 1295203466  # Microsoft Remote Desktop
-    # Creative
     - 424390742  # Compressor
     - 424389933  # Final Cut Pro
     - 409183694  # Keynote
+    - 441258766  # Magnet
     - 434290957  # Motion
     - 409203825  # Numbers
     - 409201541  # Pages
+    - 1295203466  # Microsoft Remote Desktop
+    - 497799835  # Xcode
     # Safari Extensions
     - 1569813296  # 1Password for Safari
     - 1440147259  # AdGuard for Safari
-    - 1573461917  # SponsorBlock for YouTube
     - 1521133201  # Speed Player for Safari
+    - 1573461917  # SponsorBlock for YouTube
   tags:
     - ignore-vm
   when: false

@@ -1,4 +1,9 @@
 ---
+- name: Install dockutil
+  community.general.homebrew:
+    name: "dockutil"
+    state: present
+
 - name: Remove all dock content
   ansible.builtin.command: >
     dockutil --remove all

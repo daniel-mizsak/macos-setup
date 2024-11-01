@@ -17,29 +17,31 @@
   loop:
     - "atuin"
     - "bat"
+    - "dotnet-sdk"
     - "eza"
     - "fastfetch"
+    - "fd"
+    - "ffmpegthumbnailer"
+    - "fzf"
     - "git"
     - "htop"
+    - "imagemagick"
+    - "jq"
+    - "kubectl"
     - "lazydocker"
     - "lazygit"
     - "neovim"
+    - "nixpkgs-fmt"
     - "oh-my-posh"
+    - "poppler"
     - "pyenv"
+    - "ripgrep"
+    - "sevenzip"
     - "tmux"
     - "tree"
-
-    # https://yazi-rs.github.io/docs/installation
+    - "wget"
     - "yazi"
-    - "sevenzip"
-    - "jq"
-    - "poppler"
-    - "fd"
-    - "ripgrep"
-    - "fzf"
     - "zoxide"
-    - "imagemagick"
-    - "ffmpegthumbnailer"
 
 - name: Install nerd font macOS
   community.general.homebrew_cask:
@@ -65,7 +67,6 @@
   ansible.builtin.git:
     repo: "https://github.com/Aloxaf/fzf-tab"
     dest: "${HOME}/.zsh/plugins/fzf-tab"
-
 
 - name: Install zsh-autosuggestions.  # noqa: latest
   ansible.builtin.git:
