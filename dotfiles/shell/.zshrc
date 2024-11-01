@@ -2,7 +2,11 @@
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
 
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+# Insensitive completion
+# https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/completion.zsh
+zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]-_}={[:upper:][:lower:]_-}' 'r:|=*' 'l:|=* r:|=*'
+
 autoload -Uz compinit && compinit
 
 ### Zsh Autosuggestions
@@ -75,6 +79,9 @@ function yy() {
 
 ### Alias
 # System
+# https://github.com/ohmyzsh/ohmyzsh/blob/c690f731618959cba3b85500acee20ebf43e51c1/lib/key-bindings.zsh#L90
+bindkey "^[[3~" delete-char
+
 alias cat="bat"
 alias ls="eza --color=always --all --icons=always"
 alias ll="eza --color=always --all --long --icons=always"
