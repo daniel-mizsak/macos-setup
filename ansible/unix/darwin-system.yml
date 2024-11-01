@@ -174,7 +174,7 @@
   community.general.osx_defaults:
     domain: com.apple.finder
     key: NewWindowTargetPath
-    value: "file://Users/{{ lookup('env','USER') }}/Documents/"
+    value: "file://Users/{{ lookup('env', 'USER') }}/Documents/"
     type: string
 
 - name: Show external hard drives on desktop
@@ -224,14 +224,14 @@
   community.general.osx_defaults:
     domain: com.apple.desktopservices
     key: DSDontWriteNetworkStores
-    value: 'true'
-    type: string
+    value: true
+    type: bool
 
 - name: Disable desktop reveal by clicking wallpaper
   community.general.osx_defaults:
     domain: com.apple.WindowManager
     key: EnableStandardClickToShowDesktop
-    value: 0
-    type: int
+    value: false
+    type: bool
 
 # TODO: Enable sudo touch id

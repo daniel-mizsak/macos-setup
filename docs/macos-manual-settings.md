@@ -14,4 +14,7 @@ Raycast:
 - Unbind `Spotlight`: `System Preferences > Keyboard > Keyboard Shortcuts... > Spotlight`
 - Bind `⌘Space` to `Raycast`
 
+Synology Drive:
+- ...
+
 Install [Asahi Linux](https://asahilinux.org).

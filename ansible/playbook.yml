@@ -1,5 +1,5 @@
 ---
-- name: Setup macOS
+- name: Setup system
   hosts: localhost
   connection: local
   gather_facts: true
@@ -9,4 +9,4 @@
   tasks:
     - name: Import tasks
       ansible.builtin.import_tasks:
-        file: tasks/{{ task_name }}.yml
+        file: "{{ platform }}/{{ task_name }}.yml"

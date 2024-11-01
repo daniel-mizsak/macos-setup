@@ -5,6 +5,7 @@
     state: "{{ 'latest' if package_install_latest else 'present' }}"
   loop:
     - "wezterm"
+    - "nerd-fonts-meslo"
 
 - name: Copy dotfiles
   ansible.windows.win_copy:

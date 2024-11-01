@@ -7,7 +7,7 @@ if [ "$#" -eq 0 ]; then
     exit 1
 fi
 
-ALLOWED_TASKS=("dock" "dockutil" "dotfile" "finder" "package" "system" "terminal")
+ALLOWED_TASKS=("darwin-system" "dockutil" "dotfile" "programs" "terminal")
 is_task_allowed() {
     local task=$1
     for allowed_task in "${ALLOWED_TASKS[@]}"; do
