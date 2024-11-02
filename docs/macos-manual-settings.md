@@ -1,6 +1,6 @@
-## Manual settings:
+## Manual macOS settings:
 
-Set these settings manually to reproduce the environment as closely as possible.
+The actual amount of manual steps highly exceeds the below mentioned ones. But these are the most important ones for me.
 
 Wallpaper:
 - `System Preferences > Wallpaper > Monterey`
@@ -10,11 +10,15 @@ Finder:
 - Remove `Recents` from Finder
 - Set `Finder` Favourites order to: `AirDrop`, `Applications`, `damz`, `GitHub`, `Downloads`
 
+Language & Region:
+- Change region to `Hungary` so that clock format is correct
+- Set `Number format` to international standard.
+
+Trackpad:
+- Enable `Tap to click`
+
 Raycast:
 - Unbind `Spotlight`: `System Preferences > Keyboard > Keyboard Shortcuts... > Spotlight`
 - Bind `⌘Space` to `Raycast`
-
-Synology Drive:
-- ...
 
 Install [Asahi Linux](https://asahilinux.org).

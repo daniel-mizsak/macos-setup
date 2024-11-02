@@ -1,16 +1,16 @@
-## Configure macOS
+## Configure macOS using Nix-Darwin
 
-In a `macOS` environment first install `xcode-select`:
+In a **macOS** environment first install `xcode-select`:
 ```bash
 xcode-select --install
 ```
 
-Install `Nix`:
+Install **Nix**:
 ```bash
 sh <(curl -L https://nixos.org/nix/install)
 ```
 
-Enable Nix Flakes in `~/.config/nix/nix.conf`:
+Enable **Nix Flakes** in `~/.config/nix/nix.conf`:
 ```bash
 mkdir -p ~/.config/nix
 cat <<EOF > ~/.config/nix/nix.conf
@@ -18,13 +18,13 @@ experimental-features = nix-command flakes
 EOF
 ```
 
-Change local hostname to `Mizsak-D-MBM`.
+Change local **hostname** to `Mizsak-D-MBM`.
 
-Sign in to `Apple Account`.
+Sign in to **Apple Account**.
 
-Enable full disk access for `Terminal` in `System Preferences > Privacy & Security > Full Disk Access`.
+Enable full disk access for **Terminal** in `System Preferences > Privacy & Security > Full Disk Access`.
 
-Clone repository:
+**Clone** repository:
 ```bash
 git clone https://github.com/daniel-mizsak/macos-setup.git
 ```
@@ -63,5 +63,10 @@ nix-env --list-generations
 
 Rollback to a specific previous generation:
 ```bash
-...
+darwin-rebuild switch --impure --flake ~/macos-setup/nix/nix-darwin --rollback
+```
+
+Delete old generations (you may also want to run the command with `sudo`):
+```bash
+nix-collect-garbage -d
 ```
