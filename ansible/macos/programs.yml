@@ -61,7 +61,7 @@
 - name: Upgrade homebrew packages
   community.general.homebrew:
     upgrade_all: true
-  when: package_install_latest
+  when: install_latest_packages
 
 # App Store
 - name: Install app store apps.  # noqa: args[module]
@@ -83,13 +83,11 @@
     - 1440147259  # AdGuard for Safari
     - 1521133201  # Speed Player for Safari
     - 1573461917  # SponsorBlock for YouTube
-  tags:
-    - ignore-vm
 
 - name: Upgrade app store apps
   community.general.mas:
     upgrade_all: true
-  when: package_install_latest
+  when: install_latest_packages
 
 - name: Install nerd font macOS
   community.general.homebrew_cask:

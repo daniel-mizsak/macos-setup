@@ -16,13 +16,13 @@
 - name: Install terminal packages
   community.general.homebrew:
     name: "{{ item }}"
-    state: "{{ 'latest' if package_install_latest else 'present' }}"
+    state: present
   loop: "{{ terminal_packages }}"
 
 - name: Upgrade terminal packages
   community.general.homebrew:
     upgrade_all: true
-  when: package_install_latest
+  when: install_latest_packages
 
 # ZSH
 - name: Create zsh directory

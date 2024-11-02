@@ -23,9 +23,6 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config ${HOME}/.config/oh-my-posh/oh-my-posh.toml)"
 fi
 
-### Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
 ### Bat
 # https://github.com/sharkdp/bat
 # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.bat.themes

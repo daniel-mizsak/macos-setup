@@ -5,7 +5,6 @@ terminal_packages:
   - eza
   - fastfetch
   - fd
-  - ffmpegthumbnailer
   - fzf
   - git
   - htop
@@ -15,7 +14,6 @@ terminal_packages:
   - lazydocker
   - lazygit
   - neovim
-  - nixpkgs-fmt
   - oh-my-posh
   - poppler
   - ripgrep
@@ -25,6 +23,11 @@ terminal_packages:
   - wget
   - yazi
   - zoxide
+  - ffmpegthumbnailer
+
+  - dotnet@8
+  - go
+  - pyenv
 
 terminal_symlinks:
   # atuin

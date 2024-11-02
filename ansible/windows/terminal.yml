@@ -2,7 +2,7 @@
 - name: Install terminal packages
   chocolatey.chocolatey.win_chocolatey:
     name: "{{ item }}"
-    state: "{{ 'latest' if package_install_latest else 'present' }}"
+    state: "{{ 'latest' if install_latest_packages else 'present' }}"
   loop:
     - "wezterm"
     - "nerd-fonts-meslo"

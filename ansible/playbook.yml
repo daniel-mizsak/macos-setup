@@ -2,7 +2,6 @@
 - name: Setup system
   hosts: localhost
   connection: local
-  become: true
   gather_facts: true
   vars:
     install_latest_packages: true
@@ -10,4 +9,4 @@
   tasks:
     - name: Import tasks
       ansible.builtin.import_tasks:
-        file: "{{ platform }}/{{ task_name }}.yml"
+        file: "macos/{{ task_name }}.yml"
