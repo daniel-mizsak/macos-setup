@@ -2,6 +2,8 @@
 dotfiles/config/nvim/lazy-lock.json
 dotfiles/config/nvim/lazyvim.json
 
+nix/nix-darwin/flake.lock
+
 # System
 .DS_Store
 

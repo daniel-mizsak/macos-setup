@@ -2,19 +2,19 @@
 
 Set these settings manually to reproduce the environment as closely as possible.
 
+Wallpaper:
+- `System Preferences > Wallpaper > Monterey`
+
 Finder:
 - Disable `Tags` in Finder
 - Remove `Recents` from Finder
-- Set `Finder` Favourites order to: `AirDrop`, `Applications`, `Downloads`, `Documents`, `SynologyDrive`, `Home`
-
-Apps:
-- `Parallels Desktop`
-- `Boosteroid`
+- Set `Finder` Favourites order to: `AirDrop`, `Applications`, `damz`, `GitHub`, `Downloads`
 
 Raycast:
-- Unbind CMD + Space from `Spotlight`
-- Bind CMD + Space to `Raycast`
-- Install extensions
+- Unbind `Spotlight`: `System Preferences > Keyboard > Keyboard Shortcuts... > Spotlight`
+- Bind `⌘Space` to `Raycast`
 
-iTerm2:
-- Enable world jumping in `iTerm2`: `iTerm2` -> `Preferences` -> `Profiles` -> `Keys` -> `Key Mappings` -> `Presets...` -> `Natural Text Editing`
+Synology Drive:
+- ...
+
+Install [Asahi Linux](https://asahilinux.org).

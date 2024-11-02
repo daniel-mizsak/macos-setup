@@ -1,5 +1,30 @@
 ---
-package_install_latest: true
+terminal_packages:
+  - atuin
+  - bat
+  - eza
+  - fastfetch
+  - fd
+  - ffmpegthumbnailer
+  - fzf
+  - git
+  - htop
+  - imagemagick
+  - jq
+  - kubectl
+  - lazydocker
+  - lazygit
+  - neovim
+  - nixpkgs-fmt
+  - oh-my-posh
+  - poppler
+  - ripgrep
+  - sevenzip
+  - tmux
+  - tree
+  - wget
+  - yazi
+  - zoxide
 
 terminal_symlinks:
   # atuin
@@ -38,7 +63,7 @@ terminal_symlinks:
   - source: ${HOME}/macos-setup/dotfiles/shell/.zshrc
     dest: ${HOME}/.zshrc
 
-package_symlinks:
+program_symlinks:
   # alacritty
   - source: ${HOME}/macos-setup/dotfiles/config/alacritty/alacritty.toml
     dest: ${HOME}/.config/alacritty/alacritty.toml
@@ -54,16 +79,3 @@ package_symlinks:
   # wezterm
   - source: ${HOME}/macos-setup/dotfiles/config/wezterm/wezterm.lua
     dest: ${HOME}/.config/wezterm/wezterm.lua
-
-windows_terminal:
-  # git
-  - source: ${HOME}/macos-setup/dotfiles/git/.gitconfig
-    dest: "{{ ansible_env.USERPROFILE }}\\.gitconfig"
-  - source: ${HOME}/macos-setup/dotfiles/git/.gitignore_global
-    dest: "{{ ansible_env.USERPROFILE }}\\.gitignore_global"
-  - source: ${HOME}/macos-setup/dotfiles/git/.gitmessage
-    dest: "{{ ansible_env.USERPROFILE }}\\.gitmessage"
-
-  # wezterm
-  - source: ${HOME}/macos-setup/dotfiles/config/wezterm/windows_wezterm.lua
-    dest: "{{ ansible_env.USERPROFILE }}\\.wezterm.lua"

@@ -1,17 +1,17 @@
 ## Configure macOS terminal
 
-In a **macOS** environment first install `xcode-select`.
+In a `macOS` environment first install `xcode-select`.
 ```bash
 xcode-select --install
 ```
 
-Install **Homebrew**:
+Install `Homebrew`:
 ```bash
 /bin/bash -c "$(curl -fsSL \
 https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-Add **Homebrew** to your `PATH`:
+Add `Homebrew` to your `PATH`:
 ```bash
 (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> ${HOME}/.zshenv
 ```

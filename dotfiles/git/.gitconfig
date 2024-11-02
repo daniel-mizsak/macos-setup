@@ -10,11 +10,11 @@
 
 [core]
   excludesfile = ~/.gitignore_global
-  editor = /Applications/Sublime\\ Text.app/Contents/SharedSupport/bin/subl -n -w
+  editor = nvim
   pager = ""
 
 [pull]
-  rebase = true  # `git rebase --abort` to cancel
+  rebase = true
 
 [status]
   short = true

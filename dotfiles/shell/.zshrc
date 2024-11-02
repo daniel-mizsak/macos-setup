@@ -2,43 +2,20 @@
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
 
-CASE_SENSITIVE="false"
-ZSH_THEME="kphoen"
-HIST_STAMPS="yyyy-mm-dd"
+# Insensitive completion
+# https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/completion.zsh
+zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]-_}={[:upper:][:lower:]_-}' 'r:|=*' 'l:|=* r:|=*'
 
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_find_no_dups
+autoload -Uz compinit && compinit
 
-### Oh-My-Zsh
-# https://github.com/ohmyzsh/ohmyzsh
-# Path to your oh-my-zsh installation.
-export ZSH="${HOME}/.oh-my-zsh"
+### Zsh Autosuggestions
+# https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
+source ${HOME}/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Change location of dump files
-export ZSH_COMPDUMP=${ZSH}/cache/.zcompdump-${HOST}
-
-zstyle ':omz:update' mode auto
-zstyle ':omz:update' frequency 14
-
-plugins=(
-    docker
-    fzf-tab
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-)
-source ${ZSH}/oh-my-zsh.sh
-
-### Brew
-# https://brew.sh
-export PATH=/opt/homebrew/bin:${PATH}
-if type brew &>/dev/null
-then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
-  autoload -Uz compinit
-  compinit
-fi
+### Zsh Syntax Highlighting
+# https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
+source ${HOME}/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ### Oh-My-Posh
 # https://ohmyposh.dev/docs/installation/prompt
@@ -46,8 +23,12 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config ${HOME}/.config/oh-my-posh/oh-my-posh.toml)"
 fi
 
+### Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 ### Bat
 # https://github.com/sharkdp/bat
+# https://nix-community.github.io/home-manager/options.xhtml#opt-programs.bat.themes
 export BAT_THEME="Catppuccin Mocha"
 
 ### Zoxide
@@ -59,6 +40,15 @@ eval "$(zoxide init --cmd cd zsh)"
 source <(fzf --zsh)
 setopt globdots
 zstyle ':completion:*' special-dirs false
+
+### Fzf-Tab
+# https://github.com/Aloxaf/fzf-tab?tab=readme-ov-file#install
+source ${HOME}/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:*' fzf-flags --color=fg:5
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 ### Atuin
 # https://github.com/atuinsh/atuin
@@ -76,12 +66,6 @@ if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; then
   fastfetch
 fi
 
-### Nix
-# https://github.com/NixOS/nix/issues/3616
-if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-  source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-fi
-
 ### Yazy
 # https://yazi-rs.github.io/docs/quick-start
 function yy() {
@@ -95,6 +79,9 @@ function yy() {
 
 ### Alias
 # System
+# https://github.com/ohmyzsh/ohmyzsh/blob/c690f731618959cba3b85500acee20ebf43e51c1/lib/key-bindings.zsh#L90
+bindkey "^[[3~" delete-char
+
 alias cat="bat"
 alias ls="eza --color=always --all --icons=always"
 alias ll="eza --color=always --all --long --icons=always"

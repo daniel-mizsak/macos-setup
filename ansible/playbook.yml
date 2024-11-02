@@ -1,12 +1,13 @@
 ---
-- name: Setup macOS
+- name: Setup system
   hosts: localhost
   connection: local
+  become: true
   gather_facts: true
-  vars_files:
-    - vars.yml
+  vars:
+    install_latest_packages: true
 
   tasks:
     - name: Import tasks
       ansible.builtin.import_tasks:
-        file: tasks/{{ task_name }}.yml
+        file: "{{ platform }}/{{ task_name }}.yml"

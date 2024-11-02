@@ -16,10 +16,8 @@
   "editor.mouseWheelScrollSensitivity": 0.8,
   // Files
   "files.associations": {
-    "**/handlers/*.yml": "ansible",
-    "**/host_vars/*.yml": "ansible",
+    "**/ansible/**/*.yml": "ansible",
     "**/tasks/*.yml": "ansible",
-    "**/tests/*.yml": "ansible",
   },
   "files.eol": "\n",
   "files.exclude": {
@@ -190,7 +188,20 @@
     "${workspaceFolder}/.venv/bin/mypy",
   ],
   // Nix IDE
-  "nix.formatterPath": "nixfmt",
+  "nix.formatterPath": "nixpkgs-fmt",
+  // PowerShell
+  "[powershell]": {
+    "editor.defaultFormatter": "ms-vscode.powershell",
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "editor.trimAutoWhitespace": true,
+  },
+  "powershell.codeFormatting.autoCorrectAliases": true,
+  "powershell.codeFormatting.avoidSemicolonsAsLineTerminators": true,
+  "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
+  "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
+  "powershell.codeFormatting.useConstantStrings": true,
+  "powershell.codeFormatting.useCorrectCasing": true,
   // psioniq File Header
   "psi-header.config": {
     "author": "Daniel Mizsak",
@@ -242,6 +253,7 @@
     "editor.defaultFormatter": "redhat.vscode-yaml",
     "editor.tabSize": 2,
   },
+  // Remote - SSH
   "remote.SSH.remotePlatform": {
     "*": "linux",
   },

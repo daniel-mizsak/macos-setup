@@ -1,90 +1,50 @@
 ---
-- name: Install zsh on Linux
-  community.general.homebrew:
-    name: "zsh"
-    state: present
-    update_homebrew: true
-  when: ansible_os_family != "Darwin"
+- name: Include variables
+  ansible.builtin.include_vars:
+    file: ./vars.yml
 
 - name: Update homebrew index
   community.general.homebrew:
     update_homebrew: true
 
+- name: Install zsh on linux
+  community.general.homebrew:
+    name: "zsh"
+    state: present
+  when: ansible_os_family != "Darwin"
+
 - name: Install terminal packages
   community.general.homebrew:
     name: "{{ item }}"
-    state: present
-  loop:
-    - "atuin"
-    - "bat"
-    - "eza"
-    - "fastfetch"
-    - "git"
-    - "htop"
-    - "lazydocker"
-    - "lazygit"
-    - "neovim"
-    - "oh-my-posh"
-    - "pyenv"
-    - "tmux"
-    - "tree"
+    state: "{{ 'latest' if package_install_latest else 'present' }}"
+  loop: "{{ terminal_packages }}"
 
-    # https://yazi-rs.github.io/docs/installation
-    - "yazi"
-    - "sevenzip"
-    - "jq"
-    - "poppler"
-    - "fd"
-    - "ripgrep"
-    - "fzf"
-    - "zoxide"
-    - "imagemagick"
-    - "ffmpegthumbnailer"
-
-- name: Install nerd font macOS
-  community.general.homebrew_cask:
-    name: "{{ item }}"
-    state: present
-  loop:
-    - "font-meslo-lg-nerd-font"
-    - "font-symbols-only-nerd-font"
-  when: ansible_os_family == "Darwin"
-
-- name: Upgrade homebrew packages
+- name: Upgrade terminal packages
   community.general.homebrew:
     upgrade_all: true
   when: package_install_latest
 
-# Oh My Zsh
-- name: Download ohmyzsh installer
-  ansible.builtin.get_url:
-    url: "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
-    dest: "/tmp/ohmyzsh-install.sh"
+# ZSH
+- name: Create zsh directory
+  ansible.builtin.file:
+    path: "${HOME}/.zsh/plugins"
+    state: directory
     mode: "0755"
-
-- name: Run ohmyzsh installer
-  ansible.builtin.command: >
-    /tmp/ohmyzsh-install.sh
-  args:
-    creates: "${HOME}/.oh-my-zsh"
-  environment:
-    RUNZSH: "no"
-    CHSH: "no"
 
 - name: Install fzf-tab.  # noqa: latest
   ansible.builtin.git:
     repo: "https://github.com/Aloxaf/fzf-tab"
-    dest: "${HOME}/.oh-my-zsh/custom/plugins/fzf-tab"
+    dest: "${HOME}/.zsh/plugins/fzf-tab"
 
 - name: Install zsh-autosuggestions.  # noqa: latest
   ansible.builtin.git:
     repo: "https://github.com/zsh-users/zsh-autosuggestions"
-    dest: "${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+    dest: "${HOME}/.zsh/plugins/zsh-autosuggestions"
 
 - name: Install zsh-syntax-highlighting.  # noqa: latest
   ansible.builtin.git:
     repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
-    dest: "${HOME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+    dest: "${HOME}/.zsh/plugins/zsh-syntax-highlighting"
 
 - name: Install tmux plugin manager.  # noqa: latest
   ansible.builtin.git:
@@ -121,7 +81,7 @@
   args:
     creates: "${HOME}/.config/yazi/flavors/catppuccin-mocha.yazi/flavor.toml"
 
-# Create terminal symlinks.
+# Symlinks
 - name: Ensure symlink directories exist
   ansible.builtin.file:
     path: "{{ item.dest | dirname }}"
