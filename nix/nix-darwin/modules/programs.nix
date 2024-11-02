@@ -15,7 +15,6 @@
       # Terminal
       atuin
       bat
-      dotnet-sdk
       eza
       fastfetch
       fd
@@ -32,13 +31,16 @@
       nixpkgs-fmt
       oh-my-posh
       poppler
-      pyenv
       ripgrep
       tmux
       tree
       wget
       yazi
       zoxide
+
+      dotnet-sdk_8
+      go
+      pyenv
     ];
   };
 

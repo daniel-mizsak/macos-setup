@@ -6,4 +6,4 @@ curl -fsSL https://raw.githubusercontent.com/daniel-mizsak/macos-setup/main/scri
 source /tmp/prepare-environment.sh
 
 tasks="terminal"
-source ${HOME}/macos-setup/scripts/run-tasks.sh $tasks
+source ${HOME}/macos-setup/ansible/scripts/run-tasks.sh $tasks

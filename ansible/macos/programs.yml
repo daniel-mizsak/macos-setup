@@ -1,12 +1,12 @@
 ---
-- name: Import terminal setup tasks
-  ansible.builtin.import_tasks:
-    file: tasks/terminal.yml
-
 # Homebrew packages
 - name: Update homebrew index
   community.general.homebrew:
     update_homebrew: true
+
+- name: Import terminal setup tasks
+  ansible.builtin.import_tasks:
+    file: tasks/terminal.yml
 
 # Homebrew casks
 - name: Install homebrew casks
@@ -52,7 +52,11 @@
     - "wezterm"
   tags:
     - ignore-vm
-  when: false
+
+- name: Install mas
+  community.general.homebrew:
+    name: "mas"
+    state: present
 
 - name: Upgrade homebrew packages
   community.general.homebrew:
@@ -81,20 +85,24 @@
     - 1573461917  # SponsorBlock for YouTube
   tags:
     - ignore-vm
-  when: false
 
 - name: Upgrade app store apps
   community.general.mas:
     upgrade_all: true
   when: package_install_latest
 
-# Create package symlinks.
+- name: Install nerd font macOS
+  community.general.homebrew_cask:
+    name: "font-meslo-lg-nerd-font"
+    state: present
+
+# Create program symlinks.
 - name: Ensure symlink directories exist
   ansible.builtin.file:
     path: "{{ item.dest | dirname }}"
     state: directory
     mode: "0775"
-  loop: "{{ package_symlinks }}"
+  loop: "{{ program_symlinks }}"
 
 - name: Create dotfile symlinks
   ansible.builtin.file:
@@ -102,4 +110,4 @@
     dest: "{{ item.dest }}"
     state: link
     force: true
-  loop: "{{ package_symlinks }}"
+  loop: "{{ program_symlinks }}"

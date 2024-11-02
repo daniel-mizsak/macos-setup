@@ -16,10 +16,8 @@
   "editor.mouseWheelScrollSensitivity": 0.8,
   // Files
   "files.associations": {
-    "**/handlers/*.yml": "ansible",
-    "**/host_vars/*.yml": "ansible",
+    "**/ansible/**/*.yml": "ansible",
     "**/tasks/*.yml": "ansible",
-    "**/tests/*.yml": "ansible",
   },
   "files.eol": "\n",
   "files.exclude": {

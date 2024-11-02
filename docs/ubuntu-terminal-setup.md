@@ -1,11 +1,11 @@
 ## Configure Ubuntu terminal (also works on WSL2)
 
-In a **Ubuntu** environment first install `build-essential` and `python3-venv`:
+In a `Ubuntu` environment first install `build-essential` and `python3-venv`:
 ```bash
 sudo apt update && sudo apt install build-essential python3-venv -y
 ```
 
-Install **Homebrew**:
+Install `Homebrew`:
 ```bash
 /bin/bash -c "$(curl -fsSL \
 https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -22,7 +22,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 Run the **terminal setup** script:
 ```bash
 /bin/bash -c "$(curl -fsSL \
-https://raw.githubusercontent.com/daniel-mizsak/macos-setup/main/scripts/terminal-setup.sh)"
+https://raw.githubusercontent.com/daniel-mizsak/macos-setup/main/ansible/scripts/terminal-setup.sh)"
 ```
 
 Change the **default shell** to `zsh`:

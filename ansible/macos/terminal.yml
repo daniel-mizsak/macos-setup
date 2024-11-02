@@ -1,62 +1,30 @@
 ---
-- name: Install zsh on Linux
-  community.general.homebrew:
-    name: "zsh"
-    state: present
-    update_homebrew: true
-  when: ansible_os_family != "Darwin"
+- name: Include variables
+  ansible.builtin.include_vars:
+    file: ./vars.yml
 
 - name: Update homebrew index
   community.general.homebrew:
     update_homebrew: true
 
+- name: Install zsh on linux
+  community.general.homebrew:
+    name: "zsh"
+    state: present
+  when: ansible_os_family != "Darwin"
+
 - name: Install terminal packages
   community.general.homebrew:
     name: "{{ item }}"
-    state: present
-  loop:
-    - "atuin"
-    - "bat"
-    - "dotnet-sdk"
-    - "eza"
-    - "fastfetch"
-    - "fd"
-    - "ffmpegthumbnailer"
-    - "fzf"
-    - "git"
-    - "htop"
-    - "imagemagick"
-    - "jq"
-    - "kubectl"
-    - "lazydocker"
-    - "lazygit"
-    - "neovim"
-    - "nixpkgs-fmt"
-    - "oh-my-posh"
-    - "poppler"
-    - "pyenv"
-    - "ripgrep"
-    - "sevenzip"
-    - "tmux"
-    - "tree"
-    - "wget"
-    - "yazi"
-    - "zoxide"
+    state: "{{ 'latest' if package_install_latest else 'present' }}"
+  loop: "{{ terminal_packages }}"
 
-- name: Install nerd font macOS
-  community.general.homebrew_cask:
-    name: "{{ item }}"
-    state: present
-  loop:
-    - "font-meslo-lg-nerd-font"
-    - "font-symbols-only-nerd-font"
-  when: ansible_os_family == "Darwin"
-
-- name: Upgrade homebrew packages
+- name: Upgrade terminal packages
   community.general.homebrew:
     upgrade_all: true
   when: package_install_latest
 
+# ZSH
 - name: Create zsh directory
   ansible.builtin.file:
     path: "${HOME}/.zsh/plugins"
@@ -113,7 +81,7 @@
   args:
     creates: "${HOME}/.config/yazi/flavors/catppuccin-mocha.yazi/flavor.toml"
 
-# Create terminal symlinks.
+# Symlinks
 - name: Ensure symlink directories exist
   ansible.builtin.file:
     path: "{{ item.dest | dirname }}"

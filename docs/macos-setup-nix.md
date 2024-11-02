@@ -1,6 +1,6 @@
 ## Configure macOS
 
-In a **macOS** environment first install `xcode-select`:
+In a `macOS` environment first install `xcode-select`:
 ```bash
 xcode-select --install
 ```
