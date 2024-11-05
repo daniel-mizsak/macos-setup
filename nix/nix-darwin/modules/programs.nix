@@ -62,7 +62,6 @@
       "aldente"
       "arc"
       "betterdisplay"
-      "boosteroid"
       "db-browser-for-sqlite"
       "devtoys"
       "docker"
