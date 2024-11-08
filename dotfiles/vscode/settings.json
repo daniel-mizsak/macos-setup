@@ -72,6 +72,7 @@
     Code Runner
     Code Spell Checker
     CodeSnap
+    CSharpier - Code formatter
     Dev Containers
     Docker
     Even Better TOML
@@ -118,7 +119,7 @@
   "redhat.telemetry.enabled": false,
   // C#
   "[csharp]": {
-    "editor.defaultFormatter": "ms-dotnettools.csharp",
+    "editor.defaultFormatter": "csharpier.csharpier-vscode",
   },
   "csharp.experimental.debug.hotReload": true,
   // Code Runner

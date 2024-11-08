@@ -52,7 +52,7 @@
       cleanup = "zap";
       upgrade = true;
     };
-    brews = [ "sevenzip" ];
+    brews = [ "sevenzip" "postgresql@16" ];
     casks = [
       "1password"
       "affinity-designer"
@@ -63,6 +63,7 @@
       "arc"
       "betterdisplay"
       "db-browser-for-sqlite"
+      "dbeaver-community"
       "devtoys"
       "docker"
       "github"

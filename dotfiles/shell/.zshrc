@@ -57,6 +57,9 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+### Postgresql
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+
 ### Fastfetch
 # https://github.com/fastfetch-cli/fastfetch
 if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; then
