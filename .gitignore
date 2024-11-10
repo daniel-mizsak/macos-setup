@@ -1,6 +1,8 @@
 # Project
 dotfiles/config/nvim/lazy-lock.json
 dotfiles/config/nvim/lazyvim.json
+dotfiles/config/yazi/flavors
+dotfiles/config/yazi/package.toml
 
 nix/nix-darwin/flake.lock
 

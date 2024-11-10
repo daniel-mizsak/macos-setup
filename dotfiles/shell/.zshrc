@@ -25,8 +25,8 @@ fi
 
 ### Bat
 # https://github.com/sharkdp/bat
-# https://nix-community.github.io/home-manager/options.xhtml#opt-programs.bat.themes
 export BAT_THEME="Catppuccin Mocha"
+# > bat cache --build
 
 ### Zoxide
 # https://github.com/ajeetdsouza/zoxide
@@ -76,11 +76,17 @@ function yy() {
 	fi
 	rm -f -- "$tmp"
 }
+# > ya pack -a yazi-rs/flavors:catppuccin-mocha
 
 ### Alias
 # System
 # https://github.com/ohmyzsh/ohmyzsh/blob/c690f731618959cba3b85500acee20ebf43e51c1/lib/key-bindings.zsh#L90
 bindkey "^[[3~" delete-char
+
+# Direrctory
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 
 alias cat="bat"
 alias ls="eza --color=always --all --icons=always"
