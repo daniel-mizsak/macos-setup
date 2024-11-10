@@ -1,0 +1,236 @@
+---
+### Programs
+# Brew
+- name: Update homebrew index
+  community.general.homebrew:
+    update_homebrew: true
+
+- name: Install homebrew casks
+  community.general.homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "1password"
+    - "affinity-designer"
+    - "affinity-photo"
+    - "affinity-publisher"
+    # - "aldente"
+    - "appcleaner"
+    # - "betterdisplay"
+    - "deepl"
+    # - "hiddenbar"
+    - "keyboardcleantool"
+    # - "logi-options+"
+    - "microsoft-edge"
+    - "notion"
+    - "raycast"
+    - "scroll-reverser"
+    - "signal"
+    # - "synology-drive"
+    - "updf"
+    - "vlc"
+    - "whatsapp"
+  tags:
+    - ignore-vm
+
+- name: Install mas
+  community.general.homebrew:
+    name: "mas"
+    state: present
+
+- name: Upgrade homebrew packages
+  community.general.homebrew:
+    upgrade_all: true
+  when: install_latest_packages
+
+- name: Install app store apps.  # noqa: args[module]
+  community.general.mas:
+    id: "{{ item | int }}"
+    state: present
+  loop:
+    - 409183694  # Keynote
+    - 441258766  # Magnet
+    - 409203825  # Numbers
+    - 409201541  # Pages
+
+- name: Upgrade app store apps
+  community.general.mas:
+    upgrade_all: true
+  when: install_latest_packages
+
+- name: Install nerd font macOS
+  community.general.homebrew_cask:
+    name: "font-meslo-lg-nerd-font"
+    state: present
+
+### System
+# Dock
+- name: Launch animation
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: launchanim
+    value: false
+    type: bool
+
+- name: Magnification
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: magnification
+    value: false
+    type: bool
+
+- name: Minimize effect
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: mineffect
+    value: genie
+    type: string
+
+- name: Minimize to application
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: minimize-to-application
+    value: true
+    type: bool
+
+- name: Orientation
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: orientation
+    value: bottom
+    type: string
+
+- name: Show process indicators
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: show-process-indicators
+    value: true
+    type: bool
+
+- name: Show recents
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: show-recents
+    value: false
+    type: bool
+
+- name: Tilesize
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: tilesize
+    value: 40
+    type: int
+
+- name: Size immutable
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: size-immutable
+    value: true
+    type: bool
+
+# Finder
+- name: Fhow all extensions
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: AppleShowAllExtensions
+    value: true
+    type: bool
+
+- name: Enable extension change warning
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: FXEnableExtensionChangeWarning
+    value: true
+    type: bool
+
+- name: Show pathbar
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowPathbar
+    value: true
+    type: bool
+
+- name: Show statusbar
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowStatusBar
+    value: true
+    type: bool
+
+- name: Remove old trash items
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: FXRemoveOldTrashItems
+    value: false
+    type: bool
+
+- name: New window target
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: NewWindowTarget
+    value: PfDo
+    type: string
+
+- name: New window target path
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: NewWindowTargetPath
+    value: "file://Users/{{ lookup('env', 'USER') }}/Documents/"
+    type: string
+
+- name: Show external hard drives on desktop
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowExternalHardDrivesOnDesktop
+    value: true
+    type: bool
+
+- name: Show hard drives on desktop
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowHardDrivesOnDesktop
+    value: true
+    type: bool
+
+- name: Show recent tags
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowRecentTags
+    value: false
+    type: bool
+
+- name: Show toolbar
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowToolbar
+    value: true
+    type: bool
+
+- name: Warn on empty trash
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: WarnOnEmptyTrash
+    value: true
+    type: bool
+
+# Other
+- name: Enable battery percentage
+  community.general.osx_defaults:
+    domain: com.apple.controlcenter.plist
+    key: BatteryShowPercentage
+    value: true
+    type: bool
+
+- name: Do not create .DS_Store files on network volumes
+  community.general.osx_defaults:
+    domain: com.apple.desktopservices
+    key: DSDontWriteNetworkStores
+    value: true
+    type: bool
+
+- name: Disable desktop reveal by clicking wallpaper
+  community.general.osx_defaults:
+    domain: com.apple.WindowManager
+    key: EnableStandardClickToShowDesktop
+    value: false
+    type: bool
