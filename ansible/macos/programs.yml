@@ -1,10 +1,13 @@
 ---
-# Homebrew packages
+- name: Include variables
+  ansible.builtin.include_vars:
+    file: ./vars.yml
+
+# Brew
 - name: Update homebrew index
   community.general.homebrew:
     update_homebrew: true
 
-# Homebrew casks
 - name: Install homebrew casks
   community.general.homebrew_cask:
     name: "{{ item }}"
@@ -58,7 +61,6 @@
     upgrade_all: true
   when: install_latest_packages
 
-# App Store
 - name: Install app store apps.  # noqa: args[module]
   community.general.mas:
     id: "{{ item | int }}"
@@ -89,7 +91,7 @@
     name: "font-meslo-lg-nerd-font"
     state: present
 
-# Create program symlinks.
+# Symlinks
 - name: Ensure symlink directories exist
   ansible.builtin.file:
     path: "{{ item.dest | dirname }}"

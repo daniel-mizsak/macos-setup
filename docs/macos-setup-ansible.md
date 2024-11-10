@@ -5,6 +5,10 @@ In a **macOS** environment first install `xcode-select`.
 xcode-select --install
 ```
 
+```bash
+sudo xcodebuild -license accept
+```
+
 Install **Homebrew**:
 ```bash
 /bin/bash -c "$(curl -fsSL \
@@ -21,10 +25,12 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 Sign in to **Apple Account**.
 
+Enable full disk access for **Terminal** in `System Preferences > Privacy & Security > Full Disk Access`.
+
 Run the **macos setup** script:
 ```bash
 /bin/bash -c "$(curl -fsSL \
-https://raw.githubusercontent.com/daniel-mizsak/macos-setup/main/ansible/scripts/macos-setup-ansible.sh)"
+https://raw.githubusercontent.com/daniel-mizsak/macos-setup/main/ansible/scripts/macos-setup.sh)"
 ```
 
 Install **TMUX** plugins:

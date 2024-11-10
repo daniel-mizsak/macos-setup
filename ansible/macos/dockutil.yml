@@ -14,9 +14,9 @@
     dockutil --add {{ item }} --no-restart
   changed_when: false
   loop:
-    - /Applications/Safari.app
-    - /Applications/Mail.app
-    - /Applications/Signal.app
-    - /Applications/Visual\ Studio\ Code.app
-    - /Applications/System\ Settings.app
-    - /Users/{{ lookup('env', 'USER') }}/Downloads/
+    - '/Applications/Safari.app'
+    - '/Applications/Mail.app'
+    - '/Applications/Signal.app'
+    - '/Applications/Visual\ Studio\ Code.app'
+    - '/Applications/System\ Settings.app'
+    - '/Users/{{ lookup("env", "USER") }}/Downloads/'
