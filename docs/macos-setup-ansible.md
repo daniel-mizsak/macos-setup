@@ -5,10 +5,6 @@ In a **macOS** environment first install `xcode-select`.
 xcode-select --install
 ```
 
-```bash
-sudo xcodebuild -license accept
-```
-
 Install **Homebrew**:
 ```bash
 /bin/bash -c "$(curl -fsSL \

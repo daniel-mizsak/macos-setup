@@ -5,10 +5,6 @@ In a **macOS** environment first install `xcode-select`:
 xcode-select --install
 ```
 
-```bash
-sudo xcodebuild -license accept
-```
-
 Install **Nix** ([official documentation](https://nixos.org/download/)):
 ```bash
 sh <(curl -L https://nixos.org/nix/install)
