@@ -15,6 +15,7 @@
       # Terminal
       atuin
       bat
+      btop
       eza
       fastfetch
       fd
@@ -32,6 +33,7 @@
       oh-my-posh
       poppler
       ripgrep
+      tlrc
       tmux
       tree
       wget

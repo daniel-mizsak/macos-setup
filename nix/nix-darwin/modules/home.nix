@@ -57,6 +57,14 @@ in
         sha256 = "sha256-UBuh6EeUhD5V9TjAo7hBRaGCt3KjkkO7QDxuaEBzN0s=";
       };
 
+      # btop
+      ".config/btop/btop.conf".source = ~/macos-setup/dotfiles/config/btop/btop.conf;
+      ".config/btop/themes/catppuccin_mocha.theme".source = pkgs.fetchurl
+        {
+          url = "https://raw.githubusercontent.com/catppuccin/btop/refs/heads/main/themes/catppuccin_mocha.theme";
+          sha256 = "sha256-THRpq5vaKCwf9gaso3ycC4TNDLZtBB5Ofh/tOXkfRkQ=";
+        };
+
       # fastfetch
       ".config/fastfetch/config.jsonc".source = ~/macos-setup/dotfiles/config/fastfetch/config.jsonc;
 
