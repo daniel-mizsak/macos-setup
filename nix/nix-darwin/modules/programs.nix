@@ -16,6 +16,7 @@
       atuin
       bat
       btop
+      direnv
       eza
       fastfetch
       fd

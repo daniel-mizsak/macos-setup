@@ -9,6 +9,9 @@
       NSGlobalDomain = {
         AppleInterfaceStyle = "Dark";
       };
+      controlcenter = {
+        BatteryShowPercentage = true;
+      };
       dock = {
         autohide = true;
         autohide-delay = 0.0;
@@ -36,23 +39,22 @@
         FXDefaultSearchScope = "SCcf";
         FXEnableExtensionChangeWarning = true;
         FXPreferredViewStyle = "clmv";
+        FXRemoveOldTrashItems = false;
         QuitMenuItem = true;
+        ShowExternalHardDrivesOnDesktop = true;
+        ShowHardDrivesOnDesktop = false;
         ShowPathbar = true;
         ShowStatusBar = true;
       };
       CustomUserPreferences = {
-        "com.apple.controlcenter.plist".BatteryShowPercentage = true;
         "com.apple.desktopservices".DSDontWriteNetworkStores = true;
         "com.apple.dock" = {
           contents-immutable = true;
           size-immutable = true;
         };
         "com.apple.finder" = {
-          FXRemoveOldTrashItems = false;
           NewWindowTarget = "PfDo";
           NewWindowTargetPath = "file://Users/${user}/Documents/";
-          ShowExternalHardDrivesOnDesktop = true;
-          ShowHardDrivesOnDesktop = false;
           ShowRecentTags = false;
           ShowToolbar = true;
           WarnOnEmptyTrash = false;

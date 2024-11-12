@@ -1,4 +1,4 @@
-### General
+##### General #####
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
 
@@ -9,36 +9,42 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]-_}={[:upper:][:lower:
 
 autoload -Uz compinit && compinit
 
-### Zsh Autosuggestions
+# Zsh Autosuggestions
 # https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
 source ${HOME}/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-### Zsh Syntax Highlighting
+# Zsh Syntax Highlighting
 # https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
 source ${HOME}/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-### Oh-My-Posh
-# https://ohmyposh.dev/docs/installation/prompt
-if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config ${HOME}/.config/oh-my-posh/oh-my-posh.toml)"
-fi
 
-### Bat
+##### Tools #####
+# Atuin
+# https://github.com/atuinsh/atuin
+eval "$(atuin init zsh)"
+
+# Bat
 # https://github.com/sharkdp/bat
 export BAT_THEME="Catppuccin Mocha"
 # > bat cache --build
 
-### Zoxide
-# https://github.com/ajeetdsouza/zoxide
-eval "$(zoxide init --cmd cd zsh)"
+# Direnv
+# https://direnv.net
+eval "$(direnv hook zsh)"
 
-### Fzf
+# Fastfetch
+# https://github.com/fastfetch-cli/fastfetch
+if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; then
+  fastfetch
+fi
+
+# Fzf
 # https://github.com/junegunn/fzf
 source <(fzf --zsh)
 setopt globdots
 zstyle ':completion:*' special-dirs false
 
-### Fzf-Tab
+# Fzf-Tab
 # https://github.com/Aloxaf/fzf-tab?tab=readme-ov-file#install
 source ${HOME}/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
 zstyle ':completion:*:git-checkout:*' sort false
@@ -47,26 +53,22 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:*' fzf-flags --color=fg:5
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
-### Atuin
-# https://github.com/atuinsh/atuin
-eval "$(atuin init zsh)"
+# Oh-My-Posh
+# https://ohmyposh.dev/docs/installation/prompt
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  eval "$(oh-my-posh init zsh --config ${HOME}/.config/oh-my-posh/oh-my-posh.toml)"
+fi
 
-### Pyenv
+# Postgresql
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+
+# Pyenv
 # https://github.com/pyenv/pyenv?tab=readme-ov-file#set-up-your-shell-environment-for-pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-### Postgresql
-export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
-
-### Fastfetch
-# https://github.com/fastfetch-cli/fastfetch
-if [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; then
-  fastfetch
-fi
-
-### Yazy
+# Yazy
 # https://yazi-rs.github.io/docs/quick-start
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -78,7 +80,12 @@ function yy() {
 }
 # > ya pack -a yazi-rs/flavors:catppuccin-mocha
 
-### Alias
+# Zoxide
+# https://github.com/ajeetdsouza/zoxide
+eval "$(zoxide init --cmd cd zsh)"
+
+
+##### Alias #####
 # System
 # https://github.com/ohmyzsh/ohmyzsh/blob/c690f731618959cba3b85500acee20ebf43e51c1/lib/key-bindings.zsh#L90
 bindkey "^[[3~" delete-char
@@ -87,6 +94,7 @@ bindkey "^[[3~" delete-char
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+alias .....="cd ../../../.."
 
 alias cat="bat"
 alias ls="eza --color=always --all --icons=always"
