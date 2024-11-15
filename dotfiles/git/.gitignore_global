@@ -3,4 +3,5 @@
 
 # Environments
 .env
+.envrc
 .venv
