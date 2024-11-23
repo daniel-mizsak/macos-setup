@@ -19,9 +19,6 @@ source ${HOME}/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
 ##### Tools #####
-# Atuin
-# https://github.com/atuinsh/atuin
-eval "$(atuin init zsh)"
 
 # Bat
 # https://github.com/sharkdp/bat
@@ -52,6 +49,11 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:*' fzf-flags --color=fg:5
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
+
+# Atuin
+# https://github.com/atuinsh/atuin
+# Atuin should be loaded after fzf so that it is used for ctrl + r
+eval "$(atuin init zsh)"
 
 # Oh-My-Posh
 # https://ohmyposh.dev/docs/installation/prompt
