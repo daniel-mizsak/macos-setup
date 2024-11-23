@@ -8,25 +8,15 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    darwin = {
-      url = "github:LnL7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    darwin.url = "github:LnL7/nix-darwin";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
 
   outputs =
-    inputs@{ self
-    , nixpkgs
-    , home-manager
-    , darwin
-    , nix-homebrew
-    ,
-    }:
+    inputs@{ self, nixpkgs, home-manager, darwin, nix-homebrew }:
     let
       pkgs = import nixpkgs {
         system = "aarch64-darwin";
@@ -87,6 +77,7 @@
           }
         ];
       };
-      darwinPackages = self.darwinConfigurations.Mizsak-D-MBM.pkgs;
+
+      nixosConfigurations.Mizsak-D-VM-NixOS = nixpkgs.lib.nixosSystem { };
     };
 }
