@@ -19,7 +19,6 @@ source ${HOME}/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
 ##### Tools #####
-
 # Bat
 # https://github.com/sharkdp/bat
 export BAT_THEME="Catppuccin Mocha"

@@ -77,7 +77,5 @@
           }
         ];
       };
-
-      nixosConfigurations.Mizsak-D-VM-NixOS = nixpkgs.lib.nixosSystem { };
     };
 }
