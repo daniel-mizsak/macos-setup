@@ -1,26 +1,41 @@
 { nixpkgs, ... }:
 
-let
-  system = "x86_64-linux";
-
-  pkgs = import nixpkgs {
-    inherit system;
-    config.allowUnfree = true;
-  };
-in
 {
-  nixos-x86 = nixpkgs.lib.nixosSystem {
-    inherit system;
-    specialArgs = {
-      inherit pkgs;
+  nixos-x86-vm =
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    in
+    nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        inherit pkgs;
+      };
+
+      modules = [
+        ./configuration.nix
+        ../home-manager/packages.nix
+      ];
     };
 
-    modules = [
-      ./configuration.nix
-      ../modules/packages.nix
-    ];
-  };
+  nixos-arm-vm =
+    let
+      system = "aarch64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    in
+    nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        inherit pkgs;
+      };
 
-  nixos-aarch64 = nixpkgs.lib.nixosSystem {
-  };
+      modules = [
+        ./configuration.nix
+        ../home-manager/packages.nix
+      ];
+    };
 }
