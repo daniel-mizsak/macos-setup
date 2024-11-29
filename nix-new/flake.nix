@@ -21,18 +21,21 @@
   outputs = inputs @ { self, nixpkgs, home-manager, nix-darwin, nix-homebrew }:
   {
     darwinConfigurations = (
+      # Everything macOS related
       import ./nix-darwin {
         inherit nixpkgs home-manager nix-darwin nix-homebrew;
       }
     );
 
     nixosConfigurations = (
+      # NixOS virtual machine setup for both x86_64 and aarch64
       import ./nixos {
         inherit nixpkgs;
       }
     );
 
     homeConfigurations = (
+      # Home Manager setup for the VMs
       import ./home-manager {
         inherit nixpkgs home-manager;
       }
