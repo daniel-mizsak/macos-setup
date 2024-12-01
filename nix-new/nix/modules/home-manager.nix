@@ -1,7 +1,6 @@
-# https://mynixos.com/home-manager/option/home.stateVersion
-# https://wiki.nixos.org/wiki/Home_Manager
+{ user, inputs, ... }:
 
-{ config, pkgs, user, ... }:
+{ config, lib, pkgs, ... }:
 let
   inherit (config.lib.file) mkOutOfStoreSymlink;
 in

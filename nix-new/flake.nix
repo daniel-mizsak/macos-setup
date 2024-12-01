@@ -19,26 +19,26 @@
   };
 
   outputs = inputs @ { self, nixpkgs, home-manager, nix-darwin, nix-homebrew }:
-  {
-    darwinConfigurations = (
-      # Everything macOS related
-      import ./nix-darwin {
-        inherit nixpkgs home-manager nix-darwin nix-homebrew;
-      }
-    );
+    let
+      mkSystem = import ~/macos-setup/nix-new/nix/mkSystem.nix {
+        inherit nixpkgs inputs;
+      };
+    in
+    {
+      darwinConfigurations.macbook = mkSystem "macbook" {
+        system = "aarch64-darwin";
+        user = "damz";
+        nix-darwin = true;
+      };
 
-    nixosConfigurations = (
-      # NixOS virtual machine setup for both x86_64 and aarch64
-      import ./nixos {
-        inherit nixpkgs;
-      }
-    );
+      nixosConfigurations.vm-aarch64 = mkSystem "vm-aarch64" {
+        system = "aarch64-linux";
+        user = "damz";
+      };
 
-    homeConfigurations = (
-      # Home Manager setup for the VMs
-      import ./home-manager {
-        inherit nixpkgs home-manager;
-      }
-    );
-  };
+      nixosConfigurations.vm-x86_64 = mkSystem "vm-x86_64" {
+        system = "x86_64-linux";
+        user = "damz";
+      };
+    };
 }
