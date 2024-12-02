@@ -20,7 +20,7 @@
 
   outputs = inputs @ { self, nixpkgs, home-manager, nix-darwin, nix-homebrew }:
     let
-      mkSystem = import ~/macos-setup/nix/mksystem.nix {
+      mkSystem = import ./mksystem.nix {
         inherit nixpkgs inputs;
       };
     in

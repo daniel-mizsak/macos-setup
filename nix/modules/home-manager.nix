@@ -48,7 +48,7 @@ in
     file = {
       ### Terminal
       # atuin
-      ".config/atuin/config.toml".source = ~/macos-setup/dotfiles/config/atuin/config.toml;
+      ".config/atuin/config.toml".source = ../../dotfiles/config/atuin/config.toml;
 
       # bat
       ".config/bat/themes/Catppuccin Mocha.tmTheme".source = pkgs.fetchurl {
@@ -57,7 +57,7 @@ in
       };
 
       # btop
-      ".config/btop/btop.conf".source = ~/macos-setup/dotfiles/config/btop/btop.conf;
+      ".config/btop/btop.conf".source = ../../dotfiles/config/btop/btop.conf;
       ".config/btop/themes/catppuccin_mocha.theme".source = pkgs.fetchurl
         {
           url = "https://raw.githubusercontent.com/catppuccin/btop/refs/heads/main/themes/catppuccin_mocha.theme";
@@ -65,21 +65,21 @@ in
         };
 
       # fastfetch
-      ".config/fastfetch/config.jsonc".source = ~/macos-setup/dotfiles/config/fastfetch/config.jsonc;
+      ".config/fastfetch/config.jsonc".source = ../../dotfiles/config/fastfetch/config.jsonc;
 
       # git
-      ".gitconfig".source = ~/macos-setup/dotfiles/git/.gitconfig;
-      ".gitignore_global".source = ~/macos-setup/dotfiles/git/.gitignore_global;
-      ".gitmessage".source = ~/macos-setup/dotfiles/git/.gitmessage;
+      ".gitconfig".source = ../../dotfiles/git/.gitconfig;
+      ".gitignore_global".source = ../../dotfiles/git/.gitignore_global;
+      ".gitmessage".source = ../../dotfiles/git/.gitmessage;
 
       # neovim
-      ".config/nvim".source = mkOutOfStoreSymlink ~/macos-setup/dotfiles/config/nvim;
+      ".config/nvim".source = mkOutOfStoreSymlink ../../dotfiles/config/nvim;
 
       # oh-my-posh
-      ".config/oh-my-posh/oh-my-posh.toml".source = ~/macos-setup/dotfiles/config/oh-my-posh/oh-my-posh.toml;
+      ".config/oh-my-posh/oh-my-posh.toml".source = ../../dotfiles/config/oh-my-posh/oh-my-posh.toml;
 
       # tmux
-      ".config/tmux/tmux.conf".source = ~/macos-setup/dotfiles/config/tmux/.tmux.conf;
+      ".config/tmux/tmux.conf".source = ../../dotfiles/config/tmux/.tmux.conf;
       ".tmux/plugins/tpm".source = pkgs.fetchFromGitHub {
         owner = "tmux-plugins";
         repo = "tpm";
@@ -88,23 +88,23 @@ in
       };
 
       # yazi
-      ".config/yazi".source = mkOutOfStoreSymlink ~/macos-setup/dotfiles/config/yazi;
+      ".config/yazi".source = mkOutOfStoreSymlink ../../dotfiles/config/yazi;
 
       # zsh
-      ".zshrc".source = mkOutOfStoreSymlink ~/macos-setup/dotfiles/shell/.zshrc;
+      ".zshrc".source = mkOutOfStoreSymlink ../../dotfiles/shell/.zshrc;
 
       ### Package
       # alacritty
-      ".config/alacritty/alacritty.toml".source = mkOutOfStoreSymlink ~/macos-setup/dotfiles/config/alacritty/alacritty.toml;
+      ".config/alacritty/alacritty.toml".source = mkOutOfStoreSymlink ../../dotfiles/config/alacritty/alacritty.toml;
 
       # sublime
-      "/Users/${user}/Library/Application Support/Sublime Text/Packages/User/Preferences.sublime-settings".source = mkOutOfStoreSymlink ~/macos-setup/dotfiles/sublime/Preferences.sublime-settings;
+      "/Users/${user}/Library/Application Support/Sublime Text/Packages/User/Preferences.sublime-settings".source = mkOutOfStoreSymlink ../../dotfiles/sublime/Preferences.sublime-settings;
 
       # vscode
-      "/Users/${user}/Library/Application Support/Code/User/settings.json".source = mkOutOfStoreSymlink ~/macos-setup/dotfiles/vscode/settings.json;
+      "/Users/${user}/Library/Application Support/Code/User/settings.json".source = mkOutOfStoreSymlink ../../dotfiles/vscode/settings.json;
 
       # wezterm
-      ".config/wezterm/wezterm.lua".source = mkOutOfStoreSymlink ~/macos-setup/dotfiles/config/wezterm/wezterm.lua;
+      ".config/wezterm/wezterm.lua".source = mkOutOfStoreSymlink ../../dotfiles/config/wezterm/wezterm.lua;
     };
   };
 }

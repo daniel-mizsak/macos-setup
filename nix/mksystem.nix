@@ -15,8 +15,8 @@ name:
 
 let
   # The config files for this system.
-  machineConfig = ~/macos-setup/nix/machines/${name}.nix;
-  nixConfig = ~/macos-setup/nix/${if nix-darwin then "nix-darwin" else "nixos"}.nix;
+  machineConfig = "./machines/${name}.nix";
+  nixConfig = "./${if nix-darwin then "nix-darwin" else "nixos"}.nix";
 
   # NixOS vs nix-darwin functions
   systemFunc = if nix-darwin then inputs.nix-darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
@@ -37,6 +37,7 @@ systemFunc rec {
 
     machineConfig
     nixConfig
+
     home-manager.home-manager
     {
       home-manager.useGlobalPkgs = true;

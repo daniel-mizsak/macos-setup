@@ -43,12 +43,15 @@
     description = "Daniel Mizsak";
     extraGroups = [ "networkmanager" "wheel" ];
     home = "/home/damz";
+    shell = pkgs.zsh;
     packages = with pkgs; [
       kdePackages.kate
     ];
     # hashedPassword = "...";
   };
 
-  system.stateVersion = "24.05";
+  programs.zsh.enable = true;
+
+  system.stateVersion = "24.11";
 
 }
