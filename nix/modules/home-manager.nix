@@ -1,6 +1,6 @@
-{ user, inputs, ... }:
+{ user, inputs }:
 
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 let
   inherit (config.lib.file) mkOutOfStoreSymlink;
 in

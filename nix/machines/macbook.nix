@@ -1,4 +1,4 @@
-{ config, pkgs, currentSystemUser, ... }: {
+{ currentSystemUser, ... }: {
 
   nix = {
     configureBuildUsers = true;

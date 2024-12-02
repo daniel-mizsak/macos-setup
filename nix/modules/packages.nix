@@ -15,6 +15,7 @@
     };
     systemPackages = with pkgs; [
       # Terminal
+      _1password-cli
       atuin
       bat
       btop

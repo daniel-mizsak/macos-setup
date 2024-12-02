@@ -10,7 +10,6 @@ name:
 { system
 , user
 , is-darwin ? false
-,
 }:
 
 let
@@ -26,6 +25,8 @@ systemFunc rec {
   inherit system;
 
   modules = [
+    # Allow unfree packages.
+    { nixpkgs.config.allowUnfree = true; }
 
     inputs.nix-homebrew.darwinModules.nix-homebrew
     (if is-darwin then import ./modules/nix-homebrew.nix { inherit user; } else { })
@@ -42,6 +43,8 @@ systemFunc rec {
       };
     }
 
+    # We expose some extra arguments so that our modules can parameterize
+    # better based on these values.
     {
       config._module.args = {
         currentSystem = system;
