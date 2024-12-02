@@ -4,7 +4,7 @@ dotfiles/config/nvim/lazyvim.json
 dotfiles/config/yazi/flavors
 dotfiles/config/yazi/package.toml
 
-nix/nix-darwin/flake.lock
+nix/flake.lock
 
 # System
 .DS_Store

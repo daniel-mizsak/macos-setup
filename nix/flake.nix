@@ -28,7 +28,7 @@
       darwinConfigurations.macbook = mkSystem "macbook" {
         system = "aarch64-darwin";
         user = "damz";
-        nix-darwin = true;
+        is-darwin = true;
       };
 
       nixosConfigurations.vm-aarch64 = mkSystem "vm-aarch64" {
