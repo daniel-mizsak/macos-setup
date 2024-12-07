@@ -18,8 +18,6 @@ experimental-features = nix-command flakes
 EOF
 ```
 
-Change local **hostname** to `Mizsak-D-MBM`.
-
 Sign in to **Apple Account**.
 
 Enable full disk access for **Terminal** in `System Preferences > Privacy & Security > Full Disk Access`.

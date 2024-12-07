@@ -1,6 +1,9 @@
 ## Manual macOS settings:
 
-The actual amount of manual steps highly exceeds the below mentioned ones. But these are the most important ones for me.
+The actual amount of manual steps highly exceeds the below mentioned ones.
+
+Hostname:
+- `Mizsak-D-MBM`.
 
 Wallpaper:
 - `System Preferences > Wallpaper > Monterey`
@@ -8,7 +11,7 @@ Wallpaper:
 Finder:
 - Disable `Tags` in Finder
 - Remove `Recents` from Finder
-- Set `Finder` Favourites order to: `AirDrop`, `Applications`, `damz`, `GitHub`, `Downloads`
+- Set `Finder` Favourites order to: `AirDrop`, `Applications`, `<user>`, `GitHub`, `Downloads`
 
 Language & Region:
 - Change region to `Hungary` so that clock format is correct

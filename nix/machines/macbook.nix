@@ -1,7 +1,12 @@
-# https://github.com/dejanr/dotfiles/blob/7feea7ef8ef542df5a47b2efffe4d87c605ea23e/hosts/mbp-work/system.nix
-{ user, ... }:
+{ currentSystemUser, ... }: {
 
-{
+  nix = {
+    configureBuildUsers = true;
+    settings.experimental-features = "nix-command flakes";
+    useDaemon = true;
+  };
+  security.pam.enableSudoTouchIdAuth = true;
+
   system = {
     stateVersion = 5;
 
@@ -31,13 +36,13 @@
           "/Applications/Visual\ Studio\ Code.app"
           "/System/Applications/System Settings.app"
         ];
-        persistent-others = [ "/Users/${user}/Downloads/" ];
+        persistent-others = [ "/Users/${currentSystemUser}/Downloads/" ];
       };
       finder = {
         AppleShowAllExtensions = true;
         AppleShowAllFiles = true;
         FXDefaultSearchScope = "SCcf";
-        FXEnableExtensionChangeWarning = true;
+        FXEnableExtensionChangeWarning = false;
         FXPreferredViewStyle = "clmv";
         FXRemoveOldTrashItems = false;
         QuitMenuItem = true;
@@ -54,7 +59,7 @@
         };
         "com.apple.finder" = {
           NewWindowTarget = "PfDo";
-          NewWindowTargetPath = "file://Users/${user}/Documents/";
+          NewWindowTargetPath = "file://Users/${currentSystemUser}/Documents/";
           ShowRecentTags = false;
           ShowToolbar = true;
           WarnOnEmptyTrash = false;
@@ -63,5 +68,9 @@
       WindowManager.EnableStandardClickToShowDesktop = false;
     };
   };
-  security.pam.enableSudoTouchIdAuth = true;
+
+  users.users.${currentSystemUser} = {
+    name = currentSystemUser;
+    home = "/Users/${currentSystemUser}";
+  };
 }
