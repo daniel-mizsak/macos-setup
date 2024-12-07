@@ -31,12 +31,12 @@
         is-darwin = true;
       };
 
-      nixosConfigurations.vm-aarch64 = mkSystem "vm-arm" {
+      nixosConfigurations.vm-arm = mkSystem "vm-arm" {
         system = "aarch64-linux";
         user = "damz";
       };
 
-      nixosConfigurations.vm-x86_64 = mkSystem "vm-intel" {
+      nixosConfigurations.vm-intel = mkSystem "vm-intel" {
         system = "x86_64-linux";
         user = "damz";
       };
