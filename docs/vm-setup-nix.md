@@ -12,7 +12,7 @@ nix-env -i git
 
 **Clone** repository:
 ```bash
-git clone https://github.com/daniel-mizsak/macos-setup.git
+git clone https://github.com/daniel-mizsak/macos-setup.git ~/macos-setup
 ```
 
 Run **NixOS** configuration based on CPU architecture:

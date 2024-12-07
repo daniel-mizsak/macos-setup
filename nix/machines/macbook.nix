@@ -2,13 +2,10 @@
 
   nix = {
     configureBuildUsers = true;
-    gc.automatic = true;
-    optimise.automatic = true;
     settings.experimental-features = "nix-command flakes";
     useDaemon = true;
   };
   security.pam.enableSudoTouchIdAuth = true;
-  services.nix-daemon.enable = true;
 
   system = {
     stateVersion = 5;
@@ -45,7 +42,7 @@
         AppleShowAllExtensions = true;
         AppleShowAllFiles = true;
         FXDefaultSearchScope = "SCcf";
-        FXEnableExtensionChangeWarning = true;
+        FXEnableExtensionChangeWarning = false;
         FXPreferredViewStyle = "clmv";
         FXRemoveOldTrashItems = false;
         QuitMenuItem = true;
