@@ -108,7 +108,9 @@ in
       # wezterm
       ".config/wezterm/wezterm.lua".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/macos-setup/dotfiles/config/wezterm/wezterm.lua";
     };
-    activation.batCache = "bat cache --build";
-    activation.yaPack = "ya pack -a yazi-rs/flavors:catppuccin-mocha";
+    activation = {
+      batCache = "${pkgs.bat}/bin/bat cache --build";
+      # yaPack = "${pkgs.yazi}/bin/ya pack -a yazi-rs/flavors:catppuccin-mocha";
+    };
   };
 }
