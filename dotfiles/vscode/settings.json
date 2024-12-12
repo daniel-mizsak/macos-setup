@@ -64,7 +64,7 @@
   /*
     .NET Install Tool
     ? .NET MAUI
-    1Password
+    ? 1Password
     Ansible
     autoDocstring - Python Docstring Generator
     Better Comments
@@ -111,6 +111,7 @@
     YAML
     */
   // .NET Install Tool
+  "dotnet.automaticallyCreateSolutionInWorkspace": false,
   "dotnetAcquisitionExtension.enableTelemetry": false,
   // Ansible
   "[ansible]": {
