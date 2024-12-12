@@ -37,6 +37,13 @@
     value: 0.0
     type: float
 
+- name: Contents-immutable
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: contents-immutable
+    value: true
+    type: bool
+
 - name: Launchanim
   community.general.osx_defaults:
     domain: com.apple.dock
@@ -86,26 +93,19 @@
     value: false
     type: bool
 
-- name: Tilesize
-  community.general.osx_defaults:
-    domain: com.apple.dock
-    key: tilesize
-    value: 60
-    type: int
-
-- name: Contents-immutable
-  community.general.osx_defaults:
-    domain: com.apple.dock
-    key: contents-immutable
-    value: true
-    type: bool
-
 - name: Size-immutable
   community.general.osx_defaults:
     domain: com.apple.dock
     key: size-immutable
     value: true
     type: bool
+
+- name: Tilesize
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: tilesize
+    value: 60
+    type: int
 
 ### Finder
 - name: AppleShowAllExtensions
@@ -133,7 +133,7 @@
   community.general.osx_defaults:
     domain: com.apple.finder
     key: FXEnableExtensionChangeWarning
-    value: true
+    value: false
     type: bool
 
 - name: FXPreferredViewStyle
@@ -149,6 +149,20 @@
     key: FXRemoveOldTrashItems
     value: false
     type: bool
+
+- name: NewWindowTarget
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: NewWindowTarget
+    value: PfDo
+    type: string
+
+- name: NewWindowTargetPath
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: NewWindowTargetPath
+    value: "file://Users/{{ lookup('env', 'USER') }}/Documents/"
+    type: string
 
 - name: QuitMenuItem
   community.general.osx_defaults:
@@ -178,33 +192,18 @@
     value: true
     type: bool
 
-- name: ShowStatusBar
-  community.general.osx_defaults:
-    domain: com.apple.finder
-    key: ShowStatusBar
-    value: true
-    type: bool
-
-- name: NewWindowTarget
-  community.general.osx_defaults:
-    domain: com.apple.finder
-    key: NewWindowTarget
-    value: PfDo
-    type: string
-
-- name: NewWindowTargetPath
-  community.general.osx_defaults:
-    domain: com.apple.finder
-    key: NewWindowTargetPath
-    value: "file://Users/{{ lookup('env', 'USER') }}/Documents/"
-    type: string
-
-
 - name: ShowRecentTags
   community.general.osx_defaults:
     domain: com.apple.finder
     key: ShowRecentTags
     value: false
+    type: bool
+
+- name: ShowStatusBar
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowStatusBar
+    value: true
     type: bool
 
 - name: ShowToolbar

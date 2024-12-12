@@ -28,13 +28,18 @@
     LC_TIME = "hu_HU.UTF-8";
   };
 
-  services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  # services.xserver.enable = true;
+  # services.displayManager.sddm.enable = true;
+  # services.desktopManager.plasma6.enable = true;
 
   services.xserver.xkb = {
     layout = "us";
     variant = "";
+  };
+
+  services.openssh = {
+    enable = true;
+    ports = [ 22 ];
   };
 
   # users.mutableUsers = false;
@@ -46,12 +51,13 @@
     shell = pkgs.zsh;
     packages = with pkgs; [
       kdePackages.kate
+      vscode
     ];
     # hashedPassword = "...";
   };
 
   programs.zsh.enable = true;
+  programs.nix-ld.enable = true;
 
   system.stateVersion = "24.11";
-
 }

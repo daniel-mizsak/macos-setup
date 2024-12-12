@@ -25,6 +25,7 @@
       fd
       ffmpegthumbnailer
       fzf
+      gcc
       git
       htop
       imagemagick
