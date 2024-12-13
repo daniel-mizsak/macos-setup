@@ -42,7 +42,7 @@ Where prefix for me is `Ctrl + f`.
 
 Apply manual settings detailed [here](macos-manual-settings.md).
 
-## Additional information:
+## Additional commands
 
 After the first run, switches can be done with:
 ```bash

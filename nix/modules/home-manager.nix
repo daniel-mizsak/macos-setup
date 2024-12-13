@@ -1,8 +1,9 @@
-{ user, inputs }:
+{ user, is-darwin, inputs }:
 
 { config, pkgs, ... }:
 let
   inherit (config.lib.file) mkOutOfStoreSymlink;
+  inherit (pkgs.lib) mkMerge mkIf;
 in
 {
   programs.home-manager.enable = true;
@@ -45,69 +46,70 @@ in
     stateVersion = "24.11";
     username = user;
 
-    file = {
-      ### Terminal
-      # atuin
-      ".config/atuin/config.toml".source = "${config.home.homeDirectory}/macos-setup/dotfiles/config/atuin/config.toml";
+    file = mkMerge [
+      {
+        ### Terminal
+        # atuin
+        ".config/atuin/config.toml".source = "${config.home.homeDirectory}/macos-setup/dotfiles/config/atuin/config.toml";
 
-      # bat
-      ".config/bat/themes/Catppuccin Mocha.tmTheme".source = pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/catppuccin/bat/refs/heads/main/themes/Catppuccin%20Mocha.tmTheme";
-        sha256 = "sha256-UBuh6EeUhD5V9TjAo7hBRaGCt3KjkkO7QDxuaEBzN0s=";
-      };
-
-      # btop
-      ".config/btop/btop.conf".source = "${config.home.homeDirectory}/macos-setup/dotfiles/config/btop/btop.conf";
-      ".config/btop/themes/catppuccin_mocha.theme".source = pkgs.fetchurl
-        {
-          url = "https://raw.githubusercontent.com/catppuccin/btop/refs/heads/main/themes/catppuccin_mocha.theme";
-          sha256 = "sha256-THRpq5vaKCwf9gaso3ycC4TNDLZtBB5Ofh/tOXkfRkQ=";
+        # bat
+        ".config/bat/themes/Catppuccin Mocha.tmTheme".source = pkgs.fetchurl {
+          url = "https://raw.githubusercontent.com/catppuccin/bat/refs/heads/main/themes/Catppuccin%20Mocha.tmTheme";
+          sha256 = "sha256-UBuh6EeUhD5V9TjAo7hBRaGCt3KjkkO7QDxuaEBzN0s=";
         };
 
-      # fastfetch
-      ".config/fastfetch/config.jsonc".source = "${config.home.homeDirectory}/macos-setup/dotfiles/config/fastfetch/config.jsonc";
+        # btop
+        ".config/btop/btop.conf".source = "${config.home.homeDirectory}/macos-setup/dotfiles/config/btop/btop.conf";
+        ".config/btop/themes/catppuccin_mocha.theme".source = pkgs.fetchurl
+          {
+            url = "https://raw.githubusercontent.com/catppuccin/btop/refs/heads/main/themes/catppuccin_mocha.theme";
+            sha256 = "sha256-THRpq5vaKCwf9gaso3ycC4TNDLZtBB5Ofh/tOXkfRkQ=";
+          };
 
-      # git
-      ".gitconfig".source = "${config.home.homeDirectory}/macos-setup/dotfiles/git/.gitconfig";
-      ".gitignore_global".source = "${config.home.homeDirectory}/macos-setup/dotfiles/git/.gitignore_global";
-      ".gitmessage".source = "${config.home.homeDirectory}/macos-setup/dotfiles/git/.gitmessage";
+        # fastfetch
+        ".config/fastfetch/config.jsonc".source = "${config.home.homeDirectory}/macos-setup/dotfiles/config/fastfetch/config.jsonc";
 
-      # neovim
-      ".config/nvim".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/macos-setup/dotfiles/config/nvim";
+        # git
+        ".gitconfig".source = "${config.home.homeDirectory}/macos-setup/dotfiles/git/.gitconfig";
+        ".gitignore_global".source = "${config.home.homeDirectory}/macos-setup/dotfiles/git/.gitignore_global";
+        ".gitmessage".source = "${config.home.homeDirectory}/macos-setup/dotfiles/git/.gitmessage";
 
-      # oh-my-posh
-      ".config/oh-my-posh/oh-my-posh.toml".source = "${config.home.homeDirectory}/macos-setup/dotfiles/config/oh-my-posh/oh-my-posh.toml";
+        # neovim
+        ".config/nvim".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/macos-setup/dotfiles/config/nvim";
 
-      # tmux
-      ".config/tmux/tmux.conf".source = "${config.home.homeDirectory}/macos-setup/dotfiles/config/tmux/.tmux.conf";
-      ".tmux/plugins/tpm".source = pkgs.fetchFromGitHub {
-        owner = "tmux-plugins";
-        repo = "tpm";
-        rev = "v3.1.0";
-        sha256 = "sha256-CeI9Wq6tHqV68woE11lIY4cLoNY8XWyXyMHTDmFKJKI=";
-      };
+        # oh-my-posh
+        ".config/oh-my-posh/oh-my-posh.toml".source = "${config.home.homeDirectory}/macos-setup/dotfiles/config/oh-my-posh/oh-my-posh.toml";
 
-      # yazi
-      ".config/yazi".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/macos-setup/dotfiles/config/yazi";
+        # tmux
+        ".config/tmux/tmux.conf".source = "${config.home.homeDirectory}/macos-setup/dotfiles/config/tmux/.tmux.conf";
+        ".tmux/plugins/tpm".source = pkgs.fetchFromGitHub {
+          owner = "tmux-plugins";
+          repo = "tpm";
+          rev = "v3.1.0";
+          sha256 = "sha256-CeI9Wq6tHqV68woE11lIY4cLoNY8XWyXyMHTDmFKJKI=";
+        };
 
-      # zsh
-      ".zshrc".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/macos-setup/dotfiles/shell/.zshrc";
+        # yazi
+        ".config/yazi".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/macos-setup/dotfiles/config/yazi";
 
-      ### Package
-      # alacritty
-      ".config/alacritty/alacritty.toml".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/macos-setup/dotfiles/config/alacritty/alacritty.toml";
+        # zsh
+        ".zshrc".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/macos-setup/dotfiles/shell/.zshrc";
+      }
 
-      # sublime
-      # TODO: Check this on Linux
-      "/Users/${user}/Library/Application Support/Sublime Text/Packages/User/Preferences.sublime-settings".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/macos-setup/dotfiles/sublime/Preferences.sublime-settings";
+      (mkIf is-darwin {
+        # alacritty
+        ".config/alacritty/alacritty.toml".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/macos-setup/dotfiles/config/alacritty/alacritty.toml";
 
-      # vscode
-      # TODO: Check this on Linux
-      "/Users/${user}/Library/Application Support/Code/User/settings.json".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/macos-setup/dotfiles/vscode/settings.json";
+        # sublime
+        "/Users/${user}/Library/Application Support/Sublime Text/Packages/User/Preferences.sublime-settings".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/macos-setup/dotfiles/sublime/Preferences.sublime-settings";
 
-      # wezterm
-      ".config/wezterm/wezterm.lua".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/macos-setup/dotfiles/config/wezterm/wezterm.lua";
-    };
+        # vscode
+        "/Users/${user}/Library/Application Support/Code/User/settings.json".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/macos-setup/dotfiles/vscode/settings.json";
+
+        # wezterm
+        ".config/wezterm/wezterm.lua".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/macos-setup/dotfiles/config/wezterm/wezterm.lua";
+      })
+    ];
     activation = {
       batCache = "${pkgs.bat}/bin/bat cache --build";
       # yaPack = "${pkgs.yazi}/bin/ya pack -a yazi-rs/flavors:catppuccin-mocha";

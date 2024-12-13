@@ -1,5 +1,9 @@
 ## Configure macOS using Ansible
 
+> [!WARNING]
+> This solutions is *less* maintained than the Nix-Darwin one.
+> Some settings/programs might be missing from this setup.
+
 In a **macOS** environment first install `xcode-select`.
 ```bash
 xcode-select --install

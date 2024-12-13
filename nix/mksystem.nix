@@ -39,7 +39,7 @@ systemFunc rec {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.users.${user} = import ./modules/home-manager.nix {
-        inherit user inputs;
+        inherit user is-darwin inputs;
       };
     }
 
@@ -50,6 +50,7 @@ systemFunc rec {
         currentSystem = system;
         currentSystemName = name;
         currentSystemUser = user;
+        is-darwin = is-darwin;
         inputs = inputs;
       };
     }
