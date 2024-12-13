@@ -5,13 +5,15 @@
     /etc/nixos/hardware-configuration.nix
   ];
 
+  ### Boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  ### Networking
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
-  # Select internationalisation properties.
+  ### Locale
   time.timeZone = "Europe/Budapest";
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -28,21 +30,26 @@
     LC_TIME = "hu_HU.UTF-8";
   };
 
-  # services.xserver.enable = true;
-  # services.displayManager.sddm.enable = true;
-  # services.desktopManager.plasma6.enable = true;
-
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
 
+  ### Docker
+  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
+
+  ### SSH
   services.openssh = {
     enable = true;
     ports = [ 22 ];
   };
 
-  # users.mutableUsers = false;
+  ### Users
+  users.mutableUsers = false;
   users.users.damz = {
     isNormalUser = true;
     description = "Daniel Mizsak";
@@ -53,9 +60,23 @@
       kdePackages.kate
       vscode
     ];
-    # hashedPassword = "...";
+    hashedPassword = "$y$j9T$SLcpv.fvXbk2PqUEOuHVL0$VZUxN7P8EXwsXVxCvReON7tOrV/ARfd.oyCQ3trt5aA";
   };
 
+  # No password for sudo
+  security.sudo.extraRules = [
+    {
+      users = [ "damz" ];
+      commands = [
+        {
+          command = "ALL";
+          options = ["NOPASSWD"];
+        }
+      ];
+    }
+  ];
+
+  ### Packages
   programs.zsh.enable = true;
   programs.nix-ld.enable = true;
 
