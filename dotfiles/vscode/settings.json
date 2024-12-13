@@ -191,7 +191,7 @@
     "${workspaceFolder}/.venv/bin/mypy",
   ],
   // Nix IDE
-  "nix.formatterPath": "nixpkgs-fmt",
+  "nix.formatterPath": "nixfmt",
   // PowerShell
   "[powershell]": {
     "editor.defaultFormatter": "ms-vscode.powershell",

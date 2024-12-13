@@ -34,7 +34,7 @@
       lazydocker
       lazygit
       neovim
-      nixpkgs-fmt
+      nixfmt-rfc-style
       oh-my-posh
       poppler
       ripgrep

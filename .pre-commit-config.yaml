@@ -25,3 +25,9 @@ repos:
     rev: v8.21.2
     hooks:
       - id: gitleaks
+
+  # nixfmt
+  # - repo: https://github.com/NixOS/nixfmt
+  #   rev: a463903
+  #   hooks:
+  #     - id: nixfmt

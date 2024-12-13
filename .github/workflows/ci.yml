@@ -7,6 +7,37 @@ on:
   push:
 
 jobs:
+  nix-flake-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the codebase
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v30
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+
+      - name: Create files to make the flake valid
+        run: |
+          sudo mkdir -p {/etc/nixos,/home/damz}
+          echo '{ config, ... }:
+
+          {
+            fileSystems."/" = {
+              device = "/dev/disk/by-uuid/00000000-0000-0000-0000-000000000000";
+              fsType = "ext4";
+            };
+          }' | sudo tee /etc/nixos/hardware-configuration.nix
+          sudo ln -s  $GITHUB_WORKSPACE/ /home/damz/macos-setup
+
+      - name: Run nix flake check
+        run: >
+          nix flake check --impure ./nix
+
+
   molecule:
     uses: daniel-mizsak/workflows/.github/workflows/molecule.yml@main
     with:
