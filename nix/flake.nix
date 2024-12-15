@@ -18,7 +18,14 @@
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, nix-darwin, nix-homebrew }:
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      home-manager,
+      nix-darwin,
+      nix-homebrew,
+    }:
     let
       mkSystem = import ./mksystem.nix {
         inherit nixpkgs inputs;

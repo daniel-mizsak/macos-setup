@@ -19,6 +19,7 @@
       atuin
       bat
       btop
+      cabal-install
       direnv
       eza
       fastfetch
@@ -26,6 +27,7 @@
       ffmpegthumbnailer
       fzf
       gcc
+      ghc
       git
       htop
       imagemagick
@@ -37,6 +39,7 @@
       nixfmt-rfc-style
       oh-my-posh
       poppler
+      pre-commit
       ripgrep
       tlrc
       tmux

@@ -1,4 +1,6 @@
-{ currentSystemUser, ... }: {
+{ currentSystemUser, ... }:
+
+{
 
   nix = {
     configureBuildUsers = true;

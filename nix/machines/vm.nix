@@ -53,7 +53,10 @@
   users.users.damz = {
     isNormalUser = true;
     description = "Daniel Mizsak";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     home = "/home/damz";
     shell = pkgs.zsh;
     packages = with pkgs; [
@@ -70,7 +73,7 @@
       commands = [
         {
           command = "ALL";
-          options = ["NOPASSWD"];
+          options = [ "NOPASSWD" ];
         }
       ];
     }

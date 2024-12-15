@@ -5,6 +5,8 @@
 
 # pre-commit ci
 ci:
+  # nixfmt will not work until haskell is added to pre-commit ci: https://github.com/pre-commit-ci/issues/issues/239
+  skip: [nixfmt]
   autoupdate_schedule: monthly
 
 # pre-commit
@@ -27,7 +29,7 @@ repos:
       - id: gitleaks
 
   # nixfmt
-  # - repo: https://github.com/NixOS/nixfmt
-  #   rev: a463903
-  #   hooks:
-  #     - id: nixfmt
+  - repo: https://github.com/NixOS/nixfmt
+    rev: a463903
+    hooks:
+      - id: nixfmt

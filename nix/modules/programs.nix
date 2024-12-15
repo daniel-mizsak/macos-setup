@@ -9,7 +9,10 @@
       cleanup = "zap";
       upgrade = true;
     };
-    brews = [ "sevenzip" "postgresql@16" ];
+    brews = [
+      "sevenzip"
+      "postgresql@16"
+    ];
     casks = [
       "1password"
       "affinity-designer"

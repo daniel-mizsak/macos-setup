@@ -1,15 +1,15 @@
 # https://github.com/mitchellh/nixos-config/blob/main/lib/mksystem.nix
 # https://discourse.nixos.org/t/optimize-flake-nix-code/29687
 
-
 # This function creates a NixOS system based on our VM setup for a
 # particular architecture.
 { nixpkgs, inputs }:
 
 name:
-{ system
-, user
-, is-darwin ? false
+{
+  system,
+  user,
+  is-darwin ? false,
 }:
 
 let
@@ -19,7 +19,8 @@ let
 
   # NixOS vs nix-darwin functions
   systemFunc = if is-darwin then inputs.nix-darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
-  home-manager = if is-darwin then inputs.home-manager.darwinModules else inputs.home-manager.nixosModules;
+  home-manager =
+    if is-darwin then inputs.home-manager.darwinModules else inputs.home-manager.nixosModules;
 in
 systemFunc rec {
   inherit system;
