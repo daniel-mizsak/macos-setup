@@ -5,9 +5,9 @@ Be careful to choose the right CPU architecture.
 
 Create new virtual machine using **Parallel Desktop** or **VirtualBox**.
 
-Install **Git** in **NixOS**:
+Create shell where **Git** is present:
 ```bash
-nix-env -i git
+nix-shell -p git
 ```
 
 **Clone** repository:
@@ -21,7 +21,7 @@ sudo nixos-rebuild switch --impure --flake ~/macos-setup/nix#vm-arm
 ```
 or
 ```bash
-sudo nixos-rebuild switch --impure --flake ~/macos-setup/nix#vm-intel
+sudo nixos-rebuild switch --impure --flake ~/macos-setup/nix#vm-amd
 ```
 
 Install **TMUX** plugins:

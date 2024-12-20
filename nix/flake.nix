@@ -43,7 +43,7 @@
         user = "damz";
       };
 
-      nixosConfigurations.vm-intel = mkSystem "vm" {
+      nixosConfigurations.vm-amd = mkSystem "vm" {
         system = "x86_64-linux";
         user = "damz";
       };

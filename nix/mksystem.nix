@@ -14,7 +14,7 @@ name:
 
 let
   # The config files for this system.
-  machineConfig = ./machines/${name}.nix;
+  hostConfig = ./hosts/${name}.nix;
   nixConfig = ./${if is-darwin then "nix-darwin" else "nixos"}.nix;
 
   # NixOS vs nix-darwin functions
@@ -32,7 +32,7 @@ systemFunc rec {
     inputs.nix-homebrew.darwinModules.nix-homebrew
     (if is-darwin then import ./modules/nix-homebrew.nix { inherit user; } else { })
 
-    machineConfig
+    hostConfig
     nixConfig
 
     home-manager.home-manager
