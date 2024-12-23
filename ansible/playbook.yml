@@ -9,4 +9,4 @@
   tasks:
     - name: Import tasks
       ansible.builtin.import_tasks:
-        file: "macos/{{ task_name }}.yml"
+        file: "{{ task_name }}.yml"

@@ -128,7 +128,7 @@ in
     ];
     activation = {
       batCache = "${pkgs.bat}/bin/bat cache --build";
-      # yaPack = "${pkgs.yazi}/bin/ya pack -a yazi-rs/flavors:catppuccin-mocha";
+      # yaPack = "${pkgs.yazi}/bin/ya pack -a yazi-rs/flavors:catppuccin-mocha";  # This is not working as it depends on git
     };
   };
 }

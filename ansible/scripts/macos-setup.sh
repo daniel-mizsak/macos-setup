@@ -1,14 +1,34 @@
 #!/bin/bash
 
-set -e # exit if a command fails
+set -e  # exit if a command fails
 
-curl -fsSL https://raw.githubusercontent.com/daniel-mizsak/macos-setup/main/ansible/scripts/prepare-environment.sh -o /tmp/prepare-environment.sh
-source /tmp/prepare-environment.sh
+# Prepare environment
+echo "Making sure the macos-setup repository is present."
+if [[ ! -d ${HOME}/macos-setup ]]; then
+    git clone https://github.com/daniel-mizsak/macos-setup.git ${HOME}/macos-setup --quiet
+fi
 
-tasks=("programs" "system" "dockutil" "terminal")
-source ${HOME}/macos-setup/ansible/scripts/run-tasks.sh "${tasks[@]}"
+echo "Making sure the python virtual environment and dependencies are present."
+if [[ ! -d ${HOME}/macos-setup/.venv ]]; then
+    python3 -m venv --upgrade-deps ${HOME}/macos-setup/.venv > /dev/null
+fi
 
-# Restart finder and dock
+# Activate virtual environment and install dependencies
+source ${HOME}/macos-setup/.venv/bin/activate
+pip3 install -r ${HOME}/macos-setup/ansible/requirements.txt -qqq
+export ANSIBLE_PYTHON_INTERPRETER=${HOME}/macos-setup/.venv/bin/python
+
+# Run tasks
+for task in "programs" "system" "dockutil" "terminal"
+do
+    # Run the ansible playbook for each task
+    echo "Running ${task} setup."
+    ansible-playbook \
+        ${HOME}/macos-setup/ansible/playbook.yml \
+        --extra-vars "task_name=macos/${task}"
+done
+
+# Restart Finder and Dock
 echo "Restarting Finder and Dock."
 killall Finder
 killall Dock

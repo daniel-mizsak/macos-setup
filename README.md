@@ -9,7 +9,7 @@
 ## Overview
 
 Setting up and making sure that macOS is configured properly.\
-The most up-to-date setup defaults to using `nix-darwin` on macOS.
+The most up-to-date configuration defaults to using `nix-darwin` on macOS.
 
 ## Getting started
 
@@ -20,16 +20,16 @@ Set up macOS:
 
 <br>
 
-Setup up virtual machine:
+Set up virtual machine:
 - [Virtaul Machine setup using nix](docs/vm-setup-nix.md)
 
 <br>
 
-Setup up the terminal:
+Set up the terminal:
 - [Terminal setup for macOS](docs/macos-terminal-setup.md)
 - [Terminal setup for Ubuntu](docs/ubuntu-terminal-setup.md)
 
 <br>
 
 "Set up" Windows:
-- [Chocolatey setup for Windows](docs/windows-chocolatey.md)
+- ["Full" Windows setup using ansible](docs/windows-setup-ansible.md)
