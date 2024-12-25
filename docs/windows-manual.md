@@ -6,7 +6,7 @@ Install [Chocolatey](https://chocolatey.org/install).
 
 Install **Chocolatey** packages:
 ```powershell
-$programs = Invoke-WebRequest -Uri "https://raw.githubusercontent.com/daniel-mizsak/macos-setup/refs/heads/main/choco/programs.txt" | Select-Object -ExpandProperty Content
+$programs = Invoke-WebRequest -Uri "https://raw.githubusercontent.com/daniel-mizsak/macos-setup/refs/heads/main/ansible/windows/programs.txt" | Select-Object -ExpandProperty Content
 ```
 ```powershell
 $programs -split "`n" | ForEach-Object { if ($_ -ne '') { choco install $_ -y } }

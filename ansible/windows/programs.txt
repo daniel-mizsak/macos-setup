@@ -1,12 +1,12 @@
 1password
 alacritty
 bat
-devtoys
 docker-desktop
-etcher
 firefox
 fzf
 git
+github-desktop
+obsidian
 oh-my-posh
 postman
 pyenv-win
