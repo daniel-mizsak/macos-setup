@@ -1,4 +1,8 @@
-## Configure macOS terminal
+## Configure macOS using Ansible
+
+> [!WARNING]
+> This solutions is *less* maintained than the [Nix-Darwin](macos-complete-nix.md) one.
+> Some settings/programs might be missing from this setup.
 
 In a **macOS** environment first install `xcode-select`.
 ```bash
@@ -19,10 +23,14 @@ Add **Homebrew** to your `PATH`:
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
 
-Run the **terminal setup** script:
+Sign in to **Apple Account**.
+
+Enable full disk access for **Terminal** in `System Preferences > Privacy & Security > Full Disk Access`.
+
+Run the **macos setup** script:
 ```bash
 /bin/bash -c "$(curl -fsSL \
-https://raw.githubusercontent.com/daniel-mizsak/macos-setup/main/scripts/terminal-setup.sh)"
+https://raw.githubusercontent.com/daniel-mizsak/macos-setup/main/ansible/scripts/macos-setup.sh)"
 ```
 
 Install **TMUX** plugins:
@@ -32,9 +40,6 @@ prefix -> I
 ```
 
 Where prefix for me is `Ctrl + f`.
-<br><br>
 
-Additionally, if you are using a graphical interface you may install [wezterm](https://wezfurlong.org/wezterm/index.html):
-```bash
-brew install --cask wezterm
-```
+
+Apply manual settings detailed [here](macos-manual-settings.md).

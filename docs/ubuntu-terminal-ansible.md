@@ -37,9 +37,3 @@ prefix -> I
 ```
 
 Where prefix for me is `Ctrl + f`.
-<br><br>
-
-Additionally, if you are using a graphical interface you may install [wezterm](https://wezfurlong.org/wezterm/index.html):
-```bash
-sudo apt install wezterm
-```

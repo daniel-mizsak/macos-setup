@@ -1,4 +1,4 @@
-## Configure virtual machine using NixOS
+## Configure NixOS using Nix
 
 Download **NixOS** ([official documentation](https://nixos.org/download.html))\
 Be careful to choose the right CPU architecture.

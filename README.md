@@ -14,22 +14,22 @@ The most up-to-date configuration defaults to using `nix-darwin` on macOS.
 ## Getting started
 
 Set up macOS:
-- [Full macOS setup using nix-darwin](docs/macos-setup-nix.md)
-- [Full macOS setup using ansible](docs/macos-setup-ansible.md)
-- [Additional manual macOS settings](docs/macos-manual-settings.md)
+- [Complete macOS setup using nix-darwin](docs/macos-complete-nix.md) ← This is what I currently use
+- [Complete macOS setup using ansible](docs/macos-complete-ansible.md)
+- [Terminal setup for macOS using ansible](docs/macos-terminal-ansible.md)
+- [Manual macOS settings](docs/macos-manual.md) ← I also use this
 
 <br>
 
-Set up virtual machine:
-- [Virtaul Machine setup using nix](docs/vm-setup-nix.md)
+Set up NixOS:
+- [Complete nixOS setup using nix](docs/nixos-complete-nix.md)
 
 <br>
 
-Set up the terminal:
-- [Terminal setup for macOS](docs/macos-terminal-setup.md)
-- [Terminal setup for Ubuntu](docs/ubuntu-terminal-setup.md)
+Set up Ubuntu:
+- [Terminal setup for Ubuntu using ansible](docs/ubuntu-terminal-ansible.md)
 
 <br>
 
 "Set up" Windows:
-- ["Full" Windows setup using ansible](docs/windows-setup-ansible.md)
+- [Manual Windows settings](docs/windows-manual.md)
